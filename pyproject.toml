@@ -1,0 +1,14 @@
+[project]
+name = "ostbox"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+authors = [
+    { name = "Rombica", email = "magitovich@yandex.ru" }
+]
+requires-python = ">=3.12"
+dependencies = [
+    "dj-database-url>=3.1.2",
+    "django==6.1.*",
+    "pydantic-settings>=2.15.0",
+]
