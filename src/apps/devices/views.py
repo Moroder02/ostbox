@@ -1,3 +1,10 @@
 from django.shortcuts import render
 
-# Create your views here.
+from .models import Device
+
+
+def device_list(request):
+    devices = Device.objects.all()
+    context = {'devices': devices}
+    return render(request, 'devices/device_list.html', context)
+

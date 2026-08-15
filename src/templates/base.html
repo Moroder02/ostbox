@@ -1,0 +1,125 @@
+{% load static %}
+<!doctype html>
+<html lang="en" class="remember-theme">
+<head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+
+    <title>{% block title %}{% endblock title %}</title>
+
+    {% comment %}
+    <meta name="description" content="OneUI - Bootstrap 5 Admin Template &amp; UI Framework created by pixelcave"/>
+    <meta name="author" content="pixelcave"/>
+    <meta name="robots" content="index, follow"/>
+    <meta property="og:title" content="OneUI - Bootstrap 5 Admin Template &amp; UI Framework"/>
+    <meta property="og:site_name" content="OneUI"/>
+    <meta
+            property="og:description"
+            content="OneUI - Bootstrap 5 Admin Template &amp; UI Framework created by pixelcave"
+    />
+    <meta property="og:type" content="website"/>
+    <meta property="og:url" content=""/>
+    <meta property="og:image" content=""/>
+    {% endcomment %}
+
+    <link rel="shortcut icon" href="{% static 'assets/media/favicons/favicon.png'  %}"/>
+    <link rel="icon" type="image/png" sizes="192x192"
+          href="{%  static 'assets/media/favicons/android-icon-192x192.png' %}"/>
+    <link rel="apple-touch-icon" sizes="180x180" href="{%  static 'assets/media/favicons/apple-icon-180x180.png' %}"/>
+
+    {% block css %}{% endblock css %}
+
+    <link rel="stylesheet" id="css-main" href="{% static 'assets/css/oneui.min.css' %}"/>
+
+
+    <script src="{% static 'assets/js/setTheme.js' %}"></script>
+</head>
+
+<body>
+
+<div id="page-container" class="sidebar-o sidebar-dark enable-page-overlay side-scroll page-header-fixed">
+
+    {% include "includes/side-overlay.html" %}
+
+    {% include "includes/sidebar.html" %}
+
+    {% include "includes/page-header.html" %}
+
+    <main id="main-container">
+
+        <div class="content">
+
+            {% block content %}
+
+            <div class="block block-rounded">
+                <div class="block-header block-header-default">
+                    <h3 class="block-title">
+                        {% block content_title %}{% endblock content_title %}
+                        <small>{% block small_title %}{% endblock small_title %}</small>
+                    </h3>
+                    <div class="block-options">
+                        <button
+                                type="button"
+                                class="btn-block-option"
+                                data-toggle="block-option"
+                                data-action="fullscreen_toggle"
+                        ></button>
+                        {% comment %}
+                        <button
+                                type="button"
+                                class="btn-block-option"
+                                data-toggle="block-option"
+                                data-action="pinned_toggle"
+                        >
+                            <i class="si si-pin"></i>
+                        </button>
+                        <button
+                                type="button"
+                                class="btn-block-option"
+                                data-toggle="block-option"
+                                data-action="state_toggle"
+                                data-action-mode="demo"
+                        >
+                            <i class="si si-refresh"></i>
+                        </button>
+                        <button
+                                type="button"
+                                class="btn-block-option"
+                                data-toggle="block-option"
+                                data-action="content_toggle"
+                        ></button>
+                        <button
+                                type="button"
+                                class="btn-block-option"
+                                data-toggle="block-option"
+                                data-action="close"
+                        >
+                            <i class="si si-close"></i>
+                        </button>
+                        {% endcomment %}
+                    </div>
+                </div>
+                <div class="block-content fs-sm">
+                    {% block table %}
+                    {% endblock table %}
+                </div>
+            </div>
+
+            {% endblock content %}
+
+        </div>
+
+    </main>
+
+    {% include "includes/footer.html" %}
+</div>
+
+<script src="{% static 'assets/js/oneui.app.min.js' %}"></script>
+
+{% block scripts %}{% endblock scripts %}
+</body>
+</html>
+
+
+
+
