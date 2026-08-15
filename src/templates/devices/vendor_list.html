@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+
+{% block content_title %}
+    Производители
+{% endblock %}
+
+{% block small_title %}
+    устройств
+{% endblock %}
+
+{% block table %}
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>№</th>
+                <th>Производитель</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for vendor in vendors %}
+                <tr>
+                    <td>{{ forloop.counter }}</td>
+                    <td>{{ vendor.name }}</td>
+                </tr>
+            {% endfor %}
+            
+        </tbody>
+    </table>
+
+{% endblock %}
+

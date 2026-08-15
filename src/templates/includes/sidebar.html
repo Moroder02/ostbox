@@ -216,19 +216,19 @@
                     <ul class="nav-main-submenu">
                         <li class="nav-main-item">
                             <a class="nav-main-link" href="{% url 'devices:device-list' %}">
-                                <span class="nav-main-link-name">Серверы</span>
+                                <span class="nav-main-link-name">Устройства</span>
                             </a>
                         </li>
-{#                        <li class="nav-main-item">#}
-{#                            <a class="nav-main-link" href="{% url 'devices:virtual_machines' %}">#}
-{#                                <span class="nav-main-link-name">Виртуальные серверы</span>#}
-{#                            </a>#}
-{#                        </li>#}
-{#                        <li class="nav-main-item">#}
-{#                            <a class="nav-main-link" href="{% url 'devices:operating_systems' %}">#}
-{#                                <span class="nav-main-link-name">Операционные системы</span>#}
-{#                            </a>#}
-{#                        </li>#}
+                        <li class="nav-main-item">
+                            <a class="nav-main-link" href="{% url 'devices:model-list' %}">
+                                <span class="nav-main-link-name">Модели устройств</span>
+                            </a>
+                        </li>
+                        <li class="nav-main-item">
+                            <a class="nav-main-link" href="{% url 'devices:vendor-list' %}">
+                                <span class="nav-main-link-name">Производители</span>
+                            </a>
+                        </li>
 {#                        <li class="nav-main-item">#}
 {#                            <a class="nav-main-link" href="{% url 'devices:ports' %}">#}
 {#                                <span class="nav-main-link-name">Физические порты</span>#}
