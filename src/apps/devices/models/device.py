@@ -17,7 +17,6 @@ class Device(models.Model):
     serial_number = models.CharField(
         max_length=100,
         blank=True,
-        null=True,
         verbose_name=_("Серийный номер"),
         help_text=_("Уникален в рамках модели устройства"),
     )

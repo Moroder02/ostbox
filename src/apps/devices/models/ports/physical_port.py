@@ -14,7 +14,7 @@ class PhysicalNetworkPort(models.Model):
         related_name="physical_ports",
         verbose_name=_("Устройство"),
     )
-    network_port_model = models.ForeignKey(
+    network_port_group = models.ForeignKey(
         NetworkPortGroup,
         on_delete=models.CASCADE,
         related_name="physical_ports",
@@ -37,10 +37,6 @@ class PhysicalNetworkPort(models.Model):
         verbose_name = _("Физический сетевой порт")
         verbose_name_plural = _("Физические сетевые порты")
         constraints = [
-            models.UniqueConstraint(
-                fields=["device", "network_port_model"],
-                name="physical_port_device_port_unique",
-            ),
             models.UniqueConstraint(
                 fields=["device", "name"],
                 name="physical_port_device_name_unique",
