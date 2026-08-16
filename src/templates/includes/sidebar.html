@@ -247,120 +247,57 @@
                     </ul>
                 </li>
 
-                <!-- Modules Menu -->
-{#                <li class="nav-main-item">#}
-{#                    <a class="nav-main-link nav-main-link-submenu" data-toggle="submenu" aria-haspopup="true" aria-expanded="false" href="#">#}
-{#                        <i class="nav-main-link-icon si si-grid"></i>#}
-{#                        <span class="nav-main-link-name">Модули</span>#}
-{#                    </a>#}
-{#                    <ul class="nav-main-submenu">#}
-{#                        <li class="nav-main-item">#}
-{#                            <a class="nav-main-link" href="{% url 'units:cpu_unit_list' %}">#}
-{#                                <span class="nav-main-link-name">CPU Units</span>#}
-{#                            </a>#}
-{#                        </li>#}
-{#                        <li class="nav-main-item">#}
-{#                            <a class="nav-main-link" href="{% url 'units:disk_unit_list' %}">#}
-{#                                <span class="nav-main-link-name">Disk Units</span>#}
-{#                            </a>#}
-{#                        </li>#}
-{#                        <li class="nav-main-item">#}
-{#                            <a class="nav-main-link" href="{% url 'units:ram_unit_list' %}">#}
-{#                                <span class="nav-main-link-name">RAM Units</span>#}
-{#                            </a>#}
-{#                        </li>#}
-{#                    </ul>#}
-{#                </li>#}
+                <!-- Components Menu -->
+                <li class="nav-main-item">
+                    <a class="nav-main-link nav-main-link-submenu" data-toggle="submenu" aria-haspopup="true" aria-expanded="false" href="#">
+                        <i class="nav-main-link-icon si si-energy"></i>
+                        <span class="nav-main-link-name">Компоненты</span>
+                    </a>
+                    <ul class="nav-main-submenu">
+                        <li class="nav-main-item">
+                            <a class="nav-main-link" href="{% url 'devices:components:disk-model-list' %}">
+                                <span class="nav-main-link-name">Модели дисков</span>
+                            </a>
+                        </li>
+                        <li class="nav-main-item">
+                            <a class="nav-main-link" href="{% url 'devices:components:ram-model-list' %}">
+                                <span class="nav-main-link-name">Модели ОЗУ</span>
+                            </a>
+                        </li>
+                        <li class="nav-main-item">
+                            <a class="nav-main-link" href="{% url 'devices:components:motherboard-model-list' %}">
+                                <span class="nav-main-link-name">Модели материнских плат</span>
+                            </a>
+                        </li>
+                        <li class="nav-main-item">
+                            <a class="nav-main-link" href="{% url 'devices:components:cpu-model-list' %}">
+                                <span class="nav-main-link-name">Модели процессоров</span>
+                            </a>
+                        </li>
+                        <li class="nav-main-item">
+                            <a class="nav-main-link" href="{% url 'devices:components:disk-list' %}">
+                                <span class="nav-main-link-name">Диски</span>
+                            </a>
+                        </li>
+                        <li class="nav-main-item">
+                            <a class="nav-main-link" href="{% url 'devices:components:ram-list' %}">
+                                <span class="nav-main-link-name">ОЗУ</span>
+                            </a>
+                        </li>
+                        <li class="nav-main-item">
+                            <a class="nav-main-link" href="{% url 'devices:components:motherboard-list' %}">
+                                <span class="nav-main-link-name">Материнские платы</span>
+                            </a>
+                        </li>
+                        <li class="nav-main-item">
+                            <a class="nav-main-link" href="{% url 'devices:components:cpu-list' %}">
+                                <span class="nav-main-link-name">Процессоры</span>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
 
-                <!-- Parts Menu -->
-{#                <li class="nav-main-item">#}
-{#                    <a class="nav-main-link nav-main-link-submenu" data-toggle="submenu" aria-haspopup="true" aria-expanded="false" href="#">#}
-{#                        <i class="nav-main-link-icon si si-energy"></i>#}
-{#                        <span class="nav-main-link-name">Части</span>#}
-{#                    </a>#}
-{#                    <ul class="nav-main-submenu">#}
-{#                        <li class="nav-main-item">#}
-{#                            <a class="nav-main-link" href="{% url 'parts:disk_part_list' %}">#}
-{#                                <span class="nav-main-link-name">Диски</span>#}
-{#                            </a>#}
-{#                        </li>#}
-{#                        <li class="nav-main-item">#}
-{#                            <a class="nav-main-link" href="{% url 'parts:cpu_part_list' %}">#}
-{#                                <span class="nav-main-link-name">Процессоры</span>#}
-{#                            </a>#}
-{#                        </li>#}
-{#                        <li class="nav-main-item">#}
-{#                            <a class="nav-main-link" href="{% url 'parts:ram_part_list' %}">#}
-{#                                <span class="nav-main-link-name">ОЗУ</span>#}
-{#                            </a>#}
-{#                        </li>#}
-{#                        <li class="nav-main-item">#}
-{#                            <a class="nav-main-link" href="{% url 'parts:vendor_list' %}">#}
-{#                                <span class="nav-main-link-name">Вендоры</span>#}
-{#                            </a>#}
-{#                        </li>#}
-{#                    </ul>#}
-{#                </li>#}
 
-                <!-- Network Menu -->
-{#                <li class="nav-main-item">#}
-{#                    <a class="nav-main-link nav-main-link-submenu" data-toggle="submenu" aria-haspopup="true" aria-expanded="false" href="#">#}
-{#                        <i class="nav-main-link-icon si si-network"></i>#}
-{#                        <span class="nav-main-link-name">Сеть</span>#}
-{#                    </a>#}
-{#                    <ul class="nav-main-submenu">#}
-{#                        <li class="nav-main-item">#}
-{#                            <a class="nav-main-link" href="{% url 'ipams:vlan_list' %}">#}
-{#                                <span class="nav-main-link-name">VLANs</span>#}
-{#                            </a>#}
-{#                        </li>#}
-{#                        <li class="nav-main-item">#}
-{#                            <a class="nav-main-link" href="{% url 'ipams:asn_list' %}">#}
-{#                                <span class="nav-main-link-name">ASNs</span>#}
-{#                            </a>#}
-{#                        </li>#}
-{#                        <li class="nav-main-item">#}
-{#                            <a class="nav-main-link" href="{% url 'ipams:network_list' %}">#}
-{#                                <span class="nav-main-link-name">Сети</span>#}
-{#                            </a>#}
-{#                        </li>#}
-{#                        <li class="nav-main-item">#}
-{#                            <a class="nav-main-link" href="{% url 'ipams:ipaddress_list' %}">#}
-{#                                <span class="nav-main-link-name">IP адреса</span>#}
-{#                            </a>#}
-{#                        </li>#}
-{#                    </ul>#}
-{#                </li>#}
-
-                <!-- Locations Menu -->
-{#                <li class="nav-main-item">#}
-{#                    <a class="nav-main-link nav-main-link-submenu" data-toggle="submenu" aria-haspopup="true" aria-expanded="false" href="#">#}
-{#                        <i class="nav-main-link-icon si si-location"></i>#}
-{#                        <span class="nav-main-link-name">Расположения</span>#}
-{#                    </a>#}
-{#                    <ul class="nav-main-submenu">#}
-{#                        <li class="nav-main-item">#}
-{#                            <a class="nav-main-link" href="{% url 'locations:segment_list' %}">#}
-{#                                <span class="nav-main-link-name">Сегменты</span>#}
-{#                            </a>#}
-{#                        </li>#}
-{#                        <li class="nav-main-item">#}
-{#                            <a class="nav-main-link" href="{% url 'locations:address_list' %}">#}
-{#                                <span class="nav-main-link-name">Адреса</span>#}
-{#                            </a>#}
-{#                        </li>#}
-{#                        <li class="nav-main-item">#}
-{#                            <a class="nav-main-link" href="{% url 'locations:room_list' %}">#}
-{#                                <span class="nav-main-link-name">Кабинеты</span>#}
-{#                            </a>#}
-{#                        </li>#}
-{#                        <li class="nav-main-item">#}
-{#                            <a class="nav-main-link" href="{% url 'locations:rack_list' %}">#}
-{#                                <span class="nav-main-link-name">Шкафы.Стойки</span>#}
-{#                            </a>#}
-{#                        </li>#}
-{#                    </ul>#}
-{#                </li>#}
             </ul>
         </div>
         <!-- END Side Navigation -->

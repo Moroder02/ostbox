@@ -2,11 +2,11 @@
 
 
 {% block content_title %}
-	Процессоры
+	Материнские платы
 {% endblock %}
 
 {% block small_title %}
-	экземпляры процессоров
+	экземпляры материнских плат
 {% endblock %}
 
 {% block table %}
@@ -20,11 +20,11 @@
         </tr>
         </thead>
         <tbody>
-            {% for cpu in cpus %}
+            {% for motherboard in motherboards %}
                 <tr>
-                    <td>{{ cpu.cpu_model.part_number }}</td>
-                    <td>{{ cpu.serial_number|default:"-" }}</td>
-                    <td>{{ cpu.inventory_number|default:"-" }}</td>
+                    <td>{{ motherboard.motherboard_model.part_number }}</td>
+                    <td>{{ motherboard.serial_number|default:"-" }}</td>
+                    <td>{{ motherboard.inventory_number|default:"-" }}</td>
                 </tr>
             {% endfor %}
             

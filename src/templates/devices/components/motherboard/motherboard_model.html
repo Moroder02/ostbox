@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+
+{% block content_title %}
+	Модели материнских плат
+{% endblock %}
+
+{% block small_title %}
+	все модели материнских плат
+{% endblock %}
+
+{% block table %}
+
+    <table class="table">
+        <thead>
+        <tr>
+            <th>Сокет</th>
+            <th>Производитель</th>
+            <th>Модель</th>
+            <th>Чипсет</th>
+            <th>Макс. ОЗУ, ГБ</th>
+            <th>Тип макс. ОЗУ</th>
+        </tr>
+        </thead>
+        <tbody>
+            {% for motherboard_model in motherboard_models %}
+                <tr>
+                    <td>{{ motherboard_model.get_socket_type_display }}</td>
+                    <td>{{ motherboard_model.vendor.name }}</td>
+                    <td>{{ motherboard_model.part_number }}</td>
+                    <td>{{ motherboard_model.chipset|default:"-" }}</td>
+                    <td>{{ motherboard_model.max_memory_gb }}</td>
+                    <td>{{ motherboard_model.get_max_memory_type_display|default:"-" }}</td>
+                </tr>            	
+            {% endfor %}
+            
+        </tbody>
+    </table>
+    
+{% endblock %}

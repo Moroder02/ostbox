@@ -1,2 +1,1 @@
-from .device import device_list
-from .device_model import model_list, vendor_list
+from .views import device_list, model_list, vendor_list

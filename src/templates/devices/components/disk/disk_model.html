@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+
+{% block content_title %}
+	Модели дисков
+{% endblock %}
+
+{% block small_title %}
+	все модели дисков
+{% endblock %}
+
+{% block table %}
+
+    <table class="table">
+        <thead>
+        <tr>
+            <th>Тип диска</th>
+            <th>Производитель</th>
+            <th>Модель</th>
+            <th>Объем, ГБ</th>
+            <th>Скорость вращения, об/мин</th>
+        </tr>
+        </thead>
+        <tbody>
+            {% for disk_model in disk_models %}
+                <tr>
+                    <td>{{ disk_model.get_disk_type_display }}</td>
+                    <td>{{ disk_model.vendor.name }}</td>
+                    <td>{{ disk_model.part_number }}</td>
+                    <td>{{ disk_model.size_gb }}</td>
+                    <td>{{ disk_model.rpm|default:"-" }}</td>
+                </tr>            	
+            {% endfor %}
+            
+        </tbody>
+    </table>
+    
+{% endblock %}

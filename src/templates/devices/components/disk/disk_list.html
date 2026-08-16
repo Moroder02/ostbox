@@ -2,11 +2,11 @@
 
 
 {% block content_title %}
-	Процессоры
+	Диски
 {% endblock %}
 
 {% block small_title %}
-	экземпляры процессоров
+	экземпляры дисков
 {% endblock %}
 
 {% block table %}
@@ -20,11 +20,11 @@
         </tr>
         </thead>
         <tbody>
-            {% for cpu in cpus %}
+            {% for disk in disks %}
                 <tr>
-                    <td>{{ cpu.cpu_model.part_number }}</td>
-                    <td>{{ cpu.serial_number|default:"-" }}</td>
-                    <td>{{ cpu.inventory_number|default:"-" }}</td>
+                    <td>{{ disk.disk_model.part_number }}</td>
+                    <td>{{ disk.serial_number|default:"-" }}</td>
+                    <td>{{ disk.inventory_number|default:"-" }}</td>
                 </tr>
             {% endfor %}
             

@@ -2,11 +2,11 @@
 
 
 {% block content_title %}
-	Процессоры
+	ОЗУ
 {% endblock %}
 
 {% block small_title %}
-	экземпляры процессоров
+	экземпляры ОЗУ
 {% endblock %}
 
 {% block table %}
@@ -20,11 +20,11 @@
         </tr>
         </thead>
         <tbody>
-            {% for cpu in cpus %}
+            {% for ram in rams %}
                 <tr>
-                    <td>{{ cpu.cpu_model.part_number }}</td>
-                    <td>{{ cpu.serial_number|default:"-" }}</td>
-                    <td>{{ cpu.inventory_number|default:"-" }}</td>
+                    <td>{{ ram.ram_model.part_number }}</td>
+                    <td>{{ ram.serial_number|default:"-" }}</td>
+                    <td>{{ ram.inventory_number|default:"-" }}</td>
                 </tr>
             {% endfor %}
             

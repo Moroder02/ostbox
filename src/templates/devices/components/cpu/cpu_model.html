@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+
+{% block content_title %}
+	Модели процессоров
+{% endblock %}
+
+{% block small_title %}
+	все модели процессоров
+{% endblock %}
+
+{% block table %}
+
+    <table class="table">
+        <thead>
+        <tr>
+            <th>Производитель</th>
+            <th>Модель</th>
+            <th>Базовая частота, МГц</th>
+            <th>Ядра</th>
+            <th>Потоки</th>
+        </tr>
+        </thead>
+        <tbody>
+            {% for cpu_model in cpu_models %}
+                <tr>
+                    <td>{{ cpu_model.vendor.name }}</td>
+                    <td>{{ cpu_model.part_number }}</td>
+                    <td>{{ cpu_model.base_clock_mhz }}</td>
+                    <td>{{ cpu_model.cores }}</td>
+                    <td>{{ cpu_model.threads }}</td>
+                </tr>            	
+            {% endfor %}
+            
+        </tbody>
+    </table>
+    
+{% endblock %}
