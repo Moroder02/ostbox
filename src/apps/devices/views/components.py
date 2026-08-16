@@ -1,9 +1,6 @@
 from django.shortcuts import render
 
-from apps.devices.models.components.cpu import CPU, CPUModel
-from apps.devices.models.components.disk import Disk, DiskModel
-from apps.devices.models.components.ram import RAM, RAMModel
-from apps.devices.models.components.motherboard import Motherboard, MotherboardModel
+from apps.devices.models import CPU, CPUModel, Disk, DiskModel, RAM, RAMModel, Motherboard, MotherboardModel
 
 
 def cpu_list(request):
