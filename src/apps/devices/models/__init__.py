@@ -17,13 +17,13 @@ from .device_model import (
 
 from .device import Device
 
-from .components import (
-    CPUModel, CPU,
-    RAMModel, RAM,
-    DiskModel, Disk,
-    MotherboardModel, Motherboard,
-    AbstractComponentModel, AbstractComponent
-)
+# from .componentes import (
+#     CPUModel, CPU,
+#     RAMModel, RAM,
+#     DiskModel, Disk,
+#     MotherboardModel, Motherboard,
+#     AbstractComponentModel, AbstractComponent
+# )
 
 from .ports import (
     NetworkPortGroup,
