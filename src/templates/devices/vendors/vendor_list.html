@@ -3,7 +3,7 @@
 {% block content-head %}{% endblock %}
 
 {% block button %}
-    <a class="btn btn-primary" href="#">Добавить производителя</a>
+    <a class="btn btn-primary" href="{% url 'devices:vendor-create' %}">Добавить производителя</a>
 {% endblock %}
 
 {% block content_title %}
@@ -27,7 +27,7 @@
             {% for vendor in vendors %}
                 <tr>
                     <td>{{ forloop.counter }}</td>
-                    <td>{{ vendor.name }}</td>
+                    <td><a href="{% url 'devices:vendor-detail' vendor.pk %}">{{ vendor.name }}</a></td>
                 </tr>
             {% endfor %}
             
