@@ -1,0 +1,20 @@
+<div id="vendors-table">
+
+    <table class="table">
+        <thead>
+        <tr>
+            <th>№</th>
+            <th>Производитель</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for vendor in vendors %}
+            <tr>
+                <td>{{ forloop.counter }}</td>
+                <td><a href="{% url 'devices:vendor-detail' vendor.pk %}">{{ vendor.name }}</a></td>
+            </tr>
+        {% endfor %}
+
+        </tbody>
+    </table>
+</div>

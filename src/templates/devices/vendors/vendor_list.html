@@ -1,6 +1,26 @@
 {% extends 'base.html' %}
 
-{% block content-head %}{% endblock %}
+{% block content-head %}
+
+    <!-- Search Form (visible on larger screens) -->
+{#    <form class="d-none d-sm-inline-block" method="POST">#}
+    <form class="w-75" method="POST">
+        <div class="input-group input-group-sm">
+            <input
+                    type="text"
+                    class="form-control form-control"
+                    placeholder="Search.."
+                    id="table-search"
+                    name="search"
+            />
+            <span class="input-group-text bg-body border-0">
+                        <i class="si si-magnifier"></i>
+                    </span>
+        </div>
+    </form>
+    <!-- END Search Form -->
+
+{% endblock %}
 
 {% block button %}
     <a class="btn btn-primary" href="{% url 'devices:vendor-create' %}">Добавить производителя</a>
@@ -14,25 +34,11 @@
     устройств
 {% endblock %}
 
+
+
 {% block table %}
 
-    <table class="table">
-        <thead>
-            <tr>
-                <th>№</th>
-                <th>Производитель</th>
-            </tr>
-        </thead>
-        <tbody>
-            {% for vendor in vendors %}
-                <tr>
-                    <td>{{ forloop.counter }}</td>
-                    <td><a href="{% url 'devices:vendor-detail' vendor.pk %}">{{ vendor.name }}</a></td>
-                </tr>
-            {% endfor %}
-            
-        </tbody>
-    </table>
+    {% include 'devices/vendors/partials/vendor-list.html' %}
 
 {% endblock %}
 
