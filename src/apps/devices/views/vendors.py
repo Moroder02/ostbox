@@ -1,4 +1,7 @@
+import json
+
 from django.contrib import messages
+from django.http import HttpResponse
 from django.shortcuts import render, get_object_or_404, redirect
 
 from apps.devices.forms.devices_forms import VendorForm
@@ -9,7 +12,6 @@ def vendor_list(request):
     vendors = Vendor.objects.all()
     context = {'vendors': vendors}
     return render(request, 'devices/vendors/vendor_list.html', context)
-
 
 def vendor_manage(request, pk=None):
     if pk:
@@ -51,3 +53,10 @@ def vendor_delete(request, pk):
         return redirect('devices:vendor-list')
 
     return render(request, 'devices/vendors/vendor_confirm_delete.html', {'vendor': vendor})
+
+
+def vendor_search(request):
+    query = request.GET.get('search-vendor', '')
+    vendors = Vendor.objects.filter(name__icontains=query)
+    context = {'vendors': vendors}
+    return render(request, 'devices/vendors/vendor_list.html#searching', context)

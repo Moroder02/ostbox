@@ -1,25 +1,32 @@
 {% extends 'base.html' %}
 
 {% block content-head %}
-
-    <!-- Search Form (visible on larger screens) -->
-{#    <form class="d-none d-sm-inline-block" method="POST">#}
+    {#    <form class="d-none d-sm-inline-block" method="POST">#}
     <form class="w-75" method="POST">
-        <div class="input-group input-group-sm">
+        <div class="input-group">
+
+            <!--
+            hx-get: маршрут, отправления get запроса, содержащего значение поля "name"
+            hx-trigger: триггер, который запускает отправку get запроса
+            hx-target: назначение, куда будет выводиться результат обработки
+            -->
+
             <input
                     type="text"
-                    class="form-control form-control"
-                    placeholder="Search.."
-                    id="table-search"
-                    name="search"
+                    class="form-control"
+                    placeholder="Поиск вендора.."
+                    name="search-vendor"
+                    hx-get="{% url 'devices:vendor-search' %}"
+                    hx-trigger="keyup changed delay:300ms"
+                    hx-target="#vendors-table"
             />
+
             <span class="input-group-text bg-body border-0">
-                        <i class="si si-magnifier"></i>
-                    </span>
+                <i class="si si-magnifier"></i>
+            </span>
+
         </div>
     </form>
-    <!-- END Search Form -->
-
 {% endblock %}
 
 {% block button %}
@@ -34,11 +41,30 @@
     устройств
 {% endblock %}
 
-
-
 {% block table %}
-
-    {% include 'devices/vendors/partials/vendor-list.html' %}
-
+    <div id="vendors-table">
+        <!--
+        часть для вывода результатов поиска HTMX,
+        inline - выводит результат здесь-же, без необходимости использовать тег partial
+        -->
+        {% partialdef searching inline %}
+            <table class="table">
+                <thead>
+                <tr>
+                    <th>№</th>
+                    <th>Производитель</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for vendor in vendors %}
+                    <tr>
+                        <td>{{ forloop.counter }}</td>
+                        <td><a href="{% url 'devices:vendor-detail' vendor.pk %}">{{ vendor.name }}</a></td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        {% endpartialdef searching %}
+    </div>
 {% endblock %}
 
