@@ -25,7 +25,6 @@ def vendor_manage(request, pk=None):
             vendor = form.save()
             action = "updated" if pk else "created"
             messages.success(request, f'Vendor {action} successfully.')
-            # return redirect('devices:vendor-detail', pk=vendor.pk)
             return redirect('devices:vendor-list')
     else:
         form = VendorForm(instance=vendor)
@@ -48,7 +47,6 @@ def vendor_detail(request, pk):
 # Как добавить подтверждение?
 def vendor_delete(request, pk):
     vendor = get_object_or_404(Vendor, pk=pk)
-
     if request.method == 'POST':
         vendor.delete()
         messages.success(request, 'Vendor deleted successfully.')

@@ -1,7 +1,42 @@
 {% extends 'base.html' %}
 
+
+{# Partials Start #}
+{% partialdef vendor-row %}
+    <tr>
+        <td>{{ forloop.counter }}</td>
+        <td><a href="{% url 'devices:vendor-detail' vendor.pk %}">{{ vendor.name }}</a></td>
+        <td class="text-center">
+            <div class="btn-group">
+                <a href="{% url 'devices:vendor-update' vendor.pk %}"
+                   class="btn btn-sm btn-alt-secondary"
+                   data-bs-toggle="tooltip"
+                   title="Редактировать">
+                    <i class="fa fa-fw fa-pencil-alt"></i>
+                </a>
+                <!-- Удаление перезагружает всю страницу и возвращает на неё -->
+                <form action="{% url 'devices:vendor-delete' vendor.pk %}" method="POST"
+                      class="d-inline">
+                    {% csrf_token %}
+                    <button type="submit" class="btn btn-sm btn-alt-secondary"
+                            data-bs-toggle="tooltip" title="Удалить">
+                        <i class="fa fa-fw fa-times"></i>
+                    </button>
+                </form>
+            </div>
+        </td>
+    </tr>
+{% endpartialdef vendor-row %}
+
+
+{% partialdef searching %}
+    {% for vendor in vendors %}
+        {% partial vendor-row %}
+    {% endfor %}
+{% endpartialdef searching %}
+{# Partials End #}
+
 {% block content-head %}
-    {#    <form class="d-none d-sm-inline-block" method="POST">#}
     <form class="w-75" method="POST">
         {% csrf_token %}
         <div class="input-group">
@@ -30,31 +65,21 @@
     </form>
 {% endblock %}
 
+
 {% block button %}
-    <a
-            data-bs-toggle="modal"
-            data-bs-target="#modal-block-vcenter"
-            class="btn btn-primary"
-            {#            href="{% url 'devices:vendor-create' %}"#}
-    >
+    <a data-bs-toggle="modal" data-bs-target="#modal-block-vcenter" class="btn btn-primary">
         Добавить производителя
     </a>
 {% endblock %}
 
+
 {% block content_title %}
-    Производители
+    Производители устройств
 {% endblock %}
 
-{% block small_title %}
-    устройств
-{% endblock %}
 
 {% block table %}
     <div>
-        <!--
-        часть для вывода результатов поиска HTMX,
-        inline - выводит результат здесь-же, без необходимости использовать тег partial
-        -->
         <table class="table">
             <thead>
             <tr>
@@ -64,49 +89,23 @@
             </tr>
             </thead>
             <tbody id="vendors-table">
-            {% partialdef searching inline %}
-                {% for vendor in vendors %}
-                    {% partialdef vendor-row inline %}
-                        <tr>
-                            <td>{{ forloop.counter }}</td>
-                            <td><a href="{% url 'devices:vendor-detail' vendor.pk %}">{{ vendor.name }}</a></td>
-                            <td class="text-center">
-                                <div class="btn-group">
-                                    <a href="{% url 'devices:vendor-update' vendor.pk %}"
-                                       class="btn btn-sm btn-alt-secondary"
-                                       data-bs-toggle="tooltip"
-                                       title="Редактировать">
-                                        <i class="fa fa-fw fa-pencil-alt"></i>
-                                    </a>
-                                    <!-- Удаление перезагружает всю страницу и возвращает на неё -->
-                                    <form action="{% url 'devices:vendor-delete' vendor.pk %}" method="POST"
-                                          class="d-inline">
-                                        {% csrf_token %}
-                                        <button type="submit" class="btn btn-sm btn-alt-secondary"
-                                                data-bs-toggle="tooltip" title="Удалить">
-                                            <i class="fa fa-fw fa-times"></i>
-                                        </button>
-                                    </form>
-                                </div>
-                            </td>
-                        </tr>
-                    {% endpartialdef vendor-row %}
-                {% endfor %}
-            {% endpartialdef searching %}
+
+            {% partial searching %}
+
             </tbody>
         </table>
     </div>
 {% endblock %}
 
+
 {% block modals %}
-    <!-- Vertically Centered Block Modal -->
     <div class="modal" id="modal-block-vcenter" tabindex="-1" role="dialog" aria-labelledby="modal-block-vcenter"
          aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content">
                 <div class="block block-rounded block-transparent mb-0">
                     <div class="block-header block-header-default">
-                        <h3 class="block-title">Modal Title</h3>
+                        <h3 class="block-title">Создание вендора</h3>
                         <div class="block-options">
                             <button type="button" class="btn-block-option" data-bs-dismiss="modal" aria-label="Close">
                                 <i class="fa fa-fw fa-times"></i>
@@ -115,12 +114,13 @@
                     </div>
                     <form action="{% url 'devices:vendor-create' %}" method="post">
                         {% csrf_token %}
-                        <div class="block-content fs-sm text-light">
-                            {{ form }}
+                        <div class="block-content fs-sm text-light mb-3">
+                            <label for="name" class="mb-2">{{ form.name.label }}</label>
+                            {{ form.name }}
                         </div>
                         <div class="block-content block-content-full text-end bg-body">
                             <button type="button" class="btn btn-sm btn-alt-secondary me-1" data-bs-dismiss="modal">
-                                Закрыть
+                                Отменить
                             </button>
                             <button type="submit" class="btn btn-sm btn-primary">Создать вендора</button>
                         </div>
@@ -129,6 +129,4 @@
             </div>
         </div>
     </div>
-    <!-- END Vertically Centered Block Modal -->
 {% endblock %}
-
