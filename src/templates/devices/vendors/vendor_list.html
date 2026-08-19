@@ -3,6 +3,7 @@
 {% block content-head %}
     {#    <form class="d-none d-sm-inline-block" method="POST">#}
     <form class="w-75" method="POST">
+        {% csrf_token %}
         <div class="input-group">
 
             <!--
@@ -30,7 +31,14 @@
 {% endblock %}
 
 {% block button %}
-    <a class="btn btn-primary" href="{% url 'devices:vendor-create' %}">Добавить производителя</a>
+    <a
+            data-bs-toggle="modal"
+            data-bs-target="#modal-block-vcenter"
+            class="btn btn-primary"
+            {#            href="{% url 'devices:vendor-create' %}"#}
+    >
+        Добавить производителя
+    </a>
 {% endblock %}
 
 {% block content_title %}
@@ -42,29 +50,85 @@
 {% endblock %}
 
 {% block table %}
-    <div id="vendors-table">
+    <div>
         <!--
         часть для вывода результатов поиска HTMX,
         inline - выводит результат здесь-же, без необходимости использовать тег partial
         -->
-        {% partialdef searching inline %}
-            <table class="table">
-                <thead>
-                <tr>
-                    <th>№</th>
-                    <th>Производитель</th>
-                </tr>
-                </thead>
-                <tbody>
+        <table class="table">
+            <thead>
+            <tr>
+                <th>№</th>
+                <th>Производитель</th>
+                <th></th>
+            </tr>
+            </thead>
+            <tbody id="vendors-table">
+            {% partialdef searching inline %}
                 {% for vendor in vendors %}
-                    <tr>
-                        <td>{{ forloop.counter }}</td>
-                        <td><a href="{% url 'devices:vendor-detail' vendor.pk %}">{{ vendor.name }}</a></td>
-                    </tr>
+                    {% partialdef vendor-row inline %}
+                        <tr>
+                            <td>{{ forloop.counter }}</td>
+                            <td><a href="{% url 'devices:vendor-detail' vendor.pk %}">{{ vendor.name }}</a></td>
+                            <td class="text-center">
+                                <div class="btn-group">
+                                    <a href="{% url 'devices:vendor-update' vendor.pk %}"
+                                       class="btn btn-sm btn-alt-secondary"
+                                       data-bs-toggle="tooltip"
+                                       title="Редактировать">
+                                        <i class="fa fa-fw fa-pencil-alt"></i>
+                                    </a>
+                                    <!-- Удаление перезагружает всю страницу и возвращает на неё -->
+                                    <form action="{% url 'devices:vendor-delete' vendor.pk %}" method="POST"
+                                          class="d-inline">
+                                        {% csrf_token %}
+                                        <button type="submit" class="btn btn-sm btn-alt-secondary"
+                                                data-bs-toggle="tooltip" title="Удалить">
+                                            <i class="fa fa-fw fa-times"></i>
+                                        </button>
+                                    </form>
+                                </div>
+                            </td>
+                        </tr>
+                    {% endpartialdef vendor-row %}
                 {% endfor %}
-                </tbody>
-            </table>
-        {% endpartialdef searching %}
+            {% endpartialdef searching %}
+            </tbody>
+        </table>
     </div>
+{% endblock %}
+
+{% block modals %}
+    <!-- Vertically Centered Block Modal -->
+    <div class="modal" id="modal-block-vcenter" tabindex="-1" role="dialog" aria-labelledby="modal-block-vcenter"
+         aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="block block-rounded block-transparent mb-0">
+                    <div class="block-header block-header-default">
+                        <h3 class="block-title">Modal Title</h3>
+                        <div class="block-options">
+                            <button type="button" class="btn-block-option" data-bs-dismiss="modal" aria-label="Close">
+                                <i class="fa fa-fw fa-times"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <form action="{% url 'devices:vendor-create' %}" method="post">
+                        {% csrf_token %}
+                        <div class="block-content fs-sm text-light">
+                            {{ form }}
+                        </div>
+                        <div class="block-content block-content-full text-end bg-body">
+                            <button type="button" class="btn btn-sm btn-alt-secondary me-1" data-bs-dismiss="modal">
+                                Закрыть
+                            </button>
+                            <button type="submit" class="btn btn-sm btn-primary">Создать вендора</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- END Vertically Centered Block Modal -->
 {% endblock %}
 

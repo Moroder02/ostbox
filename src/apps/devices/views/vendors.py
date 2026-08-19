@@ -1,7 +1,4 @@
-import json
-
 from django.contrib import messages
-from django.http import HttpResponse
 from django.shortcuts import render, get_object_or_404, redirect
 
 from apps.devices.forms.devices_forms import VendorForm
@@ -10,7 +7,10 @@ from apps.devices.models import Vendor
 
 def vendor_list(request):
     vendors = Vendor.objects.all()
-    context = {'vendors': vendors}
+    context = {
+        'vendors': vendors,
+        'form': VendorForm()
+    }
     return render(request, 'devices/vendors/vendor_list.html', context)
 
 def vendor_manage(request, pk=None):
@@ -25,7 +25,8 @@ def vendor_manage(request, pk=None):
             vendor = form.save()
             action = "updated" if pk else "created"
             messages.success(request, f'Vendor {action} successfully.')
-            return redirect('devices:vendor-detail', pk=vendor.pk)
+            # return redirect('devices:vendor-detail', pk=vendor.pk)
+            return redirect('devices:vendor-list')
     else:
         form = VendorForm(instance=vendor)
 
@@ -44,6 +45,7 @@ def vendor_detail(request, pk):
     return render(request, 'devices/vendors/vendor_detail.html', {'vendor': vendor})
 
 
+# Как добавить подтверждение?
 def vendor_delete(request, pk):
     vendor = get_object_or_404(Vendor, pk=pk)
 
