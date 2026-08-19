@@ -1,4 +1,5 @@
 from django.contrib import messages
+from django.http import HttpResponse
 from django.shortcuts import render, get_object_or_404, redirect
 
 from apps.devices.forms.devices_forms import VendorForm
@@ -49,6 +50,11 @@ def vendor_delete(request, pk):
     vendor = get_object_or_404(Vendor, pk=pk)
     if request.method == 'POST':
         vendor.delete()
+
+        # Проверяем, пришел ли запрос от htmx
+        if request.headers.get('HX-Request'):
+            return HttpResponse("", status=200)  # Возвращаем пустой ответ, htmx удалит строку
+
         messages.success(request, 'Vendor deleted successfully.')
         return redirect('devices:vendor-list')
 
