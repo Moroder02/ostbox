@@ -25,7 +25,7 @@ def vendor_manage(request, pk=None):
             vendor = form.save()
             action = "updated" if pk else "created"
             messages.success(request, f'Vendor {action} successfully.')
-            return redirect('devices:vendor-list')
+            return redirect('devices:vendor-detail', vendor.pk)
     else:
         form = VendorForm(instance=vendor)
 
