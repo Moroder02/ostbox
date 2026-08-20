@@ -67,10 +67,45 @@ class PortStatus(models.TextChoices):
     FAULTY = "faulty", _("Неисправен")
 
 
+class ProductionCountry(models.TextChoices):
+    FOREIGN = "foreign", _("За рубежом")
+    DOMESTIC = "domestic", _("Отечественный")
+
+
+class Countries(models.TextChoices):
+    UNITED_KINGDOM = "Великобритания", _("Великобритания")
+    GERMANY = "Германия", _("Германия")
+    DENMARK = "Дания", _("Дания")
+    ISRAEL = "Израиль", _("Израиль")
+    IRELAND = "Ирландия", _("Ирландия")
+    ITALY = "Италия", _("Италия")
+    CANADA = "Канада", _("Канада")
+    CHINA = "Китай", _("Китай")
+    LATVIA = "Латвия", _("Латвия")
+    RUSSIA = "Россия", _("Россия")
+    USA = "США", _("США")
+    TAIWAN = "Тайвань", _("Тайвань")
+    FINLAND = "Финляндия", _("Финляндия")
+    SWITZERLAND = "Швейцария", _("Швейцария")
+    SWEDEN = "Швеция", _("Швеция")
+    SOUTH_KOREA = "Южная Корея", _("Южная Корея")
+    JAPAN = "Япония", _("Япония")
+
+
 class Vendor(models.Model):
     name = models.CharField(
         max_length=100,
         verbose_name=_("Название"),
+    )
+    production = models.CharField(
+        choices=ProductionCountry.choices,
+        max_length=100,
+    )
+    country = models.CharField(
+        choices=Countries.choices,
+        max_length=100,
+        blank=True,
+        null=True,
     )
 
     class Meta:

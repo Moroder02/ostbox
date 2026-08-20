@@ -6,6 +6,8 @@
     <tr id="vendor-{{ vendor.pk }}">
         <td>{{ forloop.counter }}</td>
         <td><a href="{% url 'devices:vendor-detail' vendor.pk %}">{{ vendor.name }}</a></td>
+        <td>{{ vendor.get_production_display }}</td>
+        <td>{{ vendor.get_country_display }}</td>
         <td class="text-center">
             <div class="btn-group">
                 <a href="{% url 'devices:vendor-update' vendor.pk %}"
@@ -87,7 +89,9 @@
             <thead>
             <tr>
                 <th>№</th>
-                <th>Производитель</th>
+                <th>Вендор</th>
+                <th>Производство</th>
+                <th>Страна</th>
                 <th></th>
             </tr>
             </thead>
@@ -118,8 +122,19 @@
                     <form action="{% url 'devices:vendor-create' %}" method="post">
                         {% csrf_token %}
                         <div class="block-content fs-sm text-light mb-3">
-                            <label for="name" class="mb-2">{{ form.name.label }}</label>
-                            {{ form.name }}
+                            <div class="mb-3">
+                                <label for="name" class="mb-2">{{ form.name.label }}</label>
+                                {{ form.name }}
+                            </div>
+                            <div class="mb-3">
+                                <label for="production" class="mb-2">{{ form.production.label }}</label>
+                                {{ form.production }}
+                            </div>
+                            <div class="mb-3">
+                                <label for="country" class="mb-2">{{ form.country.label }}</label>
+                                {{ form.country }}
+                            </div>
+
                         </div>
                         <div class="block-content block-content-full text-end bg-body">
                             <button type="button" class="btn btn-sm btn-alt-secondary me-1" data-bs-dismiss="modal">

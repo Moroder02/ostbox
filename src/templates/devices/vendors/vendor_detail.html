@@ -28,6 +28,14 @@
                         <th>Name:</th>
                         <td>{{ vendor.name }}</td>
                     </tr>
+                    <tr>
+                        <th>Production:</th>
+                        <td>{{ vendor.get_production_display }}</td>
+                    </tr>
+                    <tr>
+                        <th>Country:</th>
+                        <td>{{ vendor.get_country_display }}</td>
+                    </tr>
                 </table>
 
                 <div class="mt-3">

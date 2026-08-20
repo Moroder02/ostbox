@@ -1,4 +1,5 @@
 from django.contrib import messages
+from django.db.models import Q
 from django.http import HttpResponse
 from django.shortcuts import render, get_object_or_404, redirect
 
@@ -63,6 +64,6 @@ def vendor_delete(request, pk):
 
 def vendor_search(request):
     query = request.GET.get('search-vendor', '')
-    vendors = Vendor.objects.filter(name__icontains=query)
+    vendors = Vendor.objects.filter(Q(name__icontains=query) | Q(country__icontains=query))
     context = {'vendors': vendors}
     return render(request, 'devices/vendors/vendor_list.html#searching', context)
