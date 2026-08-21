@@ -139,45 +139,5 @@
 
 
 {% block modals %}
-    <div class="modal" id="modal-block-vcenter" tabindex="-1" role="dialog" aria-labelledby="modal-block-vcenter"
-         aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered" role="document">
-            <div class="modal-content">
-                <div class="block block-rounded block-transparent mb-0">
-                    <div class="block-header block-header-default">
-                        <h3 class="block-title">Создание вендора</h3>
-                        <div class="block-options">
-                            <button type="button" class="btn-block-option" data-bs-dismiss="modal" aria-label="Close">
-                                <i class="fa fa-fw fa-times"></i>
-                            </button>
-                        </div>
-                    </div>
-                    <form action="{% url 'devices:vendor-create' %}" method="post">
-                        {% csrf_token %}
-                        <div class="block-content fs-sm text-light mb-3">
-                            <div class="mb-3">
-                                <label for="name" class="mb-2">{{ form.name.label }}</label>
-                                {{ form.name }}
-                            </div>
-                            <div class="mb-3">
-                                <label for="production" class="mb-2">{{ form.production.label }}</label>
-                                {{ form.production }}
-                            </div>
-                            <div class="mb-3">
-                                <label for="country" class="mb-2">{{ form.country.label }}</label>
-                                {{ form.country }}
-                            </div>
-
-                        </div>
-                        <div class="block-content block-content-full text-end bg-body">
-                            <button type="button" class="btn btn-sm btn-alt-secondary me-1" data-bs-dismiss="modal">
-                                Отменить
-                            </button>
-                            <button type="submit" class="btn btn-sm btn-primary">Создать вендора</button>
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div>
+    {% include 'devices/vendors/inc/_vendor_create_modal.html' %}
 {% endblock %}
