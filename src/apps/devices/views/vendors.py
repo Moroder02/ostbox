@@ -1,5 +1,4 @@
 from django.contrib import messages
-from django.db.models import Q
 from django.http import HttpResponse
 from django.shortcuts import render, get_object_or_404, redirect
 
@@ -15,6 +14,7 @@ def vendor_list(request):
     )
     context = {
         'filter': vendors_filter,
+        'vendors': vendors_filter.qs,
         'form': VendorForm()
     }
     if request.htmx:
@@ -68,9 +68,3 @@ def vendor_delete(request, pk):
 
     return render(request, 'devices/vendors/vendor_confirm_delete.html', {'vendor': vendor})
 
-
-def vendor_search(request):
-    query = request.GET.get('search-vendor', '')
-    vendors = Vendor.objects.filter(Q(name__icontains=query) | Q(country__icontains=query))
-    context = {'vendors': vendors}
-    return render(request, 'devices/vendors/vendor_list.html#searching', context)

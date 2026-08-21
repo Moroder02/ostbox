@@ -14,5 +14,4 @@ urlpatterns = [
     path('vendors/create/', views.vendor_manage, name='vendor-create'),
     path('vendors/<int:pk>/edit/', views.vendor_manage, name='vendor-update'),
     path('vendors/<int:pk>/delete/', views.vendor_delete, name='vendor-delete'),
-    path('vendors/search/', views.vendor_search, name='vendor-search'),
 ]

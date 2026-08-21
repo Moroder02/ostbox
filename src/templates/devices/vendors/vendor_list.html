@@ -33,48 +33,39 @@
     </tr>
 {% endpartialdef vendor-row %}
 
+
 {% partialdef searching %}
-    {% if filter %}
-        {% for vendor in filter.qs %}
-            {% partial vendor-row %}
-        {% endfor %}
-    {% elif vendors %}
-        {% for vendor in vendors %}
-            {% partial vendor-row %}
-        {% endfor %}
-    {% else %}
+    {% for vendor in vendors %}
+        {% partial vendor-row %}
+    {% empty %}
         <tr>
             <td colspan="5" class="text-center">Нет данных</td>
         </tr>
-    {% endif %}
+    {% endfor %}
 {% endpartialdef searching %}
 {# Partials End #}
 
-{% block content-head %}
-    <form class="w-75" method="POST">
-        {% csrf_token %}
-        <div class="input-group">
+{% block content-head %}{% endblock %}
 
-            <!--
-            hx-get: маршрут, отправления get запроса, содержащего значение поля "name"
-            hx-trigger: триггер, который запускает отправку get запроса
-            hx-target: назначение, куда будет выводиться результат обработки
-            -->
 
-            <input
-                    type="text"
-                    class="form-control"
-                    placeholder="Поиск вендора.."
-                    name="search-vendor"
-                    hx-get="{% url 'devices:vendor-search' %}"
-                    hx-trigger="keyup changed delay:300ms"
-                    hx-target="#vendors-table"
-            />
-
-            <span class="input-group-text bg-body border-0">
-                <i class="si si-magnifier"></i>
-            </span>
-
+{% block side %}
+    <h4 class="block-title mb-2">Поиск и фильтр</h4>
+    <form hx-get="{% url 'devices:vendor-list' %}"
+          hx-target="#vendors-table"
+          hx-swap="innerHTML"
+          hx-trigger="keyup changed delay:300ms from:input[type=text], change from:select"
+          class="p-3 border rounded mb-4">
+        <div class="mb-3">
+            <label for="{{ filter.form.search.id_for_label }}" class="form-label small mb-2">
+                Поиск
+            </label>
+            {{ filter.form.search }}
+        </div>
+        <div class="mb-3">
+            <label for="{{ filter.form.production_type.id_for_label }}" class="form-label small mb-2">
+                Производство
+            </label>
+            {{ filter.form.production_type }}
         </div>
     </form>
 {% endblock %}
@@ -93,47 +84,19 @@
 
 
 {% block table %}
-    <div>
-        <table class="table">
-            <thead>
-            <tr>
-                <th>№</th>
-                <th>Вендор</th>
-                {#                <th>Производство</th>#}
-                <th>Страна</th>
-                <th></th>
-            </tr>
-            </thead>
-            <tbody id="vendors-table">
-
+    <table class="table">
+        <thead>
+        <tr>
+            <th>№</th>
+            <th>Вендор</th>
+            <th>Страна</th>
+            <th></th>
+        </tr>
+        </thead>
+        <tbody id="vendors-table">
             {% partial searching %}
-
-            </tbody>
-        </table>
-    </div>
-{% endblock %}
-
-{% block side %}
-    <h4 class="block-title mb-2">Фильтр</h4>
-    <form
-            {# method="GET" #}
-            hx-get="{% url 'devices:vendor-list' %}"
-            hx-target="#vendors-table"
-            hx-swap="innerHTML"
-            class="p-3 border rounded mb-4"
-    >
-        <div class="mb-3">
-            <label for="id_production_type" class="form-label small mb-2">
-                Производство
-            </label>
-            {# Рендерим само поле #}
-            {{ filter.form.production_type }}
-        </div>
-
-        <button type="submit" class="btn btn-primary w-100">
-            Применить фильтр
-        </button>
-    </form>
+        </tbody>
+    </table>
 {% endblock %}
 
 
