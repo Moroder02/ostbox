@@ -15,7 +15,8 @@ def vendor_list(request):
     context = {
         'filter': vendors_filter,
         'vendors': vendors_filter.qs,
-        'form': VendorForm()
+        'form': VendorForm(),
+        'selected_countries': request.GET.getlist('country'),
     }
     if request.htmx:
         return render(request, 'devices/vendors/vendor_list.html#searching', context)

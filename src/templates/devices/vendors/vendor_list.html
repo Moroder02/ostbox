@@ -61,7 +61,7 @@
     <form hx-get="{% url 'devices:vendor-list' %}"
           hx-target="#vendors-table"
           hx-swap="innerHTML"
-          hx-trigger="keyup changed delay:300ms from:input[type=text], change from:select"
+          hx-trigger="keyup changed delay:300ms from:input[type=text], change from:select, change from:input[type=checkbox]"
 {#          class="p-3 border rounded mb-4"#}
           class="p-2 mb-4"
     >
@@ -78,6 +78,22 @@
                 Производство
             </label>
             {{ filter.form.production_type }}
+        </div>
+        <div class="mb-3">
+            <span class="form-label small mb-2 d-block">Страна</span>
+            {% for choice_value, choice_label in filter.form.country.field.choices %}
+                <div class="form-check">
+                    <input type="checkbox"
+                           class="form-check-input"
+                           name="country"
+                           value="{{ choice_value }}"
+                           id="id_country_{{ forloop.counter0 }}"
+                           {% if choice_value in selected_countries %}checked{% endif %}>
+                    <label class="form-check-label" for="id_country_{{ forloop.counter0 }}">
+                        {{ choice_label }}
+                    </label>
+                </div>
+            {% endfor %}
         </div>
     </form>
 {% endblock %}

@@ -2,7 +2,7 @@ import django_filters
 from django import forms
 from django.db.models import Q
 
-from .models import Vendor, ProductionCountry
+from .models import Vendor, ProductionCountry, Countries
 
 
 class VendorFilter(django_filters.FilterSet):
@@ -23,9 +23,18 @@ class VendorFilter(django_filters.FilterSet):
         widget=forms.Select(attrs={'class': 'form-control mb-3'})
     )
 
+    country = django_filters.MultipleChoiceFilter(
+        choices=Countries.choices,
+        field_name='country',
+        label='Страна',
+        widget=forms.CheckboxSelectMultiple(attrs={
+            'class': 'form-check-input',
+        })
+    )
+
     class Meta:
         model = Vendor
-        fields = ('search', 'production_type')
+        fields = ('search', 'production_type', 'country')
 
     def filter_search(self, queryset, name, value):
         if not value:
