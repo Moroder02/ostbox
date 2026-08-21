@@ -5,15 +5,22 @@ from django.shortcuts import render, get_object_or_404, redirect
 
 from apps.devices.forms.devices_forms import VendorForm
 from apps.devices.models import Vendor
+from apps.devices.filters import VendorFilter
 
 
 def vendor_list(request):
-    vendors = Vendor.objects.all()
+    vendors_filter = VendorFilter(
+        request.GET,
+        queryset=Vendor.objects.all()
+    )
     context = {
-        'vendors': vendors,
+        'filter': vendors_filter,
         'form': VendorForm()
     }
+    if request.htmx:
+        return render(request, 'devices/vendors/vendor_list.html#searching', context)
     return render(request, 'devices/vendors/vendor_list.html', context)
+
 
 def vendor_manage(request, pk=None):
     if pk:

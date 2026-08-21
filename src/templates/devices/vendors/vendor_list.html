@@ -6,7 +6,7 @@
     <tr id="vendor-{{ vendor.pk }}">
         <td>{{ forloop.counter }}</td>
         <td><a href="{% url 'devices:vendor-detail' vendor.pk %}">{{ vendor.name }}</a></td>
-        <td>{{ vendor.get_production_display }}</td>
+        {#        <td>{{ vendor.get_production_display }}</td>#}
         <td>{{ vendor.get_country_display }}</td>
         <td class="text-center">
             <div class="btn-group">
@@ -33,11 +33,20 @@
     </tr>
 {% endpartialdef vendor-row %}
 
-
 {% partialdef searching %}
-    {% for vendor in vendors %}
-        {% partial vendor-row %}
-    {% endfor %}
+    {% if filter %}
+        {% for vendor in filter.qs %}
+            {% partial vendor-row %}
+        {% endfor %}
+    {% elif vendors %}
+        {% for vendor in vendors %}
+            {% partial vendor-row %}
+        {% endfor %}
+    {% else %}
+        <tr>
+            <td colspan="5" class="text-center">Нет данных</td>
+        </tr>
+    {% endif %}
 {% endpartialdef searching %}
 {# Partials End #}
 
@@ -90,7 +99,7 @@
             <tr>
                 <th>№</th>
                 <th>Вендор</th>
-                <th>Производство</th>
+                {#                <th>Производство</th>#}
                 <th>Страна</th>
                 <th></th>
             </tr>
@@ -103,6 +112,30 @@
         </table>
     </div>
 {% endblock %}
+
+{% block side %}
+    <h4 class="block-title mb-2">Фильтр</h4>
+    <form
+            {# method="GET" #}
+            hx-get="{% url 'devices:vendor-list' %}"
+            hx-target="#vendors-table"
+            hx-swap="innerHTML"
+            class="p-3 border rounded mb-4"
+    >
+        <div class="mb-3">
+            <label for="id_production_type" class="form-label small mb-2">
+                Производство
+            </label>
+            {# Рендерим само поле #}
+            {{ filter.form.production_type }}
+        </div>
+
+        <button type="submit" class="btn btn-primary w-100">
+            Применить фильтр
+        </button>
+    </form>
+{% endblock %}
+
 
 
 {% block modals %}

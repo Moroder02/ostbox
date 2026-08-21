@@ -43,6 +43,9 @@ INSTALLED_APPS = [
     'apps.users',
     'apps.devices',
     'apps.components',
+
+    'django_filters',
+    'django_htmx',
 ]
 
 AUTH_USER_MODEL = 'users.User'
@@ -55,6 +58,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'django_htmx.middleware.HtmxMiddleware',
 ]
 
 ROOT_URLCONF = 'ostbox.urls'
