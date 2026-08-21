@@ -53,7 +53,6 @@ def vendor_detail(request, pk):
     return render(request, 'devices/vendors/vendor_detail.html', {'vendor': vendor})
 
 
-# Как добавить подтверждение?
 def vendor_delete(request, pk):
     vendor = get_object_or_404(Vendor, pk=pk)
     if request.method == 'POST':

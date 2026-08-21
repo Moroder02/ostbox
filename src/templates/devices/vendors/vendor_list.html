@@ -6,7 +6,6 @@
     <tr id="vendor-{{ vendor.pk }}">
         <td>{{ forloop.counter }}</td>
         <td><a href="{% url 'devices:vendor-detail' vendor.pk %}">{{ vendor.name }}</a></td>
-        {#        <td>{{ vendor.get_production_display }}</td>#}
         <td>{{ vendor.get_country_display }}</td>
         <td class="text-center">
             <div class="btn-group">
@@ -27,7 +26,6 @@
                         title="Удалить">
                     <i class="fa fa-fw fa-times"></i>
                 </button>
-
             </div>
         </td>
     </tr>
@@ -99,7 +97,6 @@
             <tr>
                 <th>№</th>
                 <th>Вендор</th>
-                {#                <th>Производство</th>#}
                 <th>Страна</th>
                 <th></th>
             </tr>
@@ -126,7 +123,6 @@
             <label for="id_production_type" class="form-label small mb-2">
                 Производство
             </label>
-            {# Рендерим само поле #}
             {{ filter.form.production_type }}
         </div>
 
