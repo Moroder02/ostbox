@@ -27,12 +27,9 @@ urlpatterns = [
 ]
 
 
-# Раздача статики и медиа ТОЛЬКО во время разработки
 if settings.DEBUG:
-    # 1. Раздача медиафайлов (аватарки, документы)
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
-    
-    # 2. Раздача статических файлов (CSS, JS, картинки интерфейса)
-    # Обычно Django находит статику приложений сам, но для глобальной папки src/static/
-    # эта строчка гарантирует, что всё будет работать без сбоев
     urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+
+    from debug_toolbar.toolbar import debug_toolbar_urls
+    urlpatterns += debug_toolbar_urls()
