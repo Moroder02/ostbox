@@ -28,7 +28,6 @@ def vendor_manage(request, pk=None):
         vendor = get_object_or_404(Vendor, pk=pk)
     else:
         vendor = None
-    vendors = Vendor.objects.all()
     if request.method == 'POST':
         form = VendorForm(request.POST, instance=vendor)
         if form.is_valid():
@@ -42,7 +41,6 @@ def vendor_manage(request, pk=None):
     context = {
         'form': form,
         'vendor': vendor,
-        'vendors': vendors
     }
 
     # Use the same template for both operations
