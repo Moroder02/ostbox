@@ -23,8 +23,8 @@
             <strong>Name:</strong> {{ vendor.name }}
         </p>
         
-        <button type="submit" class="btn btn-danger">Confirm Delete</button>
-        <a href="{% url 'devices:vendor-delete' vendor.pk %}" class="btn btn-secondary">Cancel</a>
+        <button type="submit" class="btn btn-danger">Да, удалить</button>
+        <a href="{% url 'devices:vendor-detail' vendor.pk %}" class="btn btn-secondary">Нет, вернуться</a>
     </form>
 </div>
 {% endblock %}
