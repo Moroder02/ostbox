@@ -46,26 +46,26 @@ class PhysicalNetworkPort(models.Model):
     def clean(self):
         super().clean()
 
-        if self.device_id and self.network_port_model_id:
+        if self.device_id and self.network_port_group_id:
             device_model_id = (
                 Device.objects.filter(pk=self.device_id)
                 .values_list("device_model_id", flat=True)
                 .first()
             )
-            port_device_model_id = (
-                NetworkPortGroup.objects.filter(pk=self.network_port_model_id)
+            network_port_group_id = (
+                NetworkPortGroup.objects.filter(pk=self.network_port_group_id)
                 .values_list("device_model_id", flat=True)
                 .first()
             )
 
             if (
-                    device_model_id is not None
-                    and port_device_model_id is not None
-                    and device_model_id != port_device_model_id
+                device_model_id is not None
+                and network_port_group_id is not None
+                and device_model_id != network_port_group_id
             ):
                 raise ValidationError({
-                    "network_port_model": _(
-                        "Модель порта не относится к модели этого устройства."
+                    "network_port_group": _(
+                        "Порт не относится к моделяи этого устройства."
                     ),
                 })
 
