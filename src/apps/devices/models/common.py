@@ -73,23 +73,23 @@ class ProductionCountry(models.TextChoices):
 
 
 class Countries(models.TextChoices):
-    UNITED_KINGDOM = "Великобритания", _("Великобритания")
-    GERMANY = "Германия", _("Германия")
-    DENMARK = "Дания", _("Дания")
-    ISRAEL = "Израиль", _("Израиль")
-    IRELAND = "Ирландия", _("Ирландия")
-    ITALY = "Италия", _("Италия")
-    CANADA = "Канада", _("Канада")
-    CHINA = "Китай", _("Китай")
-    LATVIA = "Латвия", _("Латвия")
-    RUSSIA = "Россия", _("Россия")
-    USA = "США", _("США")
-    TAIWAN = "Тайвань", _("Тайвань")
-    FINLAND = "Финляндия", _("Финляндия")
-    SWITZERLAND = "Швейцария", _("Швейцария")
-    SWEDEN = "Швеция", _("Швеция")
-    SOUTH_KOREA = "Южная Корея", _("Южная Корея")
-    JAPAN = "Япония", _("Япония")
+    UNITED_KINGDOM = "GB", _("Великобритания")
+    GERMANY = "DE", _("Германия")
+    DENMARK = "DK", _("Дания")
+    ISRAEL = "IL", _("Израиль")
+    IRELAND = "IE", _("Ирландия")
+    ITALY = "IT", _("Италия")
+    CANADA = "CA", _("Канада")
+    CHINA = "CN", _("Китай")
+    LATVIA = "LV", _("Латвия")
+    RUSSIA = "RU", _("Россия")
+    USA = "US", _("США")
+    TAIWAN = "TW", _("Тайвань")
+    FINLAND = "FI", _("Финляндия")
+    SWITZERLAND = "CH", _("Швейцария")
+    SWEDEN = "SE", _("Швеция")
+    SOUTH_KOREA = "KR", _("Южная Корея")
+    JAPAN = "JP", _("Япония")
 
 
 class Vendor(models.Model):
@@ -98,12 +98,12 @@ class Vendor(models.Model):
         verbose_name=_("Название"),
     )
     production = models.CharField(
-        choices=ProductionCountry.choices,
+        choices=ProductionCountry,
         max_length=100,
     )
     country = models.CharField(
-        choices=Countries.choices,
-        max_length=100,
+        choices=Countries,
+        max_length=2,
         blank=True,
         null=True,
     )
