@@ -29,7 +29,7 @@ class Device(models.Model):
     )
     operating_system = models.ForeignKey(
         OperatingSystem,
-        on_delete=models.CASCADE,
+        on_delete=models.SET_NULL,
         blank=True,
         null=True,
         related_name="devices",
