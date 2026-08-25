@@ -1,0 +1,758 @@
+[
+  {
+    "model": "devices.operatingsystem",
+    "pk": 101,
+    "fields": {
+      "vendor": 148,
+      "name": "Astra Linux Special Edition",
+      "family": "linux",
+      "codename": "Смоленск",
+      "version": "1.7.5",
+      "edition": "SE",
+      "build": "",
+      "architecture": "x86_64",
+      "kernel": "5.15",
+      "is_lts": true,
+      "release_date": "2023-06-15",
+      "eol_date": "2028-06-15"
+    }
+  },
+  {
+    "model": "devices.operatingsystem",
+    "pk": 102,
+    "fields": {
+      "vendor": 148,
+      "name": "Astra Linux Common Edition",
+      "family": "linux",
+      "codename": "Орёл",
+      "version": "2.12.46",
+      "edition": "CE",
+      "build": "",
+      "architecture": "x86_64",
+      "kernel": "4.15",
+      "is_lts": true,
+      "release_date": "2023-01-10",
+      "eol_date": "2026-12-31"
+    }
+  },
+  {
+    "model": "devices.operatingsystem",
+    "pk": 103,
+    "fields": {
+      "vendor": 149,
+      "name": "ALT Server",
+      "family": "linux",
+      "codename": "",
+      "version": "10.2",
+      "edition": "",
+      "build": "",
+      "architecture": "x86_64",
+      "kernel": "5.15",
+      "is_lts": true,
+      "release_date": "2023-03-20",
+      "eol_date": "2027-12-31"
+    }
+  },
+  {
+    "model": "devices.operatingsystem",
+    "pk": 104,
+    "fields": {
+      "vendor": 149,
+      "name": "ALT Workstation",
+      "family": "linux",
+      "codename": "",
+      "version": "10.2",
+      "edition": "",
+      "build": "",
+      "architecture": "x86_64",
+      "kernel": "5.15",
+      "is_lts": true,
+      "release_date": "2023-03-20",
+      "eol_date": "2027-12-31"
+    }
+  },
+  {
+    "model": "devices.operatingsystem",
+    "pk": 105,
+    "fields": {
+      "vendor": 149,
+      "name": "Альт Образование",
+      "family": "linux",
+      "codename": "",
+      "version": "10.2",
+      "edition": "",
+      "build": "",
+      "architecture": "x86_64",
+      "kernel": "5.15",
+      "is_lts": true,
+      "release_date": "2023-09-01",
+      "eol_date": "2027-12-31"
+    }
+  },
+  {
+    "model": "devices.operatingsystem",
+    "pk": 106,
+    "fields": {
+      "vendor": 150,
+      "name": "РОСА Хром",
+      "family": "linux",
+      "codename": "",
+      "version": "12.4",
+      "edition": "",
+      "build": "",
+      "architecture": "x86_64",
+      "kernel": "6.1",
+      "is_lts": true,
+      "release_date": "2023-05-10",
+      "eol_date": "2028-12-31"
+    }
+  },
+  {
+    "model": "devices.operatingsystem",
+    "pk": 107,
+    "fields": {
+      "vendor": 150,
+      "name": "РОСА Сервер",
+      "family": "linux",
+      "codename": "",
+      "version": "7.3",
+      "edition": "Update 9",
+      "build": "",
+      "architecture": "x86_64",
+      "kernel": "3.10",
+      "is_lts": true,
+      "release_date": "2022-11-01",
+      "eol_date": "2026-12-31"
+    }
+  },
+  {
+    "model": "devices.operatingsystem",
+    "pk": 108,
+    "fields": {
+      "vendor": 151,
+      "name": "РЕД ОС",
+      "family": "linux",
+      "codename": "",
+      "version": "7.3",
+      "edition": "МУРОМ",
+      "build": "Update 6",
+      "architecture": "x86_64",
+      "kernel": "4.19",
+      "is_lts": true,
+      "release_date": "2023-02-14",
+      "eol_date": "2027-06-30"
+    }
+  },
+  {
+    "model": "devices.operatingsystem",
+    "pk": 109,
+    "fields": {
+      "vendor": 151,
+      "name": "РЕД Сервер",
+      "family": "linux",
+      "codename": "",
+      "version": "7.3",
+      "edition": "",
+      "build": "",
+      "architecture": "x86_64",
+      "kernel": "4.19",
+      "is_lts": true,
+      "release_date": "2023-02-14",
+      "eol_date": "2027-06-30"
+    }
+  },
+  {
+    "model": "devices.operatingsystem",
+    "pk": 110,
+    "fields": {
+      "vendor": 146,
+      "name": "Ubuntu",
+      "family": "linux",
+      "codename": "Jammy Jellyfish",
+      "version": "22.04",
+      "edition": "LTS",
+      "build": "",
+      "architecture": "x86_64",
+      "kernel": "5.15",
+      "is_lts": true,
+      "release_date": "2022-04-21",
+      "eol_date": "2027-04-30"
+    }
+  },
+  {
+    "model": "devices.operatingsystem",
+    "pk": 111,
+    "fields": {
+      "vendor": 146,
+      "name": "Ubuntu",
+      "family": "linux",
+      "codename": "Noble Numbat",
+      "version": "24.04",
+      "edition": "LTS",
+      "build": "",
+      "architecture": "x86_64",
+      "kernel": "6.8",
+      "is_lts": true,
+      "release_date": "2024-04-25",
+      "eol_date": "2029-04-30"
+    }
+  },
+  {
+    "model": "devices.operatingsystem",
+    "pk": 112,
+    "fields": {
+      "vendor": 147,
+      "name": "Debian",
+      "family": "linux",
+      "codename": "Bullseye",
+      "version": "11",
+      "edition": "",
+      "build": "",
+      "architecture": "x86_64",
+      "kernel": "5.10",
+      "is_lts": true,
+      "release_date": "2021-08-14",
+      "eol_date": "2026-08-31"
+    }
+  },
+  {
+    "model": "devices.operatingsystem",
+    "pk": 113,
+    "fields": {
+      "vendor": 147,
+      "name": "Debian",
+      "family": "linux",
+      "codename": "Bookworm",
+      "version": "12",
+      "edition": "",
+      "build": "",
+      "architecture": "x86_64",
+      "kernel": "6.1",
+      "is_lts": true,
+      "release_date": "2023-06-10",
+      "eol_date": "2028-06-30"
+    }
+  },
+  {
+    "model": "devices.operatingsystem",
+    "pk": 114,
+    "fields": {
+      "vendor": 97,
+      "name": "Red Hat Enterprise Linux",
+      "family": "linux",
+      "codename": "",
+      "version": "8.10",
+      "edition": "",
+      "build": "Ootpa",
+      "architecture": "x86_64",
+      "kernel": "4.18",
+      "is_lts": true,
+      "release_date": "2024-05-28",
+      "eol_date": "2029-05-31"
+    }
+  },
+  {
+    "model": "devices.operatingsystem",
+    "pk": 115,
+    "fields": {
+      "vendor": 97,
+      "name": "Red Hat Enterprise Linux",
+      "family": "linux",
+      "codename": "",
+      "version": "9.4",
+      "edition": "",
+      "build": "Plow",
+      "architecture": "x86_64",
+      "kernel": "5.14",
+      "is_lts": true,
+      "release_date": "2024-04-30",
+      "eol_date": "2032-05-31"
+    }
+  },
+  {
+    "model": "devices.operatingsystem",
+    "pk": 116,
+    "fields": {
+      "vendor": 97,
+      "name": "CentOS Stream",
+      "family": "linux",
+      "codename": "",
+      "version": "9",
+      "edition": "",
+      "build": "",
+      "architecture": "x86_64",
+      "kernel": "5.14",
+      "is_lts": true,
+      "release_date": "2022-05-18",
+      "eol_date": "2027-05-31"
+    }
+  },
+  {
+    "model": "devices.operatingsystem",
+    "pk": 117,
+    "fields": {
+      "vendor": 145,
+      "name": "Windows 10",
+      "family": "windows_desktop",
+      "codename": "",
+      "version": "22H2",
+      "edition": "Enterprise",
+      "build": "19045",
+      "architecture": "x86_64",
+      "kernel": "10.0.19041",
+      "is_lts": false,
+      "release_date": "2022-11-18",
+      "eol_date": "2025-10-14"
+    }
+  },
+  {
+    "model": "devices.operatingsystem",
+    "pk": 118,
+    "fields": {
+      "vendor": 145,
+      "name": "Windows 11",
+      "family": "windows_desktop",
+      "codename": "",
+      "version": "23H2",
+      "edition": "Enterprise",
+      "build": "22631",
+      "architecture": "x86_64",
+      "kernel": "10.0.22621",
+      "is_lts": false,
+      "release_date": "2023-10-31",
+      "eol_date": "2026-11-11"
+    }
+  },
+  {
+    "model": "devices.operatingsystem",
+    "pk": 119,
+    "fields": {
+      "vendor": 145,
+      "name": "Windows Server",
+      "family": "windows_server",
+      "codename": "",
+      "version": "2019",
+      "edition": "Standard",
+      "build": "1809",
+      "architecture": "x86_64",
+      "kernel": "10.0.17763",
+      "is_lts": true,
+      "release_date": "2018-11-13",
+      "eol_date": "2029-01-09"
+    }
+  },
+  {
+    "model": "devices.operatingsystem",
+    "pk": 120,
+    "fields": {
+      "vendor": 145,
+      "name": "Windows Server",
+      "family": "windows_server",
+      "codename": "",
+      "version": "2022",
+      "edition": "Datacenter",
+      "build": "21H2",
+      "architecture": "x86_64",
+      "kernel": "10.0.20348",
+      "is_lts": true,
+      "release_date": "2021-08-18",
+      "eol_date": "2031-10-14"
+    }
+  },
+  {
+    "model": "devices.operatingsystem",
+    "pk": 121,
+    "fields": {
+      "vendor": 26,
+      "name": "Cisco IOS XE",
+      "family": "network_os",
+      "codename": "",
+      "version": "17.9.4a",
+      "edition": "",
+      "build": "",
+      "architecture": "unknown",
+      "kernel": "",
+      "is_lts": true,
+      "release_date": "2023-07-25",
+      "eol_date": "2026-07-25"
+    }
+  },
+  {
+    "model": "devices.operatingsystem",
+    "pk": 122,
+    "fields": {
+      "vendor": 26,
+      "name": "Cisco IOS XR",
+      "family": "network_os",
+      "codename": "",
+      "version": "7.9.2",
+      "edition": "",
+      "build": "",
+      "architecture": "unknown",
+      "kernel": "",
+      "is_lts": true,
+      "release_date": "2023-09-12",
+      "eol_date": "2027-09-12"
+    }
+  },
+  {
+    "model": "devices.operatingsystem",
+    "pk": 123,
+    "fields": {
+      "vendor": 57,
+      "name": "Huawei VRP",
+      "family": "network_os",
+      "codename": "",
+      "version": "V800R023",
+      "edition": "",
+      "build": "SPC800",
+      "architecture": "unknown",
+      "kernel": "",
+      "is_lts": true,
+      "release_date": "2023-04-10",
+      "eol_date": "2028-04-10"
+    }
+  },
+  {
+    "model": "devices.operatingsystem",
+    "pk": 124,
+    "fields": {
+      "vendor": 63,
+      "name": "Juniper Junos",
+      "family": "network_os",
+      "codename": "",
+      "version": "23.2R1",
+      "edition": "",
+      "build": "",
+      "architecture": "unknown",
+      "kernel": "",
+      "is_lts": true,
+      "release_date": "2023-04-28",
+      "eol_date": "2026-10-28"
+    }
+  },
+  {
+    "model": "devices.operatingsystem",
+    "pk": 125,
+    "fields": {
+      "vendor": 74,
+      "name": "MikroTik RouterOS",
+      "family": "network_os",
+      "codename": "",
+      "version": "7.13",
+      "edition": "",
+      "build": "stable",
+      "architecture": "unknown",
+      "kernel": "6.1",
+      "is_lts": false,
+      "release_date": "2023-12-15",
+      "eol_date": "2026-12-15"
+    }
+  },
+  {
+    "model": "devices.operatingsystem",
+    "pk": 126,
+    "fields": {
+      "vendor": 135,
+      "name": "Элемент",
+      "family": "network_os",
+      "codename": "",
+      "version": "1.10",
+      "edition": "",
+      "build": "",
+      "architecture": "unknown",
+      "kernel": "",
+      "is_lts": true,
+      "release_date": "2023-11-01",
+      "eol_date": "2028-11-01"
+    }
+  },
+  {
+    "model": "devices.operatingsystem",
+    "pk": 127,
+    "fields": {
+      "vendor": 124,
+      "name": "VMware ESXi",
+      "family": "hypervisor",
+      "codename": "",
+      "version": "8.0",
+      "edition": "U3",
+      "build": "23598346",
+      "architecture": "x86_64",
+      "kernel": "",
+      "is_lts": true,
+      "release_date": "2024-04-11",
+      "eol_date": "2029-10-11"
+    }
+  },
+  {
+    "model": "devices.operatingsystem",
+    "pk": 128,
+    "fields": {
+      "vendor": 152,
+      "name": "Proxmox VE",
+      "family": "hypervisor",
+      "codename": "",
+      "version": "8.2",
+      "edition": "",
+      "build": "",
+      "architecture": "x86_64",
+      "kernel": "6.8",
+      "is_lts": true,
+      "release_date": "2024-05-14",
+      "eol_date": "2029-07-31"
+    }
+  },
+  {
+    "model": "devices.operatingsystem",
+    "pk": 129,
+    "fields": {
+      "vendor": 145,
+      "name": "Hyper-V Server",
+      "family": "hypervisor",
+      "codename": "",
+      "version": "2022",
+      "edition": "",
+      "build": "",
+      "architecture": "x86_64",
+      "kernel": "10.0.20348",
+      "is_lts": true,
+      "release_date": "2021-08-18",
+      "eol_date": "2031-10-14"
+    }
+  },
+  {
+    "model": "devices.operatingsystem",
+    "pk": 130,
+    "fields": {
+      "vendor": 81,
+      "name": "Nutanix AHV",
+      "family": "hypervisor",
+      "codename": "",
+      "version": "3.8",
+      "edition": "",
+      "build": "",
+      "architecture": "x86_64",
+      "kernel": "",
+      "is_lts": true,
+      "release_date": "2023-08-15",
+      "eol_date": "2027-08-15"
+    }
+  },
+  {
+    "model": "devices.operatingsystem",
+    "pk": 131,
+    "fields": {
+      "vendor": 48,
+      "name": "FortiOS",
+      "family": "security_os",
+      "codename": "",
+      "version": "7.4.3",
+      "edition": "",
+      "build": "",
+      "architecture": "unknown",
+      "kernel": "",
+      "is_lts": true,
+      "release_date": "2024-02-20",
+      "eol_date": "2027-08-20"
+    }
+  },
+  {
+    "model": "devices.operatingsystem",
+    "pk": 132,
+    "fields": {
+      "vendor": 23,
+      "name": "Check Point Gaia",
+      "family": "security_os",
+      "codename": "",
+      "version": "R81.20",
+      "edition": "Take 75",
+      "build": "",
+      "architecture": "unknown",
+      "kernel": "",
+      "is_lts": true,
+      "release_date": "2023-06-05",
+      "eol_date": "2027-06-05"
+    }
+  },
+  {
+    "model": "devices.operatingsystem",
+    "pk": 133,
+    "fields": {
+      "vendor": 84,
+      "name": "Palo Alto PAN-OS",
+      "family": "security_os",
+      "codename": "",
+      "version": "11.1.2",
+      "edition": "",
+      "build": "",
+      "architecture": "unknown",
+      "kernel": "",
+      "is_lts": true,
+      "release_date": "2023-11-14",
+      "eol_date": "2027-04-30"
+    }
+  },
+  {
+    "model": "devices.operatingsystem",
+    "pk": 134,
+    "fields": {
+      "vendor": 111,
+      "name": "Sophos XG",
+      "family": "security_os",
+      "codename": "",
+      "version": "20.0",
+      "edition": "",
+      "build": "MR3",
+      "architecture": "unknown",
+      "kernel": "",
+      "is_lts": true,
+      "release_date": "2023-09-12",
+      "eol_date": "2027-09-12"
+    }
+  },
+  {
+    "model": "devices.operatingsystem",
+    "pk": 135,
+    "fields": {
+      "vendor": 143,
+      "name": "UserGate",
+      "family": "security_os",
+      "codename": "",
+      "version": "7.4",
+      "edition": "",
+      "build": "",
+      "architecture": "unknown",
+      "kernel": "",
+      "is_lts": true,
+      "release_date": "2023-10-20",
+      "eol_date": "2028-10-20"
+    }
+  },
+  {
+    "model": "devices.operatingsystem",
+    "pk": 136,
+    "fields": {
+      "vendor": 125,
+      "name": "WatchGuard Fireware",
+      "family": "security_os",
+      "codename": "",
+      "version": "12.10",
+      "edition": "",
+      "build": "",
+      "architecture": "unknown",
+      "kernel": "",
+      "is_lts": true,
+      "release_date": "2023-07-18",
+      "eol_date": "2027-07-18"
+    }
+  },
+  {
+    "model": "devices.operatingsystem",
+    "pk": 137,
+    "fields": {
+      "vendor": 78,
+      "name": "NetApp ONTAP",
+      "family": "storage_os",
+      "codename": "",
+      "version": "9.14.1",
+      "edition": "",
+      "build": "P5",
+      "architecture": "unknown",
+      "kernel": "",
+      "is_lts": true,
+      "release_date": "2023-10-24",
+      "eol_date": "2027-10-24"
+    }
+  },
+  {
+    "model": "devices.operatingsystem",
+    "pk": 138,
+    "fields": {
+      "vendor": 115,
+      "name": "Synology DSM",
+      "family": "storage_os",
+      "codename": "",
+      "version": "7.2",
+      "edition": "",
+      "build": "64570",
+      "architecture": "unknown",
+      "kernel": "",
+      "is_lts": true,
+      "release_date": "2023-06-20",
+      "eol_date": "2028-06-20"
+    }
+  },
+  {
+    "model": "devices.operatingsystem",
+    "pk": 139,
+    "fields": {
+      "vendor": 92,
+      "name": "QNAP QTS",
+      "family": "storage_os",
+      "codename": "",
+      "version": "5.1",
+      "edition": "",
+      "build": "",
+      "architecture": "unknown",
+      "kernel": "",
+      "is_lts": true,
+      "release_date": "2023-03-15",
+      "eol_date": "2027-03-15"
+    }
+  },
+  {
+    "model": "devices.operatingsystem",
+    "pk": 140,
+    "fields": {
+      "vendor": 83,
+      "name": "Oracle Linux",
+      "family": "linux",
+      "codename": "",
+      "version": "8.9",
+      "edition": "",
+      "build": "",
+      "architecture": "x86_64",
+      "kernel": "5.15",
+      "is_lts": true,
+      "release_date": "2023-11-21",
+      "eol_date": "2029-12-31"
+    }
+  },
+  {
+    "model": "devices.operatingsystem",
+    "pk": 141,
+    "fields": {
+      "vendor": 153,
+      "name": "SUSE Linux Enterprise Server",
+      "family": "linux",
+      "codename": "",
+      "version": "15 SP5",
+      "edition": "",
+      "build": "",
+      "architecture": "x86_64",
+      "kernel": "5.14",
+      "is_lts": true,
+      "release_date": "2023-06-20",
+      "eol_date": "2028-12-31"
+    }
+  },
+  {
+    "model": "devices.operatingsystem",
+    "pk": 142,
+    "fields": {
+      "vendor": 154,
+      "name": "FreeBSD",
+      "family": "bsd",
+      "codename": "",
+      "version": "14.0",
+      "edition": "RELEASE",
+      "build": "",
+      "architecture": "x86_64",
+      "kernel": "14.0",
+      "is_lts": true,
+      "release_date": "2023-11-20",
+      "eol_date": "2028-11-30"
+    }
+  }
+]
