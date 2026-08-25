@@ -1,6 +1,7 @@
 from django.contrib import messages
 from django.http import HttpResponse
 from django.shortcuts import render, get_object_or_404, redirect
+from django.core.paginator import Paginator
 
 from apps.devices.forms.devices_forms import VendorForm
 from apps.devices.models import Vendor
@@ -12,9 +13,15 @@ def vendor_list(request):
         request.GET,
         queryset=Vendor.objects.all()
     )
+    vendors = vendors_filter.qs
+    paginator = Paginator(vendors, 20)
+    page_number = request.GET.get('page', 1)
+    page_obj = paginator.get_page(page_number)
+
     context = {
         'filter': vendors_filter,
-        'vendors': vendors_filter.qs,
+        'vendors': vendors,
+        'page_obj': page_obj,
         'form': VendorForm(),
         'selected_countries': request.GET.getlist('country'),
     }

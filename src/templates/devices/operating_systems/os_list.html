@@ -11,55 +11,70 @@
 {% endblock %}
 
 
+{% block side %}
+
+    <div class="d-flex align-items-center mb-3 me-2">
+        <a class="btn btn-alt-secondary ms-auto"
+{#           data-bs-toggle="modal"#}
+{#           data-bs-target="#modal-block-vcenter"#}
+{#           data-bs-toggle="tooltip"#}
+           title="Добавить ОС">
+            <i class="fa fa-fw fa-plus"></i>
+        </a>
+    </div>
+
+{% endblock %}
+
+
 {% block table %}
     <table class="table table-responsive">
         <thead>
         <tr>
             <th>№</th>
-{#            <th>Производитель</th>#}
+            {#            <th>Производитель</th>#}
             <th>Название</th>
             <th>Семейство</th>
             <th>Версия</th>
             <th>Архитектура</th>
             <th>LTS</th>
-{#            <th>Дата выпуска</th>#}
-{#            <th>EOL</th>#}
-{#            <th>Статус</th>#}
+            {#            <th>Дата выпуска</th>#}
+            {#            <th>EOL</th>#}
+            {#            <th>Статус</th>#}
         </tr>
         </thead>
         <tbody id="os-table">
-            {% for system in systems %}
-                <tr>
-                    <td>{{ forloop.counter }}</td>
-{#                    <td>{{ system.vendor.name }}</td>#}
-                    <td>{{ system.name }}</td>
-                    <td>{{ system.get_family_display }}</td>
-                    <td>{{ system.version|default:"-" }}</td>
-                    <td>{{ system.get_architecture_display|default:"-" }}</td>
-                    <td>
-                        {% if system.is_lts %}
-                            <span class="badge bg-success">LTS</span>
-                        {% else %}
-                            <span class="text-muted">-</span>
-                        {% endif %}
-                    </td>
-{#                    <td>{{ system.release_date|date:"d.m.Y"|default:"-" }}</td>#}
-{#                    <td>{{ system.eol_date|date:"d.m.Y"|default:"-" }}</td>#}
-{#                    <td>#}
-{#                        {% if not system.eol_date %}#}
-{#                            <span class="text-muted">—</span>#}
-{#                        {% elif system.is_supported %}#}
-{#                            <span class="badge bg-success">Поддерживается</span>#}
-{#                        {% else %}#}
-{#                            <span class="badge bg-danger">EOL</span>#}
-{#                        {% endif %}#}
-{#                    </td>#}
-                </tr>
-            {% empty %}
-                <tr>
-                    <td colspan="10" class="text-center">Нет данных</td>
-                </tr>
-            {% endfor %}
+        {% for system in systems %}
+            <tr>
+                <td>{{ forloop.counter }}</td>
+                {#                    <td>{{ system.vendor.name }}</td>#}
+                <td>{{ system.name }}</td>
+                <td>{{ system.get_family_display }}</td>
+                <td>{{ system.version|default:"-" }}</td>
+                <td>{{ system.get_architecture_display|default:"-" }}</td>
+                <td>
+                    {% if system.is_lts %}
+                        <span class="badge bg-success">LTS</span>
+                    {% else %}
+                        <span class="text-muted">-</span>
+                    {% endif %}
+                </td>
+                {#                    <td>{{ system.release_date|date:"d.m.Y"|default:"-" }}</td>#}
+                {#                    <td>{{ system.eol_date|date:"d.m.Y"|default:"-" }}</td>#}
+                {#                    <td>#}
+                {#                        {% if not system.eol_date %}#}
+                {#                            <span class="text-muted">—</span>#}
+                {#                        {% elif system.is_supported %}#}
+                {#                            <span class="badge bg-success">Поддерживается</span>#}
+                {#                        {% else %}#}
+                {#                            <span class="badge bg-danger">EOL</span>#}
+                {#                        {% endif %}#}
+                {#                    </td>#}
+            </tr>
+        {% empty %}
+            <tr>
+                <td colspan="10" class="text-center">Нет данных</td>
+            </tr>
+        {% endfor %}
         </tbody>
     </table>
 {% endblock %}
