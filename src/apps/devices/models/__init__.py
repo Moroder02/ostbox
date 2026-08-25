@@ -10,7 +10,8 @@ from .common import (
     CURRENT_YEAR,
     Vendor,
     ProductionCountry,
-    Countries
+    Countries,
+    OperatingSystem,
 )
 
 from .device_model import (
