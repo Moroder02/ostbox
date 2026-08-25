@@ -4,7 +4,7 @@ from django.db.models import Q
 from django.utils.translation import gettext_lazy as _
 
 from .device_model import DeviceModel
-from .common import OperatingSystem, MIN_YEAR, CURRENT_YEAR, Protocol
+from .common import MIN_YEAR, CURRENT_YEAR, Protocol
 
 
 class Device(models.Model):
@@ -27,14 +27,14 @@ class Device(models.Model):
         verbose_name=_("Инвентарный номер"),
         help_text=_("Глобально уникален"),
     )
-    operating_system = models.ForeignKey(
-        OperatingSystem,
-        on_delete=models.SET_NULL,
-        blank=True,
-        null=True,
-        related_name="devices",
-        verbose_name=_("Операционная система"),
-    )
+    # operating_system = models.ForeignKey(
+    #     OperatingSystem,
+    #     on_delete=models.SET_NULL,
+    #     blank=True,
+    #     null=True,
+    #     related_name="devices",
+    #     verbose_name=_("Операционная система"),
+    # )
     purchase_year = models.PositiveSmallIntegerField(
         blank=True,
         null=True,
