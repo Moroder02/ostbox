@@ -11,4 +11,7 @@ from .vendors import (
     vendor_delete,
 )
 
+from .os import (
+    os_list,
+)
 
