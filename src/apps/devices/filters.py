@@ -2,7 +2,7 @@ import django_filters
 from django import forms
 from django.db.models import Q
 
-from .models import Vendor, ProductionCountry, Countries
+from .models import Vendor, ProductionCountry, Countries, OSFamily, OperatingSystem
 
 
 class VendorFilter(django_filters.FilterSet):
@@ -42,3 +42,19 @@ class VendorFilter(django_filters.FilterSet):
         return queryset.filter(
             Q(name__icontains=value) | Q(country__icontains=value)
         )
+
+
+class OSFilter(django_filters.FilterSet):
+
+    family = django_filters.MultipleChoiceFilter(
+        choices=OSFamily.choices,
+        field_name='family',
+        label='Семейство',
+        widget=forms.CheckboxSelectMultiple(attrs={
+            'class': 'form-check-input',
+        })
+    )
+
+    class Meta:
+        model = OperatingSystem
+        fields = ('family',)

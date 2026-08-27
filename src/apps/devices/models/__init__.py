@@ -12,6 +12,7 @@ from .common import (
     ProductionCountry,
     Countries,
     OperatingSystem,
+    OSFamily,
 )
 
 from .device_model import (

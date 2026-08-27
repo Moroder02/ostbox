@@ -1,5 +1,24 @@
-{% extends 'layouts/list_filter_layout.html' %}
+{% extends 'layouts/datatable_layout.html' %}
 {% load static %}
+
+{# Partials Start #}
+
+{% partialdef filter %}
+    {% for system in systems %}
+        <tr>
+            <td class="text-center fs-sm">1</td>
+            <td class="fw-semibold fs-sm">{{ system.name }}</td>
+            <td class="fs-sm">{{ system.get_family_display }}</td>
+            <td><span class="text-muted fs-sm">{{ system.version }}</span></td>
+            <td><span class="text-muted fs-sm">{{ system.get_architecture_display }}</span></td>
+            <td>{{ system.build }}</td>
+            <td>{{ system.edition }}</td>
+            <td>{{ system.kernel }}</td>
+        </tr>
+    {% endfor %}
+{% endpartialdef filter %}
+
+{# Partials End #}
 
 {% block css %}
     <!-- Page JS Plugins CSS -->
@@ -11,7 +30,34 @@
 {% endblock %}
 
 
-{% block content %}
+{% block side %}
+    <form hx-get="{% url 'devices:os-list' %}"
+          hx-target="#os-body"
+          hx-swap="innerHTML"
+          hx-trigger="change from:input[type=checkbox]"
+          class="p-2 mb-4"
+    >
+        <div class="mb-3">
+            <span class="form-label small mb-2 d-block">Семейство</span>
+            {% for choice_value, choice_label in filter.form.family.field.choices %}
+                <div class="form-check">
+                    <input type="checkbox"
+                           class="form-check-input"
+                           name="family"
+                           value="{{ choice_value }}"
+                           id="id_family_{{ forloop.counter0 }}"
+                           {% if choice_value in selected_families %}checked{% endif %}>
+                    <label class="form-check-label" for="id_family_{{ forloop.counter0 }}">
+                        {{ choice_label }}
+                    </label>
+                </div>
+            {% endfor %}
+        </div>
+    </form>
+{% endblock %}
+
+
+{% block table %}
     <div class="block block-rounded">
         <div class="block-header block-header-default">
             <h3 class="block-title">
@@ -23,30 +69,18 @@
                 <thead>
                 <tr>
                     <th class="text-center"></th>
-                    <th style="width: 20%">Name</th>
+                    <th>Name</th>
                     <th>Семейство</th>
-                    <th style="width: 5%">Версия</th>
-                    <th style="width: 10%">Редакция</th>
-                    <th style="width: 5%">Архитектура</th>
-                    <th style="width: 5%">Ядро</th>
+                    <th>Версия</th>
+                    <th>Архитектура</th>
                     <th>Сборка</th>
-                    <th>Кодовое наименование</th>
+                    <th>Редакция</th>
+                    <th>Ядро</th>
+                    {#                    <th>Кодовое наименование</th>#}
                 </tr>
                 </thead>
-                <tbody>
-                {% for system in systems %}
-                    <tr>
-                        <td class="text-center fs-sm">1</td>
-                        <td class="fw-semibold fs-sm">{{ system.name }}</td>
-                        <td class="fs-sm">{{ system.get_family_display }}</td>
-                        <td><span class="text-muted fs-sm">{{ system.version }}</span></td>
-                        <td>{{ system.edition }}</td>
-                        <td><span class="text-muted fs-sm">{{ system.get_architecture_display }}</span></td>
-                        <td>{{ system.kernel }}</td>
-                        <td>{{ system.build }}</td>
-                        <td>{{ system.codename }}</td>
-                    </tr>
-                {% endfor %}
+                <tbody id="os-body">
+                    {% partial filter %}
                 </tbody>
             </table>
         </div>
