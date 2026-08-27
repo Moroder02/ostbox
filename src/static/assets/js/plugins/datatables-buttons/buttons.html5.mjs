@@ -1074,7 +1074,9 @@ DataTable.ext.buttons.csvHtml5 = {
 
 	extension: '.csv',
 
-	exportOptions: {},
+	exportOptions: {
+		escapeExcelFormula: true
+	},
 
 	fieldSeparator: ',',
 
@@ -1360,8 +1362,9 @@ DataTable.ext.buttons.excelHtml5 = {
 						_sheetname(config).replace(/'/g, '\'\'') +
 						'\'!$A$' +
 						dataStartRow +
-						':' +
+						':$' +
 						createCellPos(data.header.length - 1) +
+						'$' +
 						dataEndRow
 				})
 			);
@@ -1502,7 +1505,7 @@ DataTable.ext.buttons.pdfHtml5 = {
 									text: cell.title,
 									colSpan: cell.colspan,
 									rowSpan: cell.rowspan,
-									style: 'tableHeader'
+									style: 'tableFooter'
 							}
 							: {};
 					})
@@ -1517,8 +1520,12 @@ DataTable.ext.buttons.pdfHtml5 = {
 				{
 					style: 'table',
 					table: {
-						headerRows: data.headerStructure.length,
-						footerRows: data.footerStructure.length, // Used for styling, doesn't do anything in pdfmake
+						headerRows: config.header
+							? data.headerStructure.length
+							: 0,
+						footerRows: config.footer // Used for styling, doesn't do anything in pdfmake
+							? data.footerStructure.length
+							: 0,
 						body: rows
 					},
 					layout: {
@@ -1562,7 +1569,8 @@ DataTable.ext.buttons.pdfHtml5 = {
 				},
 				tableFooter: {
 					bold: true,
-					fontSize: 11
+					fontSize: 11,
+					alignment: 'center'
 				},
 				table: {
 					margin: [0, 5, 0, 5]

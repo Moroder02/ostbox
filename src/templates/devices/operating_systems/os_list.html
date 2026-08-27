@@ -2,7 +2,6 @@
 {% load static %}
 
 {# Partials Start #}
-
 {% partialdef filter %}
     {% for system in systems %}
         <tr>
@@ -17,7 +16,6 @@
         </tr>
     {% endfor %}
 {% endpartialdef filter %}
-
 {# Partials End #}
 
 {% block css %}
@@ -63,6 +61,14 @@
             <h3 class="block-title">
                 Dynamic Table <small>DataTables Responsive Mode</small>
             </h3>
+            <div class="block-options">
+                <button
+                        type="button"
+                        class="btn-block-option"
+                        data-toggle="block-option"
+                        data-action="fullscreen_toggle"
+                ></button>
+            </div>
         </div>
         <div class="block-content block-content-full overflow-x-auto">
             <table class="table table-bordered table-striped table-vcenter js-dataTable-responsive">
@@ -80,7 +86,7 @@
                 </tr>
                 </thead>
                 <tbody id="os-body">
-                    {% partial filter %}
+                {% partial filter %}
                 </tbody>
             </table>
         </div>

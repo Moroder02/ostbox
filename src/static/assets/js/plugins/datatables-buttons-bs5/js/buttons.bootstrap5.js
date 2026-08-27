@@ -60,25 +60,32 @@ $.extend(true, DataTable.Buttons.defaults, {
 		},
 		button: {
 			className: 'btn btn-secondary',
-			active: 'active'
+			active: 'active',
+			dropHtml: '',
+			dropClass: 'dropdown-toggle'
 		},
 		collection: {
-			action: {
-				dropHtml: ''
-			},
 			container: {
 				tag: 'div',
-				className: 'dropdown-menu dt-button-collection'
+				className: 'dt-button-collection',
+				content: {
+					tag: 'ul',
+					className: 'dropdown-menu show'
+				}
 			},
 			closeButton: false,
 			button: {
-				tag: 'a',
-				className: 'dt-button dropdown-item',
-				active: 'dt-button-active',
+				tag: 'li',
+				className: 'dt-button',
+				active: 'dt-button-active-a',
 				disabled: 'disabled',
+				liner: {
+					tag: 'a',
+					className: 'dropdown-item'
+				},
 				spacer: {
-					className: 'dropdown-divider',
-					tag: 'hr'
+					className: 'divider',
+					tag: 'li'
 				}
 			}
 		},
@@ -90,9 +97,8 @@ $.extend(true, DataTable.Buttons.defaults, {
 			},
 			dropdown: {
 				tag: 'button',
-				dropHtml: '',
 				className:
-					'btn btn-secondary dt-button-split-drop dropdown-toggle dropdown-toggle-split',
+					'btn btn-secondary dt-button-split-drop dropdown-toggle-split',
 				closeButton: false,
 				align: 'split-left',
 				splitAlignClass: 'dt-button-split-left'
@@ -109,7 +115,6 @@ $.extend(true, DataTable.Buttons.defaults, {
 	}
 });
 
-DataTable.ext.buttons.collection.className += ' dropdown-toggle';
 DataTable.ext.buttons.collection.rightAlignClassName = 'dropdown-menu-right';
 
 
