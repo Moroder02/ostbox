@@ -29,37 +29,81 @@
 
 
 {% block side %}
-    <form hx-get="{% url 'devices:os-list' %}"
-          hx-target="#os-body"
-          hx-swap="innerHTML"
-          hx-trigger="change from:input[type=checkbox]"
-          class="p-2 mb-4"
-    >
-        <div class="mb-3">
-            <span class="form-label small mb-2 d-block">Семейство</span>
-            {% for choice_value, choice_label in filter.form.family.field.choices %}
-                <div class="form-check">
-                    <input type="checkbox"
-                           class="form-check-input"
-                           name="family"
-                           value="{{ choice_value }}"
-                           id="id_family_{{ forloop.counter0 }}"
-                           {% if choice_value in selected_families %}checked{% endif %}>
-                    <label class="form-check-label" for="id_family_{{ forloop.counter0 }}">
-                        {{ choice_label }}
-                    </label>
+    <h3 class="content-heading">Фильтр данных:</h3>
+    <div class="border-bottom border-2 pb-2 mt-2">
+        <a data-bs-toggle="collapse"
+           href="#collapseExample"
+           role="button"
+           aria-expanded="false"
+           aria-controls="collapseExample"
+                {#           class="p-3 bg-gray-light text-gray-darker"#}
+        >
+            Семейство ОС
+        </a>
+        <div class="collapse" id="collapseExample">
+            <form hx-get="{% url 'devices:os-list' %}"
+                  hx-target="#os-body"
+                  hx-swap="innerHTML"
+                  hx-trigger="change from:input[type=checkbox]"
+                  class="mt-2"
+            >
+                <div class="mb-3">
+                    {#                    <span class="form-label small mb-2 d-block">Семейство</span>#}
+                    {% for choice_value, choice_label in filter.form.family.field.choices %}
+                        <div class="form-check">
+                            <input type="checkbox"
+                                   class="form-check-input"
+                                   name="family"
+                                   value="{{ choice_value }}"
+                                   id="id_family_{{ forloop.counter0 }}"
+                                   {% if choice_value in selected_families %}checked{% endif %}>
+                            <label class="form-check-label" for="id_family_{{ forloop.counter0 }}">
+                                {{ choice_label }}
+                            </label>
+                        </div>
+                    {% endfor %}
                 </div>
-            {% endfor %}
+            </form>
         </div>
-    </form>
+    </div>
+    <div class="border-bottom border-2 pb-2 mt-3">
+        <a data-bs-toggle="collapse"
+           href="#collapse2"
+           role="button"
+           aria-expanded="false"
+           aria-controls="collapse2"
+                {#           class="p-3 bg-gray-light text-gray-darker"#}
+        >
+            Архитектура
+        </a>
+        <div class="collapse" id="collapse2">
+            {% lorem %}
+        </div>
+    </div>
+        <div class="border-bottom border-2 pb-2 mt-3">
+        <a data-bs-toggle="collapse"
+           href="#collapse3"
+           role="button"
+           aria-expanded="false"
+           aria-controls="collapse3"
+                {#           class="p-3 bg-gray-light text-gray-darker"#}
+        >
+            Редакция
+        </a>
+        <div class="collapse" id="collapse3">
+            {% lorem %}
+        </div>
+    </div>
+
 {% endblock %}
 
 
 {% block table %}
-    <div class="block block-rounded">
-        <div class="block-header block-header-default">
+    <div class="block block-transparent">
+        <div class="block-header">
             <h3 class="block-title">
-                Dynamic Table <small>DataTables Responsive Mode</small>
+                Операционные системы
+                {#                <small>DataTables Responsive Mode</small>#}
             </h3>
             <div class="block-options">
                 <button
@@ -71,7 +115,7 @@
             </div>
         </div>
         <div class="block-content block-content-full overflow-x-auto">
-            <table class="table table-bordered table-striped table-vcenter js-dataTable-responsive">
+            <table class="table table-bordered table-striped table-vcenter js-dataTable-full mt-3">
                 <thead>
                 <tr>
                     <th class="text-center"></th>
@@ -112,6 +156,6 @@
     <script src="{% static 'assets/js/plugins/datatables-buttons/buttons.html5.min.js' %}"></script>
 
     <!-- Page JS Code -->
-    <script src="{% static 'assets/js/pages/be_tables_datatables.min.js' %}"></script>
+    <script src="{% static 'assets/js/pages/be_tables_datatables.js' %}"></script>
 
 {% endblock %}
