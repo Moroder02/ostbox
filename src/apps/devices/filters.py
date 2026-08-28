@@ -55,6 +55,16 @@ class OSFilter(django_filters.FilterSet):
         })
     )
 
+    vendor_country = django_filters.MultipleChoiceFilter(
+        choices=Countries.choices,
+        field_name='vendor__country',
+        label='Страна',
+        widget=forms.CheckboxSelectMultiple(attrs={
+            'class': 'form-check-input',
+        })
+    )
+
+
     class Meta:
         model = OperatingSystem
-        fields = ('family',)
+        fields = ('family', 'vendor_country')
