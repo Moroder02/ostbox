@@ -17,4 +17,4 @@ def protocol_list(request):
         'obj_fields': obj_fields,
     }
 
-    return render(request, 'devices/device/device_list.html', context)
+    return render(request, 'core/object_list.html', context)

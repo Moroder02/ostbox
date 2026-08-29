@@ -19,7 +19,7 @@ def device_list(request):
         'objects': devices,
         'obj_fields': obj_fields,
     }
-    return render(request, 'devices/device/device_list.html', context)
+    return render(request, 'core/object_list.html', context)
 
 
 def model_list(request):

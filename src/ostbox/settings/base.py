@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
+    'apps.core',
     'apps.users',
     'apps.devices',
     'apps.components',
@@ -137,8 +138,6 @@ STATIC_ROOT = PROJECT_ROOT / 'staticfiles'
 MEDIA_URL = 'media/'
 MEDIA_ROOT = BASE_DIR / 'media'
 
-ROOT_URLCONF = 'ostbox.urls'
-WSGI_APPLICATION = 'ostbox.wsgi.application'
 ASGI_APPLICATION = 'ostbox.asgi.application'
 
 # Email
