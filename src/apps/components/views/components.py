@@ -16,9 +16,14 @@ def cpu_model_list(request):
 
 
 def disk_list(request):
-    disks = Disk.objects.all()
-    context = {'disks': disks}
-    return render(request, 'components/disk/disk_list.html', context)
+    disks = Disk.objects.select_related('disk_model').all()
+    allowed_fields = ['disk_model', 'device', 'serial_number']
+    obj_fields = [Disk._meta.get_field(name) for name in allowed_fields]
+    context = {
+        'objects': disks,
+        'obj_fields': obj_fields,
+    }
+    return render(request, 'devices/device/device_list.html', context)
 
 
 def disk_model_list(request):
