@@ -4,7 +4,7 @@ from django.db.models import Q
 from django.utils.translation import gettext_lazy as _
 
 from .abstractions import AbstractComponentModel, AbstractComponent
-from apps.devices.models import DiskType
+from apps.devices.models import DiskType, Device
 
 
 class DiskModel(AbstractComponentModel):
@@ -60,11 +60,21 @@ class Disk(AbstractComponent):
         related_name="disks",
         verbose_name=_("Модель диска"),
     )
+    device = models.ForeignKey(
+        Device,
+        on_delete=models.SET_NULL,
+        related_name="disks",
+        blank=True,
+        null=True,
+    )
+    serial_number = models.CharField(
+        max_length=50,
+        blank=True,
+    )
 
     class Meta:
         verbose_name = _("Диск")
         verbose_name_plural = _("Диски")
 
     def __str__(self):
-        identifier = self.serial_number or f"id={self.pk}"
-        return f"Disk {self.disk_model.part_number} {identifier}"
+        return f"Disk {self.disk_model.disk_type} {self.disk_model.size_gb}"
