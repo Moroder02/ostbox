@@ -18,4 +18,6 @@ urlpatterns = [
     # Operating Systems
     path('os/', views.os_list, name='os-list'),
 
+    # Protocols
+    path('protocols/', views.protocol_list, name='protocol-list'),
 ]

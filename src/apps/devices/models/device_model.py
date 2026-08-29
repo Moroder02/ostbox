@@ -8,7 +8,7 @@ from .common import DeviceKind, MIN_YEAR, CURRENT_YEAR, Vendor
 class DeviceModel(models.Model):
     kind = models.CharField(
         max_length=20,
-        choices=DeviceKind.choices,
+        choices=DeviceKind,
         db_index=True,
         verbose_name=_("Тип устройства"),
     )

@@ -1,44 +1,55 @@
-{% extends 'base.html' %}
+{% extends 'layouts/object_filtering_list.html' %}
+{% load objects_list_tags %}
 
-{% block content-head %}{% endblock %}
-
-{% block button %}
-    <a class="btn btn-primary" href="#">Добавить устройство</a>
+{% block title %}
+    Устройства
 {% endblock %}
 
-{% block content_title %}
-	Устройства
+
+{% block side %}
+	<h4>Боковушка</h4>
+    {% for field in obj_fields %}
+    	<p>{{ field.verbose_name }}</p>
+    {% endfor %}
+
 {% endblock %}
 
-{% block small_title %}
-	по типам
+
+{% block table-title %}
+	Список устройств
 {% endblock %}
+
 
 {% block table %}
-    
-    <table class="table">
-        <thead>
+    <thead>
+    <tr>
+        <th></th>
+        {% for field in obj_fields %}
+            <th>{{ field.verbose_name }}</th>
+        {% endfor %}
+{#        <th>Заголовок 1</th>#}
+{#        <th>Заголовок 2</th>#}
+{#        <th>Заголовок 3</th>#}
+{#        <th>Заголовок 4</th>#}
+    </tr>
+    </thead>
+    {% for object in objects %}
         <tr>
-            <th>Тип устройства</th>
-            <th>Вендор</th>
-            <th>Модель</th>
-            <th>Серийный номер</th>
-            <th>Инвентарный номер</th>
-        </tr>
-        </thead>
-        <tbody>
-            {% for device in devices %}
-                <tr>
-                    <td>{{ device.device_model.get_kind_display }}</td>
-                    <td>{{ device.device_model.vendor }}</td>
-                    <td>{{ device.device_model.part_number }}</td>
-                    <td>{{ device.serial_number }}</td>
-                    <td>{{ device.inventory_number }}</td>
-                </tr>
+            <td>{{ forloop.counter }}</td>
+            {% for field in obj_fields %}
+                <td>{{ object|get_field_value:field.name }}</td>
             {% endfor %}
-            
-        </tbody>
-    </table>
+        </tr>
+    {% endfor %}
     
+{#    <tbody>#}
+{#        {% for obj in objects %}#}
+{#        <tr>#}
+{#            {% for field in obj_fields %}#}
+{#                <td>{{ obj|get_field_value:field.name }}</td>#}
+{#            {% endfor %}#}
+{#        </tr>#}
+{#        {% endfor %}#}
+{#    </tbody>#}
 {% endblock %}
 

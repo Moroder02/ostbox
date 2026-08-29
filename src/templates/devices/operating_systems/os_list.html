@@ -22,7 +22,7 @@
 
 {% block side %}
     <h3 class="content-heading">Фильтр данных:</h3>
-    <form hx-get="{% url 'devices:os-list' %}"
+    <form hx-get="{% url 'devices:os-list' %}"x
           hx-target="#os-body"
           hx-swap="innerHTML"
           hx-trigger="change from:input[type=checkbox]"

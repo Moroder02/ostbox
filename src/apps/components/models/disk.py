@@ -10,7 +10,7 @@ from apps.devices.models import DiskType
 class DiskModel(AbstractComponentModel):
     disk_type = models.CharField(
         max_length=20,
-        choices=DiskType.choices,
+        choices=DiskType,
         db_index=True,
         verbose_name=_("Тип диска"),
     )
