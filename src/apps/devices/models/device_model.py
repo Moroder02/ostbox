@@ -2,7 +2,8 @@ from django.core.validators import MinValueValidator, MaxValueValidator
 from django.db import models
 from django.utils.translation import gettext_lazy as _
 
-from .common import DeviceKind, MIN_YEAR, CURRENT_YEAR, Vendor
+from .common import Vendor
+from ...core.models import CURRENT_YEAR, MIN_YEAR, DeviceKind
 
 
 class DeviceModel(models.Model):

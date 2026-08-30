@@ -2,7 +2,8 @@ import django_filters
 from django import forms
 from django.db.models import Q
 
-from .models import Vendor, ProductionCountry, Countries, OSFamily, OperatingSystem
+from .models import Vendor, OperatingSystem
+from ..core.models import ProductionCountry, Countries, OSFamily
 
 
 class VendorFilter(django_filters.FilterSet):

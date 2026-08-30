@@ -4,7 +4,8 @@ from django.db.models import Q
 from django.utils.translation import gettext_lazy as _
 
 from .abstractions import AbstractComponentModel, AbstractComponent
-from apps.devices.models import DiskType, Device
+from apps.devices.models import Device
+from ...core.models import DiskType
 
 
 class DiskModel(AbstractComponentModel):

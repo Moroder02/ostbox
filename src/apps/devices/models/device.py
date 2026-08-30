@@ -4,7 +4,8 @@ from django.db.models import Q
 from django.utils.translation import gettext_lazy as _
 
 from .device_model import DeviceModel
-from .common import OperatingSystem, MIN_YEAR, CURRENT_YEAR, Protocol
+from .common import OperatingSystem, Protocol
+from ...core.models import CURRENT_YEAR, MIN_YEAR
 
 
 class Device(models.Model):

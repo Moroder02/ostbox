@@ -2,7 +2,7 @@ from django.db import models
 from django.utils.translation import gettext_lazy as _
 
 from apps.devices.models.device_model import DeviceModel
-from apps.devices.models.common import PortPhysicalType
+from apps.core.models import PortPhysicalType
 
 
 class NetworkPortGroup(models.Model):

@@ -2,7 +2,7 @@ from django.core.exceptions import ValidationError
 from django.db import models
 from django.utils.translation import gettext_lazy as _
 
-from apps.devices.models.common import PortStatus
+from apps.core.models import PortStatus
 from apps.devices.models.ports import NetworkPortGroup
 from apps.devices.models.device import Device
 
