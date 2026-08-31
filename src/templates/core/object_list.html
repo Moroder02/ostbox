@@ -7,10 +7,7 @@
 
 
 {% block side %}
-	<h4>Боковушка</h4>
-    {% for field in obj_fields %}
-    	<p>{{ field.verbose_name }}</p>
-    {% endfor %}
+	<h4>Фильтрация</h4>
 
 {% endblock %}
 
@@ -27,10 +24,6 @@
         {% for field in obj_fields %}
             <th>{{ field.verbose_name }}</th>
         {% endfor %}
-{#        <th>Заголовок 1</th>#}
-{#        <th>Заголовок 2</th>#}
-{#        <th>Заголовок 3</th>#}
-{#        <th>Заголовок 4</th>#}
     </tr>
     </thead>
     {% for object in objects %}
@@ -41,15 +34,5 @@
             {% endfor %}
         </tr>
     {% endfor %}
-    
-{#    <tbody>#}
-{#        {% for obj in objects %}#}
-{#        <tr>#}
-{#            {% for field in obj_fields %}#}
-{#                <td>{{ obj|get_field_value:field.name }}</td>#}
-{#            {% endfor %}#}
-{#        </tr>#}
-{#        {% endfor %}#}
-{#    </tbody>#}
 {% endblock %}
 

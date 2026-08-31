@@ -16,7 +16,7 @@ def cpu_model_list(request):
 
 
 def disk_list(request):
-    disks = Disk.objects.select_related('disk_model').all()
+    disks = Disk.objects.select_related('disk_model__vendor', 'device__device_model', 'device__device_model__vendor').all()
     allowed_fields = ['disk_model', 'device', 'serial_number']
     obj_fields = [Disk._meta.get_field(name) for name in allowed_fields]
     context = {

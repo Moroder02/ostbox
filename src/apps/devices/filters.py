@@ -2,12 +2,11 @@ import django_filters
 from django import forms
 from django.db.models import Q
 
-from .models import Vendor, OperatingSystem
-from ..core.models import ProductionCountry, Countries, OSFamily
+from .models import Vendor, OperatingSystem, Device
+from apps.core.models import ProductionCountry, Countries, OSFamily, DeviceKind
 
 
 class VendorFilter(django_filters.FilterSet):
-
     search = django_filters.CharFilter(
         method='filter_search',
         label='Поиск',
@@ -46,7 +45,6 @@ class VendorFilter(django_filters.FilterSet):
 
 
 class OSFilter(django_filters.FilterSet):
-
     family = django_filters.MultipleChoiceFilter(
         choices=OSFamily.choices,
         field_name='family',
@@ -65,7 +63,21 @@ class OSFilter(django_filters.FilterSet):
         })
     )
 
-
     class Meta:
         model = OperatingSystem
         fields = ('family', 'vendor_country')
+
+
+class DeviceFilter(django_filters.FilterSet):
+    kinds = django_filters.MultipleChoiceFilter(
+        choices=DeviceKind.choices,
+        field_name='device_model__kind',
+        label='Тип устройства',
+        widget=forms.CheckboxSelectMultiple(attrs={
+            'class': 'form-check-input',
+        })
+    )
+
+    class Meta:
+        model = Device
+        fields = ('kinds',)
