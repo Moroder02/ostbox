@@ -1,0 +1,245 @@
+[
+  {
+    "model": "devices.vendor",
+    "pk": 1,
+    "fields": {
+      "name": "Test Vendor A",
+      "production": "LOCAL",
+      "country": "US"
+    }
+  },
+  {
+    "model": "devices.vendor",
+    "pk": 2,
+    "fields": {
+      "name": "Test Vendor B",
+      "production": "IMPORTED",
+      "country": "CN"
+    }
+  },
+  {
+    "model": "devices.protocol",
+    "pk": 1,
+    "fields": {
+      "name": "SSH"
+    }
+  },
+  {
+    "model": "devices.protocol",
+    "pk": 2,
+    "fields": {
+      "name": "SNMP"
+    }
+  },
+  {
+    "model": "devices.operatingsystem",
+    "pk": 1,
+    "fields": {
+      "vendor_id": 1,
+      "name": "TestOS",
+      "family": "UNIX",
+      "codename": "Alpha",
+      "version": "1.0",
+      "edition": "Standard",
+      "build": "1001",
+      "architecture": "x86_64",
+      "kernel": "5.4.0",
+      "is_lts": true,
+      "release_date": "2023-01-01",
+      "eol_date": "2030-01-01"
+    }
+  },
+  {
+    "model": "devices.operatingsystem",
+    "pk": 2,
+    "fields": {
+      "vendor_id": 2,
+      "name": "FirmOS",
+      "family": "RTOS",
+      "codename": "Beta",
+      "version": "2.1",
+      "edition": "Enterprise",
+      "build": "2021",
+      "architecture": "ARMv8",
+      "kernel": "",
+      "is_lts": false,
+      "release_date": "2022-06-15",
+      "eol_date": "2027-06-15"
+    }
+  },
+  {
+    "model": "devices.devicemodel",
+    "pk": 1,
+    "fields": {
+      "kind": "SERVER",
+      "vendor_id": 1,
+      "part_number": "TV-A-001",
+      "production_year": 2023
+    }
+  },
+  {
+    "model": "devices.devicemodel",
+    "pk": 2,
+    "fields": {
+      "kind": "SWITCH",
+      "vendor_id": 2,
+      "part_number": "TV-B-001",
+      "production_year": 2022
+    }
+  },
+  {
+    "model": "devices.devicemodel",
+    "pk": 3,
+    "fields": {
+      "kind": "ROUTER",
+      "vendor_id": 74,
+      "part_number": "RB4011iGS+RM",
+      "production_year": 2021
+    }
+  },
+  {
+    "model": "devices.devicemodel",
+    "pk": 4,
+    "fields": {
+      "kind": "SWITCH",
+      "vendor_id": 26,
+      "part_number": "CBS350-24T-4G",
+      "production_year": 2020
+    }
+  },
+  {
+    "model": "devices.devicemodel",
+    "pk": 5,
+    "fields": {
+      "kind": "SWITCH",
+      "vendor_id": 36,
+      "part_number": "DGS-1210-28",
+      "production_year": 2019
+    }
+  },
+  {
+    "model": "devices.device",
+    "pk": 1,
+    "fields": {
+      "device_model_id": 1,
+      "serial_number": "SN001",
+      "inventory_number": "INV001",
+      "operating_system_id": 1,
+      "purchase_year": 2023,
+      "management_ip": "192.168.1.10",
+      "management_protocols": [1]
+    }
+  },
+  {
+    "model": "devices.device",
+    "pk": 2,
+    "fields": {
+      "device_model_id": 2,
+      "serial_number": "SN002",
+      "inventory_number": "INV002",
+      "operating_system_id": 2,
+      "purchase_year": 2022,
+      "management_ip": "192.168.1.20",
+      "management_protocols": [1, 2]
+    }
+  },
+  {
+    "model": "devices.device",
+    "pk": 3,
+    "fields": {
+      "device_model_id": 3,
+      "serial_number": "MT-ROUTER-001",
+      "inventory_number": "INV003",
+      "operating_system_id": null,
+      "purchase_year": 2023,
+      "management_ip": "192.168.1.30",
+      "management_protocols": [1]
+    }
+  },
+  {
+    "model": "devices.device",
+    "pk": 4,
+    "fields": {
+      "device_model_id": 4,
+      "serial_number": "CISCO-SW-001",
+      "inventory_number": "INV004",
+      "operating_system_id": null,
+      "purchase_year": 2022,
+      "management_ip": "192.168.1.40",
+      "management_protocols": [2]
+    }
+  },
+  {
+    "model": "devices.device",
+    "pk": 5,
+    "fields": {
+      "device_model_id": 5,
+      "serial_number": "DLINK-SW-001",
+      "inventory_number": "INV005",
+      "operating_system_id": null,
+      "purchase_year": 2021,
+      "management_ip": "192.168.1.50",
+      "management_protocols": [2]
+    }
+  },
+  {
+    "model": "components.diskmodel",
+    "pk": 1,
+    "fields": {
+      "disk_type": "SSD",
+      "size_gb": 500,
+      "rpm": null,
+      "vendor_id": 1,
+      "part_number": "DISK-A-001"
+    }
+  },
+  {
+    "model": "components.diskmodel",
+    "pk": 2,
+    "fields": {
+      "disk_type": "HDD",
+      "size_gb": 2000,
+      "rpm": 7200,
+      "vendor_id": 2,
+      "part_number": "DISK-B-001"
+    }
+  },
+  {
+    "model": "components.disk",
+    "pk": 1,
+    "fields": {
+      "disk_model_id": 1,
+      "device_id": 1,
+      "serial_number": "DSN001"
+    }
+  },
+  {
+    "model": "components.disk",
+    "pk": 2,
+    "fields": {
+      "disk_model_id": 2,
+      "device_id": 2,
+      "serial_number": "DSN002"
+    }
+  },
+  {
+    "model": "components.diskmodel",
+    "pk": 3,
+    "fields": {
+      "disk_type": "SSD",
+      "size_gb": 500,
+      "rpm": null,
+      "vendor_id": 1,
+      "part_number": "DISK-A-001-SAME"
+    }
+  },
+  {
+    "model": "components.disk",
+    "pk": 3,
+    "fields": {
+      "disk_model_id": 3,
+      "device_id": 1,
+      "serial_number": "DSN001-B"
+    }
+  }
+]
