@@ -19,3 +19,12 @@ def get_field_value(obj, field_name):
 
     return value
 
+
+@register.inclusion_tag("core/object_filter.html")
+def render_filter(context, filter_obj, title='Фильтрация'):
+    
+    return {
+        'filter': filter_obj,
+        'title': title,
+        'request': context.get('request'),
+    }
