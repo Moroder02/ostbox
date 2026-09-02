@@ -98,11 +98,11 @@ class Vendor(models.Model):
         verbose_name=_("Название"),
     )
     production = models.CharField(
-        choices=ProductionCountry.choices,
+        choices=ProductionCountry,
         max_length=100,
     )
     country = models.CharField(
-        choices=Countries.choices,
+        choices=Countries,
         max_length=100,
         blank=True,
         null=True,
