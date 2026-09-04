@@ -6,12 +6,12 @@
     {% for vendor in vendors %}
         <tr id="vendor-{{ vendor.pk }}">
             <td>{{ forloop.counter }}</td>
-            <td><a href="{% url 'devices:vendor-detail' vendor.pk %}">{{ vendor.name }}</a></td>
+            <td><a href="{% url 'commons:vendor-detail' vendor.pk %}">{{ vendor.name }}</a></td>
             {#        <td>{{ vendor.get_production_display }}</td>#}
             <td>{{ vendor.get_country_display }}</td>
             <td class="text-center">
                 <div class="btn-group">
-                    <a href="{% url 'devices:vendor-update' vendor.pk %}"
+                    <a href="{% url 'commons:vendor-update' vendor.pk %}"
                     class="btn btn-sm btn-alt-secondary"
                     data-bs-toggle="tooltip"
                     title="Редактировать">
@@ -19,7 +19,7 @@
                     </a>
 
                     <button class="btn btn-sm btn-alt-secondary"
-                            hx-post="{% url 'devices:vendor-delete' vendor.pk %}"
+                            hx-post="{% url 'commons:vendor-delete' vendor.pk %}"
                             hx-headers='{"X-CSRFToken": "{{ csrf_token }}"}'
                             hx-target="#vendor-{{ vendor.pk }}"
                             hx-swap="outerHTML"
@@ -51,7 +51,7 @@
             <i class="fa fa-fw fa-plus"></i>
         </a>
     </div>
-    <form hx-get="{% url 'devices:vendor-list' %}"
+    <form hx-get="{% url 'commons:vendor-list' %}"
           hx-target="#vendors-table"
           hx-swap="innerHTML"
           hx-trigger="keyup changed delay:300ms from:input[type=text], change from:select, change from:input[type=checkbox]"
@@ -114,5 +114,5 @@
 
 
 {% block modals %}
-    {% include 'devices/vendors/inc/_vendor_create_modal.html' %}
+    {% include 'commons/vendors/inc/_vendor_create_modal.html' %}
 {% endblock %}

@@ -2,9 +2,9 @@ from django.contrib import messages
 from django.http import HttpResponse
 from django.shortcuts import render, get_object_or_404, redirect
 
-from apps.devices.forms.devices_forms import VendorForm
+from apps.devices.forms import VendorForm
 from apps.devices.models import Vendor
-from apps.devices.filters import VendorFilter
+from apps.commons.filters import VendorFilter
 
 
 def vendor_list(request):
@@ -19,8 +19,8 @@ def vendor_list(request):
         'selected_countries': request.GET.getlist('country'),
     }
     if request.htmx:
-        return render(request, 'devices/vendors/vendor_list.html#searching', context)
-    return render(request, 'devices/vendors/vendor_list.html', context)
+        return render(request, 'devices/../../templates/commons/vendors/vendor_list.html#searching', context)
+    return render(request, 'devices/../../templates/commons/vendors/vendor_list.html', context)
 
 
 def vendor_manage(request, pk=None):
@@ -46,12 +46,12 @@ def vendor_manage(request, pk=None):
     }
 
     # Use the same template for both operations
-    return render(request, 'devices/vendors/vendor_form.html', context)
+    return render(request, 'devices/../../templates/commons/vendors/vendor_form.html', context)
 
 
 def vendor_detail(request, pk):
     vendor = get_object_or_404(Vendor, pk=pk)
-    return render(request, 'devices/vendors/vendor_detail.html', {'vendor': vendor})
+    return render(request, 'devices/../../templates/commons/vendors/vendor_detail.html', {'vendor': vendor})
 
 
 def vendor_delete(request, pk):
@@ -66,5 +66,5 @@ def vendor_delete(request, pk):
         messages.success(request, 'Vendor deleted successfully.')
         return redirect('devices:vendor-list')
 
-    return render(request, 'devices/vendors/vendor_confirm_delete.html', {'vendor': vendor})
+    return render(request, 'devices/../../templates/commons/vendors/vendor_confirm_delete.html', {'vendor': vendor})
 

@@ -42,6 +42,7 @@ INSTALLED_APPS = [
 
     'apps.users',
     'apps.devices',
+    'apps.commons',
 
     'django_filters',
     'django_htmx',
