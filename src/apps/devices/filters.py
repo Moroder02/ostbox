@@ -16,7 +16,7 @@ class VendorFilter(django_filters.FilterSet):
         })
     )
     production_type = django_filters.ChoiceFilter(
-        choices=ProductionCountry.choices,
+        choices=ProductionCountry,
         field_name='production',
         lookup_expr='iexact',
         empty_label='Любое',
@@ -24,7 +24,7 @@ class VendorFilter(django_filters.FilterSet):
     )
 
     country = django_filters.MultipleChoiceFilter(
-        choices=Countries.choices,
+        choices=Countries,
         field_name='country',
         label='Страна',
         widget=forms.CheckboxSelectMultiple(attrs={
@@ -39,6 +39,15 @@ class VendorFilter(django_filters.FilterSet):
     def filter_search(self, queryset, name, value):
         if not value:
             return queryset
+
+        val_lower = value.lower()
+
+        matched_countries = [
+            code for code, label in Countries.choices
+            if val_lower in str(label).lower()
+        ]
+
         return queryset.filter(
-            Q(name__icontains=value) | Q(country__icontains=value)
+            Q(name__icontains=value) | Q(country__in=matched_countries)
         )
+
