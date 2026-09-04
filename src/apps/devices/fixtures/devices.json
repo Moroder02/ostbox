@@ -1,0 +1,59 @@
+[
+  {
+    "model": "devices.devicemodel",
+    "pk": 1,
+    "fields": {
+      "kind": "server",
+      "vendor": 1,
+      "part_number": "SRV-1000",
+      "production_year": 2022
+    }
+  },
+  {
+    "model": "commons.operatingsystem",
+    "pk": 1,
+    "fields": {
+      "name": "Ubuntu 22.04 LTS"
+    }
+  },
+  {
+    "model": "commons.protocol",
+    "pk": 1,
+    "fields": {
+      "name": "SSH"
+    }
+  },
+  {
+    "model": "commons.protocol",
+    "pk": 2,
+    "fields": {
+      "name": "HTTP"
+    }
+  },
+  {
+    "model": "devices.device",
+    "pk": 1,
+    "fields": {
+      "device_model": 1,
+      "serial_number": "SN-DEV-001",
+      "inventory_number": "INV-001",
+      "operating_system": 1,
+      "purchase_year": 2023,
+      "management_ip": "192.168.1.10",
+      "management_protocols": [1, 2]
+    }
+  },
+  {
+    "model": "devices.device",
+    "pk": 2,
+    "fields": {
+      "device_model": 1,
+      "serial_number": "SN-DEV-002",
+      "inventory_number": "INV-002",
+      "operating_system": null,
+      "purchase_year": 2024,
+      "management_ip": "192.168.1.11",
+      "management_protocols": []
+    }
+  }
+]

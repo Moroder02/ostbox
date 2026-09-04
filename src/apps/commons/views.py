@@ -19,8 +19,8 @@ def vendor_list(request):
         'selected_countries': request.GET.getlist('country'),
     }
     if request.htmx:
-        return render(request, 'devices/../../templates/commons/vendors/vendor_list.html#searching', context)
-    return render(request, 'devices/../../templates/commons/vendors/vendor_list.html', context)
+        return render(request, 'commons/vendors/vendor_list.html#searching', context)
+    return render(request, 'commons/vendors/vendor_list.html', context)
 
 
 def vendor_manage(request, pk=None):

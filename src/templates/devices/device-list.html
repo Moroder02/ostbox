@@ -1,0 +1,82 @@
+{% extends 'layouts/list_filter_layout.html' %}
+
+{# Partials Start #}
+{% partialdef filtering %}
+    {% for device in devices %}
+    <tr id="device-{{ device.pk }}">
+        <td>{{ forloop.counter }}</td>
+        <td><a href="#">{{ device.device_model }}</a></td>
+        <td>{{ device.device_model.get_kind_display }}</td>
+        <td class="text-center">
+            <div class="btn-group">
+                <a href="#"
+                   class="btn btn-sm btn-alt-secondary"
+                   data-bs-toggle="tooltip"
+                   title="Редактировать">
+                    <i class="fa fa-fw fa-pencil-alt"></i>
+                </a>
+
+                <button class="btn btn-sm btn-alt-secondary"
+                        hx-post="#"
+                        hx-headers='{"X-CSRFToken": "{{ csrf_token }}"}'
+                        hx-target="#device-{{ device.pk }}"
+                        hx-swap="outerHTML"
+                        hx-confirm="Вы уверены, что хотите удалить устройство {{ device }}?"
+                        data-bs-toggle="tooltip"
+                        title="Удалить">
+                    <i class="fa fa-fw fa-times"></i>
+                </button>
+
+            </div>
+        </td>
+    </tr>
+    {% endfor %}
+{% endpartialdef filtering %}
+{# Partials End #}
+
+
+{% block side %}
+    <form hx-get="{% url 'devices:device-list' %}"
+          hx-target="#device-table"
+          hx-swap="innerHTML"
+          hx-trigger="change from:input[type=checkbox]"
+          class="p-2 mb-4"
+    >
+        <div class="mb-3">
+            <span class="form-label small mb-2 d-block">Тип устройства</span>
+            {% for choice_value, choice_label in filter.form.kind.field.choices %}
+                <div class="form-check">
+                    <input type="checkbox"
+                           class="form-check-input"
+                           name="kind"
+                           value="{{ choice_value }}"
+                           id="id_kind_{{ forloop.counter0 }}"
+                           {% if choice_value in selected_kinds %}checked{% endif %}>
+                    <label class="form-check-label" for="id_kind_{{ forloop.counter0 }}">
+                        {{ choice_label }}
+                    </label>
+                </div>
+            {% endfor %}
+        </div>
+    </form>
+{% endblock %}
+
+{% block content_title %}
+    Устройства
+{% endblock %}
+
+{% block table %}
+    <table class="table">
+        <thead>
+        <tr>
+            <th>№</th>
+            <th>Устройство</th>
+            <th>Тип устройства</th>
+            <th></th>
+        </tr>
+        </thead>
+        <tbody id="device-table">
+        {% partial filtering %}
+        </tbody>
+    </table>
+{% endblock %}

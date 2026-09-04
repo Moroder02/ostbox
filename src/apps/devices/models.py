@@ -4,8 +4,16 @@ from django.core.exceptions import ValidationError
 from django.core.validators import MinValueValidator, MaxValueValidator
 from django.utils.translation import gettext_lazy as _
 
-from apps.commons.models import OperatingSystem, MIN_YEAR, CURRENT_YEAR, Protocol, DeviceKind, MIN_YEAR, CURRENT_YEAR, \
-    Vendor, PortPhysicalType, PortStatus
+from apps.commons.models import (
+    OperatingSystem,
+    Protocol,
+    DeviceKind,
+    MIN_YEAR,
+    CURRENT_YEAR,
+    Vendor,
+    PortPhysicalType,
+    PortStatus
+)
 
 
 class DeviceModel(models.Model):
