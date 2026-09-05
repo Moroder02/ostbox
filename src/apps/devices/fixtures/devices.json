@@ -1,59 +1,360 @@
 [
   {
-    "model": "devices.devicemodel",
-    "pk": 1,
+    "model": "commons.vendor",
+    "pk": 1001,
     "fields": {
-      "kind": "server",
-      "vendor": 1,
-      "part_number": "SRV-1000",
-      "production_year": 2022
+      "name": "Test Vendor 1",
+      "production": "foreign",
+      "country": "US"
+    }
+  },
+  {
+    "model": "commons.vendor",
+    "pk": 1002,
+    "fields": {
+      "name": "Test Vendor 2",
+      "production": "foreign",
+      "country": "DE"
+    }
+  },
+  {
+    "model": "commons.vendor",
+    "pk": 1003,
+    "fields": {
+      "name": "Domestic Brand A",
+      "production": "domestic",
+      "country": "RU"
     }
   },
   {
     "model": "commons.operatingsystem",
-    "pk": 1,
+    "pk": 101,
     "fields": {
-      "name": "Ubuntu 22.04 LTS"
+      "name": "CentOS 7"
+    }
+  },
+  {
+    "model": "commons.operatingsystem",
+    "pk": 102,
+    "fields": {
+      "name": "Windows Server 2019"
+    }
+  },
+  {
+    "model": "commons.operatingsystem",
+    "pk": 103,
+    "fields": {
+      "name": "VyOS 1.4"
+    }
+  },
+  {
+    "model": "commons.operatingsystem",
+    "pk": 104,
+    "fields": {
+      "name": "OpenBSD 7.2"
     }
   },
   {
     "model": "commons.protocol",
-    "pk": 1,
+    "pk": 101,
     "fields": {
-      "name": "SSH"
+      "name": "Telnet"
     }
   },
   {
     "model": "commons.protocol",
-    "pk": 2,
+    "pk": 102,
     "fields": {
-      "name": "HTTP"
+      "name": "HTTPS"
+    }
+  },
+  {
+    "model": "commons.protocol",
+    "pk": 103,
+    "fields": {
+      "name": "SNMPv3"
+    }
+  },
+  {
+    "model": "commons.protocol",
+    "pk": 104,
+    "fields": {
+      "name": "IPMI"
+    }
+  },
+  {
+    "model": "devices.devicemodel",
+    "pk": 101,
+    "fields": {
+      "kind": "server",
+      "vendor": 1001,
+      "part_number": "TS-SRV-HIGHEND-01",
+      "production_year": 2023
+    }
+  },
+  {
+    "model": "devices.devicemodel",
+    "pk": 102,
+    "fields": {
+      "kind": "switch",
+      "vendor": 1002,
+      "part_number": "TV-SW-NGFW-48GT2X",
+      "production_year": 2022
+    }
+  },
+  {
+    "model": "devices.devicemodel",
+    "pk": 103,
+    "fields": {
+      "kind": "router",
+      "vendor": 1001,
+      "part_number": "TS-RT-WIRELESS-AC",
+      "production_year": 2021
+    }
+  },
+  {
+    "model": "devices.devicemodel",
+    "pk": 104,
+    "fields": {
+      "kind": "storage_system",
+      "vendor": 1003,
+      "part_number": "DBA-STOR-NAS-12BAY",
+      "production_year": 2023
+    }
+  },
+  {
+    "model": "devices.devicemodel",
+    "pk": 105,
+    "fields": {
+      "kind": "firewall",
+      "vendor": 24,
+      "part_number": "CHELS-FW-MGMT-10G",
+      "production_year": 2020
+    }
+  },
+  {
+    "model": "devices.devicemodel",
+    "pk": 106,
+    "fields": {
+      "kind": "crypto_gate",
+      "vendor": 137,
+      "part_number": "ITC-CG-VPN-PRO",
+      "production_year": 2022
+    }
+  },
+  {
+    "model": "devices.devicemodel",
+    "pk": 107,
+    "fields": {
+      "kind": "server",
+      "vendor": 138,
+      "part_number": "KRAFT-SRV-RACK-2U",
+      "production_year": 2021
+    }
+  },
+  {
+    "model": "devices.devicemodel",
+    "pk": 108,
+    "fields": {
+      "kind": "switch",
+      "vendor": 1002,
+      "part_number": "TV-SW-LAYER2-24PORT",
+      "production_year": 2023
     }
   },
   {
     "model": "devices.device",
-    "pk": 1,
+    "pk": 101,
     "fields": {
-      "device_model": 1,
-      "serial_number": "SN-DEV-001",
-      "inventory_number": "INV-001",
-      "operating_system": 1,
+      "device_model": 101,
+      "serial_number": "TS-SRV-00001",
+      "inventory_number": "INV-SRV-001",
+      "operating_system": 102,
       "purchase_year": 2023,
-      "management_ip": "192.168.1.10",
-      "management_protocols": [1, 2]
+      "management_ip": "10.0.1.101",
+      "management_protocols": [102, 104]
     }
   },
   {
     "model": "devices.device",
-    "pk": 2,
+    "pk": 102,
     "fields": {
-      "device_model": 1,
-      "serial_number": "SN-DEV-002",
-      "inventory_number": "INV-002",
+      "device_model": 101,
+      "serial_number": "TS-SRV-00002",
+      "inventory_number": "INV-SRV-002",
+      "operating_system": 101,
+      "purchase_year": 2023,
+      "management_ip": "10.0.1.102",
+      "management_protocols": [101, 103]
+    }
+  },
+  {
+    "model": "devices.device",
+    "pk": 103,
+    "fields": {
+      "device_model": 102,
+      "serial_number": "TV-SW-2022-A01",
+      "inventory_number": "INV-SW-001",
+      "operating_system": 103,
+      "purchase_year": 2022,
+      "management_ip": "10.0.2.1",
+      "management_protocols": [103, 102]
+    }
+  },
+  {
+    "model": "devices.device",
+    "pk": 104,
+    "fields": {
+      "device_model": 102,
+      "serial_number": "TV-SW-2022-A02",
+      "inventory_number": "INV-SW-002",
+      "operating_system": 103,
+      "purchase_year": 2022,
+      "management_ip": "10.0.2.2",
+      "management_protocols": [103]
+    }
+  },
+  {
+    "model": "devices.device",
+    "pk": 105,
+    "fields": {
+      "device_model": 103,
+      "serial_number": "TS-RT-2021-R01",
+      "inventory_number": "INV-RT-001",
       "operating_system": null,
-      "purchase_year": 2024,
-      "management_ip": "192.168.1.11",
+      "purchase_year": 2021,
+      "management_ip": "10.0.3.1",
+      "management_protocols": [102]
+    }
+  },
+  {
+    "model": "devices.device",
+    "pk": 106,
+    "fields": {
+      "device_model": 104,
+      "serial_number": "DBA-STOR-NAS-001",
+      "inventory_number": "INV-STOR-001",
+      "operating_system": 101,
+      "purchase_year": 2023,
+      "management_ip": "10.0.4.10",
+      "management_protocols": [102, 103]
+    }
+  },
+  {
+    "model": "devices.device",
+    "pk": 107,
+    "fields": {
+      "device_model": 105,
+      "serial_number": "CHELS-FW-2020-FW1",
+      "inventory_number": "INV-FW-001",
+      "operating_system": 104,
+      "purchase_year": 2020,
+      "management_ip": "10.0.5.254",
+      "management_protocols": [102, 103, 104]
+    }
+  },
+  {
+    "model": "devices.device",
+    "pk": 108,
+    "fields": {
+      "device_model": 106,
+      "serial_number": "ITC-CG-2022-CRYPT1",
+      "inventory_number": "INV-CRYPT-001",
+      "operating_system": 101,
+      "purchase_year": 2022,
+      "management_ip": "10.0.6.100",
+      "management_protocols": [102, 104]
+    }
+  },
+  {
+    "model": "devices.device",
+    "pk": 109,
+    "fields": {
+      "device_model": 107,
+      "serial_number": "KRAFT-SRV-2021-SRV1",
+      "inventory_number": "INV-KRAFT-001",
+      "operating_system": 102,
+      "purchase_year": 2021,
+      "management_ip": "10.0.7.50",
+      "management_protocols": [102, 101]
+    }
+  },
+  {
+    "model": "devices.device",
+    "pk": 110,
+    "fields": {
+      "device_model": 108,
+      "serial_number": "TV-SW-L2-2023-SW1",
+      "inventory_number": "INV-TVSW-001",
+      "operating_system": null,
+      "purchase_year": 2023,
+      "management_ip": "10.0.8.20",
+      "management_protocols": [103]
+    }
+  },
+  {
+    "model": "devices.device",
+    "pk": 111,
+    "fields": {
+      "device_model": 108,
+      "serial_number": "TV-SW-L2-2023-SW2",
+      "inventory_number": "INV-TVSW-002",
+      "operating_system": null,
+      "purchase_year": 2023,
+      "management_ip": "10.0.8.21",
       "management_protocols": []
+    }
+  },
+  {
+    "model": "devices.device",
+    "pk": 112,
+    "fields": {
+      "device_model": 101,
+      "serial_number": "TS-SRV-00003",
+      "inventory_number": "INV-SRV-003",
+      "operating_system": 102,
+      "purchase_year": 2023,
+      "management_ip": "10.0.1.103",
+      "management_protocols": [102, 104, 101]
+    }
+  },
+  {
+    "model": "devices.device",
+    "pk": 113,
+    "fields": {
+      "device_model": 102,
+      "serial_number": "TV-SW-2022-A03",
+      "inventory_number": "INV-SW-003",
+      "operating_system": 103,
+      "purchase_year": 2022,
+      "management_ip": "10.0.2.3",
+      "management_protocols": [103, 102]
+    }
+  },
+  {
+    "model": "devices.device",
+    "pk": 114,
+    "fields": {
+      "device_model": 104,
+      "serial_number": "DBA-STOR-NAS-002",
+      "inventory_number": "INV-STOR-002",
+      "operating_system": 101,
+      "purchase_year": 2023,
+      "management_ip": "10.0.4.11",
+      "management_protocols": [102]
+    }
+  },
+  {
+    "model": "devices.device",
+    "pk": 115,
+    "fields": {
+      "device_model": 107,
+      "serial_number": "KRAFT-SRV-2021-SRV2",
+      "inventory_number": "INV-KRAFT-002",
+      "operating_system": 102,
+      "purchase_year": 2021,
+      "management_ip": "10.0.7.51",
+      "management_protocols": [102]
     }
   }
 ]
