@@ -6,6 +6,7 @@
           hx-swap="innerHTML"
           hx-trigger="change from:input[type=checkbox]"
           class="p-2 mb-4"
+          id="filter-form"
     >
         <div class="mb-3">
             <span class="form-label small mb-2 d-block">Тип устройства</span>
@@ -18,6 +19,38 @@
                            id="id_kind_{{ forloop.counter0 }}"
                            {% if choice_value in selected_kinds %}checked{% endif %}>
                     <label class="form-check-label" for="id_kind_{{ forloop.counter0 }}">
+                        {{ choice_label }}
+                    </label>
+                </div>
+            {% endfor %}
+        </div>
+        <div class="mb-3">
+            <span class="form-label small mb-2 d-block">Протокол</span>
+            {% for choice_value, choice_label in filter.form.protocol.field.choices %}
+                <div class="form-check">
+                    <input type="checkbox"
+                           class="form-check-input"
+                           name="protocol"
+                           value="{{ choice_value }}"
+                           id="id_protocol_{{ forloop.counter0 }}"
+                           {% if choice_value in selected_protocols %}checked{% endif %}>
+                    <label class="form-check-label" for="id_protocol_{{ forloop.counter0 }}">
+                        {{ choice_label }}
+                    </label>
+                </div>
+            {% endfor %}
+        </div>
+        <div class="mb-3">
+            <span class="form-label small mb-2 d-block">Операционные системы</span>
+            {% for choice_value, choice_label in filter.form.operating_system.field.choices %}
+                <div class="form-check">
+                    <input type="checkbox"
+                           class="form-check-input"
+                           name="operating_system"
+                           value="{{ choice_value }}"
+                           id="id_os_{{ forloop.counter0 }}"
+                           {% if choice_value in selected_os %}checked{% endif %}>
+                    <label class="form-check-label" for="id_os_{{ forloop.counter0 }}">
                         {{ choice_label }}
                     </label>
                 </div>
@@ -37,6 +70,10 @@
             <th>№</th>
             <th>Устройство</th>
             <th>Тип устройства</th>
+            <th>IP</th>
+            <th>Подключение</th>
+            <th>Год покупки</th>
+            <th>ОС</th>
             <th></th>
         </tr>
         </thead>
@@ -46,7 +83,9 @@
                 {% if forloop.last and objects.has_next %}
                     <tr hx-get="{% url 'devices:get-devices' %}?page={{ objects.next_page_number }}"
                         hx-trigger="revealed"
-                        hx-swap="afterend">
+                        hx-swap="afterend"
+                        hx-include="#filter-form"
+                    >
                         {% else %}
                     <tr id="device-{{ device.pk }}">
                 {% endif %}
@@ -57,6 +96,14 @@
             </td>
             <td><a href="#">{{ device.device_model }}</a></td>
             <td>{{ device.device_model.get_kind_display }}</td>
+            <td>{{ device.management_ip }}</td>
+            <td>
+                {% for protocol in device.management_protocols.all %}
+                    <div>{{ protocol }}</div>
+                {% endfor %}
+            </td>
+            <td>{{ device.purchase_year }}</td>
+            <td>{{ device.operating_system }}</td>
             <td class="text-center">
                 <div class="btn-group">
                     <a href="#"

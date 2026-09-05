@@ -1,32 +1,5 @@
 [
   {
-    "model": "commons.vendor",
-    "pk": 1001,
-    "fields": {
-      "name": "Test Vendor 1",
-      "production": "foreign",
-      "country": "US"
-    }
-  },
-  {
-    "model": "commons.vendor",
-    "pk": 1002,
-    "fields": {
-      "name": "Test Vendor 2",
-      "production": "foreign",
-      "country": "DE"
-    }
-  },
-  {
-    "model": "commons.vendor",
-    "pk": 1003,
-    "fields": {
-      "name": "Domestic Brand A",
-      "production": "domestic",
-      "country": "RU"
-    }
-  },
-  {
     "model": "commons.operatingsystem",
     "pk": 101,
     "fields": {
@@ -80,6 +53,33 @@
     "pk": 104,
     "fields": {
       "name": "IPMI"
+    }
+  },
+  {
+    "model": "commons.vendor",
+    "pk": 1001,
+    "fields": {
+      "name": "Test Vendor 1",
+      "production": "foreign",
+      "country": "US"
+    }
+  },
+  {
+    "model": "commons.vendor",
+    "pk": 1002,
+    "fields": {
+      "name": "Test Vendor 2",
+      "production": "foreign",
+      "country": "DE"
+    }
+  },
+  {
+    "model": "commons.vendor",
+    "pk": 1003,
+    "fields": {
+      "name": "Domestic Brand A",
+      "production": "domestic",
+      "country": "RU"
     }
   },
   {
@@ -172,7 +172,10 @@
       "operating_system": 102,
       "purchase_year": 2023,
       "management_ip": "10.0.1.101",
-      "management_protocols": [102, 104]
+      "management_protocols": [
+        102,
+        104
+      ]
     }
   },
   {
@@ -185,7 +188,10 @@
       "operating_system": 101,
       "purchase_year": 2023,
       "management_ip": "10.0.1.102",
-      "management_protocols": [101, 103]
+      "management_protocols": [
+        101,
+        103
+      ]
     }
   },
   {
@@ -198,7 +204,10 @@
       "operating_system": 103,
       "purchase_year": 2022,
       "management_ip": "10.0.2.1",
-      "management_protocols": [103, 102]
+      "management_protocols": [
+        103,
+        102
+      ]
     }
   },
   {
@@ -211,7 +220,9 @@
       "operating_system": 103,
       "purchase_year": 2022,
       "management_ip": "10.0.2.2",
-      "management_protocols": [103]
+      "management_protocols": [
+        103
+      ]
     }
   },
   {
@@ -224,7 +235,9 @@
       "operating_system": null,
       "purchase_year": 2021,
       "management_ip": "10.0.3.1",
-      "management_protocols": [102]
+      "management_protocols": [
+        102
+      ]
     }
   },
   {
@@ -237,7 +250,10 @@
       "operating_system": 101,
       "purchase_year": 2023,
       "management_ip": "10.0.4.10",
-      "management_protocols": [102, 103]
+      "management_protocols": [
+        102,
+        103
+      ]
     }
   },
   {
@@ -250,7 +266,11 @@
       "operating_system": 104,
       "purchase_year": 2020,
       "management_ip": "10.0.5.254",
-      "management_protocols": [102, 103, 104]
+      "management_protocols": [
+        102,
+        103,
+        104
+      ]
     }
   },
   {
@@ -263,7 +283,10 @@
       "operating_system": 101,
       "purchase_year": 2022,
       "management_ip": "10.0.6.100",
-      "management_protocols": [102, 104]
+      "management_protocols": [
+        102,
+        104
+      ]
     }
   },
   {
@@ -276,7 +299,10 @@
       "operating_system": 102,
       "purchase_year": 2021,
       "management_ip": "10.0.7.50",
-      "management_protocols": [102, 101]
+      "management_protocols": [
+        102,
+        101
+      ]
     }
   },
   {
@@ -289,7 +315,9 @@
       "operating_system": null,
       "purchase_year": 2023,
       "management_ip": "10.0.8.20",
-      "management_protocols": [103]
+      "management_protocols": [
+        103
+      ]
     }
   },
   {
@@ -315,7 +343,11 @@
       "operating_system": 102,
       "purchase_year": 2023,
       "management_ip": "10.0.1.103",
-      "management_protocols": [102, 104, 101]
+      "management_protocols": [
+        102,
+        104,
+        101
+      ]
     }
   },
   {
@@ -328,7 +360,10 @@
       "operating_system": 103,
       "purchase_year": 2022,
       "management_ip": "10.0.2.3",
-      "management_protocols": [103, 102]
+      "management_protocols": [
+        103,
+        102
+      ]
     }
   },
   {
@@ -341,7 +376,9 @@
       "operating_system": 101,
       "purchase_year": 2023,
       "management_ip": "10.0.4.11",
-      "management_protocols": [102]
+      "management_protocols": [
+        102
+      ]
     }
   },
   {
@@ -354,7 +391,477 @@
       "operating_system": 102,
       "purchase_year": 2021,
       "management_ip": "10.0.7.51",
-      "management_protocols": [102]
+      "management_protocols": [
+        102
+      ]
+    }
+  },
+  {
+    "model": "devices.device",
+    "pk": 116,
+    "fields": {
+      "device_model": 101,
+      "serial_number": "TS-SRV-00001-2",
+      "inventory_number": "INV-SRV-001-2",
+      "operating_system": 102,
+      "purchase_year": 2023,
+      "management_ip": "10.0.1.111",
+      "management_protocols": [
+        102,
+        104
+      ]
+    }
+  },
+  {
+    "model": "devices.device",
+    "pk": 117,
+    "fields": {
+      "device_model": 101,
+      "serial_number": "TS-SRV-00002-2",
+      "inventory_number": "INV-SRV-002-2",
+      "operating_system": 101,
+      "purchase_year": 2023,
+      "management_ip": "10.0.1.112",
+      "management_protocols": [
+        101,
+        103
+      ]
+    }
+  },
+  {
+    "model": "devices.device",
+    "pk": 118,
+    "fields": {
+      "device_model": 102,
+      "serial_number": "TV-SW-2022-A01-2",
+      "inventory_number": "INV-SW-001-2",
+      "operating_system": 103,
+      "purchase_year": 2022,
+      "management_ip": "10.0.2.11",
+      "management_protocols": [
+        103,
+        102
+      ]
+    }
+  },
+  {
+    "model": "devices.device",
+    "pk": 119,
+    "fields": {
+      "device_model": 102,
+      "serial_number": "TV-SW-2022-A02-2",
+      "inventory_number": "INV-SW-002-2",
+      "operating_system": 103,
+      "purchase_year": 2022,
+      "management_ip": "10.0.2.12",
+      "management_protocols": [
+        103
+      ]
+    }
+  },
+  {
+    "model": "devices.device",
+    "pk": 120,
+    "fields": {
+      "device_model": 103,
+      "serial_number": "TS-RT-2021-R01-2",
+      "inventory_number": "INV-RT-001-2",
+      "operating_system": null,
+      "purchase_year": 2021,
+      "management_ip": "10.0.3.11",
+      "management_protocols": [
+        102
+      ]
+    }
+  },
+  {
+    "model": "devices.device",
+    "pk": 121,
+    "fields": {
+      "device_model": 104,
+      "serial_number": "DBA-STOR-NAS-001-2",
+      "inventory_number": "INV-STOR-001-2",
+      "operating_system": 101,
+      "purchase_year": 2023,
+      "management_ip": "10.0.4.20",
+      "management_protocols": [
+        102,
+        103
+      ]
+    }
+  },
+  {
+    "model": "devices.device",
+    "pk": 122,
+    "fields": {
+      "device_model": 105,
+      "serial_number": "CHELS-FW-2020-FW1-2",
+      "inventory_number": "INV-FW-001-2",
+      "operating_system": 104,
+      "purchase_year": 2020,
+      "management_ip": "10.0.5.244",
+      "management_protocols": [
+        102,
+        103,
+        104
+      ]
+    }
+  },
+  {
+    "model": "devices.device",
+    "pk": 123,
+    "fields": {
+      "device_model": 106,
+      "serial_number": "ITC-CG-2022-CRYPT1-2",
+      "inventory_number": "INV-CRYPT-001-2",
+      "operating_system": 101,
+      "purchase_year": 2022,
+      "management_ip": "10.0.6.110",
+      "management_protocols": [
+        102,
+        104
+      ]
+    }
+  },
+  {
+    "model": "devices.device",
+    "pk": 124,
+    "fields": {
+      "device_model": 107,
+      "serial_number": "KRAFT-SRV-2021-SRV1-2",
+      "inventory_number": "INV-KRAFT-001-2",
+      "operating_system": 102,
+      "purchase_year": 2021,
+      "management_ip": "10.0.7.60",
+      "management_protocols": [
+        102,
+        101
+      ]
+    }
+  },
+  {
+    "model": "devices.device",
+    "pk": 125,
+    "fields": {
+      "device_model": 108,
+      "serial_number": "TV-SW-L2-2023-SW1-2",
+      "inventory_number": "INV-TVSW-001-2",
+      "operating_system": null,
+      "purchase_year": 2023,
+      "management_ip": "10.0.8.30",
+      "management_protocols": [
+        103
+      ]
+    }
+  },
+  {
+    "model": "devices.device",
+    "pk": 126,
+    "fields": {
+      "device_model": 108,
+      "serial_number": "TV-SW-L2-2023-SW2-2",
+      "inventory_number": "INV-TVSW-002-2",
+      "operating_system": null,
+      "purchase_year": 2023,
+      "management_ip": "10.0.8.31",
+      "management_protocols": []
+    }
+  },
+  {
+    "model": "devices.device",
+    "pk": 127,
+    "fields": {
+      "device_model": 101,
+      "serial_number": "TS-SRV-00003-2",
+      "inventory_number": "INV-SRV-003-2",
+      "operating_system": 102,
+      "purchase_year": 2023,
+      "management_ip": "10.0.1.113",
+      "management_protocols": [
+        102,
+        104,
+        101
+      ]
+    }
+  },
+  {
+    "model": "devices.device",
+    "pk": 128,
+    "fields": {
+      "device_model": 102,
+      "serial_number": "TV-SW-2022-A03-2",
+      "inventory_number": "INV-SW-003-2",
+      "operating_system": 103,
+      "purchase_year": 2022,
+      "management_ip": "10.0.2.13",
+      "management_protocols": [
+        103,
+        102
+      ]
+    }
+  },
+  {
+    "model": "devices.device",
+    "pk": 129,
+    "fields": {
+      "device_model": 104,
+      "serial_number": "DBA-STOR-NAS-002-2",
+      "inventory_number": "INV-STOR-002-2",
+      "operating_system": 101,
+      "purchase_year": 2023,
+      "management_ip": "10.0.4.21",
+      "management_protocols": [
+        102
+      ]
+    }
+  },
+  {
+    "model": "devices.device",
+    "pk": 130,
+    "fields": {
+      "device_model": 107,
+      "serial_number": "KRAFT-SRV-2021-SRV2-2",
+      "inventory_number": "INV-KRAFT-002-2",
+      "operating_system": 102,
+      "purchase_year": 2021,
+      "management_ip": "10.0.7.61",
+      "management_protocols": [
+        102
+      ]
+    }
+  },
+  {
+    "model": "devices.device",
+    "pk": 131,
+    "fields": {
+      "device_model": 101,
+      "serial_number": "TS-SRV-00001-3",
+      "inventory_number": "INV-SRV-001-3",
+      "operating_system": 102,
+      "purchase_year": 2023,
+      "management_ip": "10.0.1.121",
+      "management_protocols": [
+        102,
+        104
+      ]
+    }
+  },
+  {
+    "model": "devices.device",
+    "pk": 132,
+    "fields": {
+      "device_model": 101,
+      "serial_number": "TS-SRV-00002-3",
+      "inventory_number": "INV-SRV-002-3",
+      "operating_system": 101,
+      "purchase_year": 2023,
+      "management_ip": "10.0.1.122",
+      "management_protocols": [
+        101,
+        103
+      ]
+    }
+  },
+  {
+    "model": "devices.device",
+    "pk": 133,
+    "fields": {
+      "device_model": 102,
+      "serial_number": "TV-SW-2022-A01-3",
+      "inventory_number": "INV-SW-001-3",
+      "operating_system": 103,
+      "purchase_year": 2022,
+      "management_ip": "10.0.2.21",
+      "management_protocols": [
+        103,
+        102
+      ]
+    }
+  },
+  {
+    "model": "devices.device",
+    "pk": 134,
+    "fields": {
+      "device_model": 102,
+      "serial_number": "TV-SW-2022-A02-3",
+      "inventory_number": "INV-SW-002-3",
+      "operating_system": 103,
+      "purchase_year": 2022,
+      "management_ip": "10.0.2.22",
+      "management_protocols": [
+        103
+      ]
+    }
+  },
+  {
+    "model": "devices.device",
+    "pk": 135,
+    "fields": {
+      "device_model": 103,
+      "serial_number": "TS-RT-2021-R01-3",
+      "inventory_number": "INV-RT-001-3",
+      "operating_system": null,
+      "purchase_year": 2021,
+      "management_ip": "10.0.3.21",
+      "management_protocols": [
+        102
+      ]
+    }
+  },
+  {
+    "model": "devices.device",
+    "pk": 136,
+    "fields": {
+      "device_model": 104,
+      "serial_number": "DBA-STOR-NAS-001-3",
+      "inventory_number": "INV-STOR-001-3",
+      "operating_system": 101,
+      "purchase_year": 2023,
+      "management_ip": "10.0.4.30",
+      "management_protocols": [
+        102,
+        103
+      ]
+    }
+  },
+  {
+    "model": "devices.device",
+    "pk": 137,
+    "fields": {
+      "device_model": 105,
+      "serial_number": "CHELS-FW-2020-FW1-3",
+      "inventory_number": "INV-FW-001-3",
+      "operating_system": 104,
+      "purchase_year": 2020,
+      "management_ip": "10.0.5.234",
+      "management_protocols": [
+        102,
+        103,
+        104
+      ]
+    }
+  },
+  {
+    "model": "devices.device",
+    "pk": 138,
+    "fields": {
+      "device_model": 106,
+      "serial_number": "ITC-CG-2022-CRYPT1-3",
+      "inventory_number": "INV-CRYPT-001-3",
+      "operating_system": 101,
+      "purchase_year": 2022,
+      "management_ip": "10.0.6.120",
+      "management_protocols": [
+        102,
+        104
+      ]
+    }
+  },
+  {
+    "model": "devices.device",
+    "pk": 139,
+    "fields": {
+      "device_model": 107,
+      "serial_number": "KRAFT-SRV-2021-SRV1-3",
+      "inventory_number": "INV-KRAFT-001-3",
+      "operating_system": 102,
+      "purchase_year": 2021,
+      "management_ip": "10.0.7.70",
+      "management_protocols": [
+        102,
+        101
+      ]
+    }
+  },
+  {
+    "model": "devices.device",
+    "pk": 140,
+    "fields": {
+      "device_model": 108,
+      "serial_number": "TV-SW-L2-2023-SW1-3",
+      "inventory_number": "INV-TVSW-001-3",
+      "operating_system": null,
+      "purchase_year": 2023,
+      "management_ip": "10.0.8.40",
+      "management_protocols": [
+        103
+      ]
+    }
+  },
+  {
+    "model": "devices.device",
+    "pk": 141,
+    "fields": {
+      "device_model": 108,
+      "serial_number": "TV-SW-L2-2023-SW2-3",
+      "inventory_number": "INV-TVSW-002-3",
+      "operating_system": null,
+      "purchase_year": 2023,
+      "management_ip": "10.0.8.41",
+      "management_protocols": []
+    }
+  },
+  {
+    "model": "devices.device",
+    "pk": 142,
+    "fields": {
+      "device_model": 101,
+      "serial_number": "TS-SRV-00003-3",
+      "inventory_number": "INV-SRV-003-3",
+      "operating_system": 102,
+      "purchase_year": 2023,
+      "management_ip": "10.0.1.123",
+      "management_protocols": [
+        102,
+        104,
+        101
+      ]
+    }
+  },
+  {
+    "model": "devices.device",
+    "pk": 143,
+    "fields": {
+      "device_model": 102,
+      "serial_number": "TV-SW-2022-A03-3",
+      "inventory_number": "INV-SW-003-3",
+      "operating_system": 103,
+      "purchase_year": 2022,
+      "management_ip": "10.0.2.23",
+      "management_protocols": [
+        103,
+        102
+      ]
+    }
+  },
+  {
+    "model": "devices.device",
+    "pk": 144,
+    "fields": {
+      "device_model": 104,
+      "serial_number": "DBA-STOR-NAS-002-3",
+      "inventory_number": "INV-STOR-002-3",
+      "operating_system": 101,
+      "purchase_year": 2023,
+      "management_ip": "10.0.4.31",
+      "management_protocols": [
+        102
+      ]
+    }
+  },
+  {
+    "model": "devices.device",
+    "pk": 145,
+    "fields": {
+      "device_model": 107,
+      "serial_number": "KRAFT-SRV-2021-SRV2-3",
+      "inventory_number": "INV-KRAFT-002-3",
+      "operating_system": 102,
+      "purchase_year": 2021,
+      "management_ip": "10.0.7.71",
+      "management_protocols": [
+        102
+      ]
     }
   }
 ]

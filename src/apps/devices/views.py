@@ -9,15 +9,21 @@ from .models import Device
 def device_list(request):
     device_filter = DeviceFilter(
         request.GET,
-        queryset=Device.objects.all().select_related('device_model__vendor').order_by('device_model')
+        queryset=Device.objects.select_related(
+            'device_model__vendor',
+            'operating_system'
+        ).prefetch_related(
+            'management_protocols'
+        ).all()
     )
     paginator = Paginator(device_filter.qs, settings.PAGE_SIZE)
     devices_page = paginator.page(1)
     context = {
         'objects': devices_page,
         'filter': device_filter,
-        'devices': device_filter.qs,
         'selected_kinds': request.GET.getlist('kind'),
+        'selected_protocols': request.GET.getlist('protocol'),
+        'selected_os': request.GET.getlist('operating_system'),
     }
 
     if request.htmx:
@@ -29,7 +35,12 @@ def get_devices(request):
     page = request.GET.get('page', 1)
     device_filter = DeviceFilter(
         request.GET,
-        queryset=Device.objects.all().select_related('device_model__vendor').order_by('device_model')
+        queryset=Device.objects.select_related(
+            'device_model__vendor',
+            'operating_system'
+        ).prefetch_related(
+            'management_protocols'
+        ).all()
     )
     paginator = Paginator(device_filter.qs, settings.PAGE_SIZE)
     context = {
