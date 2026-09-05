@@ -147,3 +147,5 @@ MAILERS = {
         'BACKEND': 'django.core.mail.backends.console.EmailBackend',
     },
 }
+
+PAGE_SIZE = settings.PAGE_SIZE

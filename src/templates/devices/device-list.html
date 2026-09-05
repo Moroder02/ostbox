@@ -1,40 +1,5 @@
 {% extends 'layouts/list_filter_layout.html' %}
 
-{# Partials Start #}
-{% partialdef filtering %}
-    {% for device in devices %}
-    <tr id="device-{{ device.pk }}">
-        <td>{{ forloop.counter }}</td>
-        <td><a href="#">{{ device.device_model }}</a></td>
-        <td>{{ device.device_model.get_kind_display }}</td>
-        <td class="text-center">
-            <div class="btn-group">
-                <a href="#"
-                   class="btn btn-sm btn-alt-secondary"
-                   data-bs-toggle="tooltip"
-                   title="Редактировать">
-                    <i class="fa fa-fw fa-pencil-alt"></i>
-                </a>
-
-                <button class="btn btn-sm btn-alt-secondary"
-                        hx-post="#"
-                        hx-headers='{"X-CSRFToken": "{{ csrf_token }}"}'
-                        hx-target="#device-{{ device.pk }}"
-                        hx-swap="outerHTML"
-                        hx-confirm="Вы уверены, что хотите удалить устройство {{ device }}?"
-                        data-bs-toggle="tooltip"
-                        title="Удалить">
-                    <i class="fa fa-fw fa-times"></i>
-                </button>
-
-            </div>
-        </td>
-    </tr>
-    {% endfor %}
-{% endpartialdef filtering %}
-{# Partials End #}
-
-
 {% block side %}
     <form hx-get="{% url 'devices:device-list' %}"
           hx-target="#device-table"
@@ -76,7 +41,47 @@
         </tr>
         </thead>
         <tbody id="device-table">
-        {% partial filtering %}
+        {% partialdef filtering inline %}
+            {% for device in objects %}
+                {% if forloop.last and objects.has_next %}
+                    <tr hx-get="{% url 'devices:get-devices' %}?page={{ objects.next_page_number }}"
+                        hx-trigger="revealed"
+                        hx-swap="afterend">
+                        {% else %}
+                    <tr id="device-{{ device.pk }}">
+                {% endif %}
+            <td>
+                {% with start_index=objects.start_index %}
+                    {{ start_index|add:forloop.counter0 }}
+                {% endwith %}
+            </td>
+            <td><a href="#">{{ device.device_model }}</a></td>
+            <td>{{ device.device_model.get_kind_display }}</td>
+            <td class="text-center">
+                <div class="btn-group">
+                    <a href="#"
+                       class="btn btn-sm btn-alt-secondary"
+                       data-bs-toggle="tooltip"
+                       title="Редактировать">
+                        <i class="fa fa-fw fa-pencil-alt"></i>
+                    </a>
+
+                    <button class="btn btn-sm btn-alt-secondary"
+                            hx-post="#"
+                            hx-headers='{"X-CSRFToken": "{{ csrf_token }}"}'
+                            hx-target="#device-{{ device.pk }}"
+                            hx-swap="outerHTML"
+                            hx-confirm="Вы уверены, что хотите удалить устройство {{ device }}?"
+                            data-bs-toggle="tooltip"
+                            title="Удалить">
+                        <i class="fa fa-fw fa-times"></i>
+                    </button>
+
+                </div>
+            </td>
+            </tr>
+            {% endfor %}
+        {% endpartialdef filtering %}
         </tbody>
     </table>
 {% endblock %}

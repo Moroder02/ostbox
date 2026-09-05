@@ -16,6 +16,8 @@ class AppSettings(BaseSettings):
     
     DATABASE_URL: str = Field(default=f"sqlite:///{SRC_DIR}/db.sqlite3")
 
+    PAGE_SIZE: int = Field(default=10, description="Количество элементов на странице")
+    
     model_config = SettingsConfigDict(
         env_file=PROJECT_ROOT / ".env",
         env_file_encoding="utf-8",
