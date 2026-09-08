@@ -1,3 +1,4 @@
+{% load common_tags %}
 <nav id="sidebar" aria-label="Main Navigation">
     <!-- Side Header -->
     <div class="content-header">
@@ -200,12 +201,12 @@
         <div class="content-side">
             <ul class="nav-main">
                 <li class="nav-main-item">
-                    <a class="nav-main-link active" href="/">
+                    <a class="nav-main-link" href="{% url 'commons:vendor-list' %}">
                         <i class="nav-main-link-icon si si-speedometer"></i>
-                        <span class="nav-main-link-name">Dashboard</span>
+                        <span class="nav-main-link-name">Вендоры</span>
                     </a>
                 </li>
-                <li class="nav-main-heading">Infrastructure Management</li>
+{#                <li class="nav-main-heading">Infrastructure Management</li>#}
 
                 <!-- Devices Menu -->
                 <li class="nav-main-item">
@@ -216,15 +217,11 @@
                     </a>
                     <ul class="nav-main-submenu">
                         <li class="nav-main-item">
-                            <a class="nav-main-link" href="{% url 'commons:vendor-list' %}">
-                                <span class="nav-main-link-name">Производители</span>
-                            </a>
-                        </li>
-                        <li class="nav-main-item">
                             <a class="nav-main-link" href="{% url 'devices:device-list' %}">
-                                <span class="nav-main-link-name">Устройства</span>
+                                <span class="nav-main-link-name">Все устройства</span>
                             </a>
                         </li>
+                        {% device_kinds_items %}
                     </ul>
                 </li>
             </ul>

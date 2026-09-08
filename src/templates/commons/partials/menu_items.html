@@ -1,0 +1,7 @@
+{% for kind, label in device_kinds_items %}
+    <li class="nav-main-item">
+        <a class="nav-main-link" href="{% url 'devices:device-list-by-kinds' kind %}">
+            <span class="nav-main-link-name">{{ label }}</span>
+        </a>
+    </li>
+{% endfor %}
