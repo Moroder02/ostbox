@@ -6,5 +6,6 @@ app_name = 'devices'
 
 urlpatterns = [
     path('', views.device_list, name='device-list'),
-    path('get_devices/', views.get_devices, name='get-devices'),
+    # path('get_devices/', views.get_devices, name='get-devices'),
+    # path('dev_list/', views.device_objects_list, name='dev-list'),
 ]
