@@ -2,9 +2,9 @@ from django.contrib import messages
 from django.http import HttpResponse
 from django.shortcuts import render, get_object_or_404, redirect
 
-from apps.devices.forms import VendorForm
-from apps.devices.models import Vendor
-from apps.commons.filters import VendorFilter
+from .forms import VendorForm
+from apps.devices.models.models import Vendor
+from .filters import VendorFilter
 
 
 def vendor_list(request):

@@ -1,5 +1,5 @@
 from django import forms
-from apps.devices.models import Vendor
+from apps.devices.models.models import Vendor
 
 
 class VendorForm(forms.ModelForm):

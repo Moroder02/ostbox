@@ -14,7 +14,7 @@ def device_list(request, kind=None):
                 'device_model__vendor',
                 'operating_system',
             ).prefetch_related(
-                'management_protocols'
+                'management_protocols',
             ).filter(
                 device_model__kind=kind
             )
