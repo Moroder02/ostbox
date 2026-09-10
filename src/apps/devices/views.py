@@ -42,3 +42,7 @@ def device_list(request, kind=None):
     if request.htmx:
         return render(request, 'devices/device-list.html#filtering', context)
     return render(request, 'devices/device-list.html', context)
+
+
+def disk_list(request, kind=None):
+    return render(request, 'devices/disk-list.html', {})

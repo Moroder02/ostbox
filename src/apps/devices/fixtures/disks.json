@@ -1,0 +1,67 @@
+[
+{ "model": "devices.diskmodel", "pk": 101, "fields": {
+    "vendor": 103, "model_name": "PM9A3", "capacity_gb": 3840,
+    "media_type": "NVME", "interface": "PCIE", "form_factor": "U.2_U3",
+    "device_class": "ENTERPRISE" }},
+{ "model": "devices.diskmodel", "pk": 102, "fields": {
+    "vendor": 64, "model_name": "DC500M", "capacity_gb": 960,
+    "media_type": "SSD", "interface": "SATA", "form_factor": "2.5_SFF",
+    "device_class": "ENTERPRISE" }},
+{ "model": "devices.diskmodel", "pk": 103, "fields": {
+    "vendor": 104, "model_name": "Exos 7E10", "capacity_gb": 2000,
+    "media_type": "HDD", "interface": "SAS", "form_factor": "2.5_SFF",
+    "device_class": "ENTERPRISE" }},
+{ "model": "devices.diskmodel", "pk": 104, "fields": {
+    "vendor": 73, "model_name": "5400 PRO", "capacity_gb": 1920,
+    "media_type": "SSD", "interface": "SATA", "form_factor": "2.5_SFF",
+    "device_class": "ENTERPRISE" }},
+{ "model": "devices.diskmodel", "pk": 105, "fields": {
+    "vendor": 126, "model_name": "WD Red Pro", "capacity_gb": 12000,
+    "media_type": "HDD", "interface": "SATA", "form_factor": "3.5_LFF",
+    "device_class": "NAS" }},
+{ "model": "devices.diskmodel", "pk": 106, "fields": {
+    "vendor": 117, "model_name": "MG08-D", "capacity_gb": 16000,
+    "media_type": "HDD", "interface": "SAS", "form_factor": "3.5_LFF",
+    "device_class": "ENTERPRISE" }},
+{ "model": "devices.diskmodel", "pk": 107, "fields": {
+    "vendor": 65, "model_name": "PM6", "capacity_gb": 1600,
+    "media_type": "SSD", "interface": "SAS", "form_factor": "2.5_SFF",
+    "device_class": "ENTERPRISE" }},
+
+{ "model": "devices.disk", "pk": 101, "fields": { "disk_model": 101, "serial_number": "PM9A3-SN-0001", "inventory_number": "INV-DISK-0001", "status": "ACTIVE", "server": 101, "firmware": "GDC7302Q" }},
+{ "model": "devices.disk", "pk": 102, "fields": { "disk_model": 101, "serial_number": "PM9A3-SN-0002", "inventory_number": "INV-DISK-0002", "status": "ACTIVE", "server": 101, "firmware": "GDC7302Q" }},
+{ "model": "devices.disk", "pk": 103, "fields": { "disk_model": 101, "serial_number": "PM9A3-SN-0003", "inventory_number": "INV-DISK-0003", "status": "ACTIVE", "server": 101, "firmware": "GDC7302Q" }},
+{ "model": "devices.disk", "pk": 104, "fields": { "disk_model": 101, "serial_number": "PM9A3-SN-0004", "inventory_number": "INV-DISK-0004", "status": "ACTIVE", "server": 101, "firmware": "GDC7302Q" }},
+{ "model": "devices.disk", "pk": 105, "fields": { "disk_model": 102, "serial_number": "DC500M-SN-0001", "inventory_number": "INV-DISK-0005", "status": "ACTIVE", "server": 101, "firmware": "S56T0105" }},
+{ "model": "devices.disk", "pk": 106, "fields": { "disk_model": 102, "serial_number": "DC500M-SN-0002", "inventory_number": "INV-DISK-0006", "status": "ACTIVE", "server": 101, "firmware": "S56T0105" }},
+
+{ "model": "devices.disk", "pk": 107, "fields": { "disk_model": 104, "serial_number": "MT5400-SN-0001", "inventory_number": "INV-DISK-0007", "status": "ACTIVE", "server": 109, "firmware": "D4MU020" }},
+{ "model": "devices.disk", "pk": 108, "fields": { "disk_model": 104, "serial_number": "MT5400-SN-0002", "inventory_number": "INV-DISK-0008", "status": "ACTIVE", "server": 109, "firmware": "D4MU020" }},
+{ "model": "devices.disk", "pk": 109, "fields": { "disk_model": 103, "serial_number": "EXOS7E10-SN-0001", "inventory_number": "INV-DISK-0009", "status": "ACTIVE", "server": 109, "firmware": "E9P0" }},
+{ "model": "devices.disk", "pk": 110, "fields": { "disk_model": 103, "serial_number": "EXOS7E10-SN-0002", "inventory_number": "INV-DISK-0010", "status": "ACTIVE", "server": 109, "firmware": "E9P0" }},
+
+{ "model": "devices.disk", "pk": 111, "fields": { "disk_model": 105, "serial_number": "WDREDPRO-SN-0001", "inventory_number": "INV-DISK-0011", "status": "ACTIVE", "server": 106, "firmware": "83.00A83" }},
+{ "model": "devices.disk", "pk": 112, "fields": { "disk_model": 105, "serial_number": "WDREDPRO-SN-0002", "inventory_number": "INV-DISK-0012", "status": "ACTIVE", "server": 106, "firmware": "83.00A83" }},
+{ "model": "devices.disk", "pk": 113, "fields": { "disk_model": 105, "serial_number": "WDREDPRO-SN-0003", "inventory_number": "INV-DISK-0013", "status": "ACTIVE", "server": 106, "firmware": "83.00A83" }},
+{ "model": "devices.disk", "pk": 114, "fields": { "disk_model": 105, "serial_number": "WDREDPRO-SN-0004", "inventory_number": "INV-DISK-0014", "status": "ACTIVE", "server": 106, "firmware": "83.00A83" }},
+{ "model": "devices.disk", "pk": 115, "fields": { "disk_model": 105, "serial_number": "WDREDPRO-SN-0005", "inventory_number": "INV-DISK-0015", "status": "ACTIVE", "server": 106, "firmware": "83.00A83" }},
+{ "model": "devices.disk", "pk": 116, "fields": { "disk_model": 105, "serial_number": "WDREDPRO-SN-0006", "inventory_number": "INV-DISK-0016", "status": "ACTIVE", "server": 106, "firmware": "83.00A83" }},
+{ "model": "devices.disk", "pk": 117, "fields": { "disk_model": 105, "serial_number": "WDREDPRO-SN-0007", "inventory_number": "INV-DISK-0017", "status": "ACTIVE", "server": 106, "firmware": "83.00A83" }},
+{ "model": "devices.disk", "pk": 118, "fields": { "disk_model": 105, "serial_number": "WDREDPRO-SN-0008", "inventory_number": "INV-DISK-0018", "status": "ACTIVE", "server": 106, "firmware": "83.00A83" }},
+{ "model": "devices.disk", "pk": 119, "fields": { "disk_model": 105, "serial_number": "WDREDPRO-SN-0009", "inventory_number": "INV-DISK-0019", "status": "ACTIVE", "server": 106, "firmware": "83.00A83" }},
+{ "model": "devices.disk", "pk": 120, "fields": { "disk_model": 105, "serial_number": "WDREDPRO-SN-0010", "inventory_number": "INV-DISK-0020", "status": "ACTIVE", "server": 106, "firmware": "83.00A83" }},
+{ "model": "devices.disk", "pk": 121, "fields": { "disk_model": 106, "serial_number": "MG08-SN-0001", "inventory_number": "INV-DISK-0021", "status": "ACTIVE", "server": 106, "firmware": "0103" }},
+{ "model": "devices.disk", "pk": 122, "fields": { "disk_model": 106, "serial_number": "MG08-SN-0002", "inventory_number": "INV-DISK-0022", "status": "ACTIVE", "server": 106, "firmware": "0103" }},
+
+{ "model": "devices.disk", "pk": 123, "fields": { "disk_model": 105, "serial_number": "WDREDPRO-SN-0011", "inventory_number": "INV-DISK-0023", "status": "ACTIVE", "server": 114, "firmware": "83.00A83" }},
+{ "model": "devices.disk", "pk": 124, "fields": { "disk_model": 105, "serial_number": "WDREDPRO-SN-0012", "inventory_number": "INV-DISK-0024", "status": "ACTIVE", "server": 114, "firmware": "83.00A83" }},
+{ "model": "devices.disk", "pk": 125, "fields": { "disk_model": 105, "serial_number": "WDREDPRO-SN-0013", "inventory_number": "INV-DISK-0025", "status": "ACTIVE", "server": 114, "firmware": "83.00A83" }},
+{ "model": "devices.disk", "pk": 126, "fields": { "disk_model": 105, "serial_number": "WDREDPRO-SN-0014", "inventory_number": "INV-DISK-0026", "status": "ACTIVE", "server": 114, "firmware": "83.00A83" }},
+{ "model": "devices.disk", "pk": 127, "fields": { "disk_model": 105, "serial_number": "WDREDPRO-SN-0015", "inventory_number": "INV-DISK-0027", "status": "ACTIVE", "server": 114, "firmware": "83.00A83" }},
+{ "model": "devices.disk", "pk": 128, "fields": { "disk_model": 105, "serial_number": "WDREDPRO-SN-0016", "inventory_number": "INV-DISK-0028", "status": "ACTIVE", "server": 114, "firmware": "83.00A83" }},
+
+{ "model": "devices.disk", "pk": 129, "fields": { "disk_model": 101, "serial_number": "PM9A3-SN-0005", "inventory_number": "INV-DISK-0029", "status": "SPARE", "server": null, "firmware": "GDC7302Q" }},
+{ "model": "devices.disk", "pk": 130, "fields": { "disk_model": 105, "serial_number": "WDREDPRO-SN-0017", "inventory_number": "INV-DISK-0030", "status": "SPARE", "server": null, "firmware": "83.00A83" }},
+{ "model": "devices.disk", "pk": 131, "fields": { "disk_model": 107, "serial_number": "KIOXIA-PM6-0001", "inventory_number": "INV-DISK-0031", "status": "SPARE", "server": null, "firmware": "0103" }},
+{ "model": "devices.disk", "pk": 132, "fields": { "disk_model": 103, "serial_number": "EXOS7E10-SN-0003", "inventory_number": null, "status": "FAULTY", "server": null, "firmware": "E9P0" }}
+]

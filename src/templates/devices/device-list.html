@@ -64,7 +64,9 @@
 {% endblock %}
 
 {% block content_title %}
-    Устройства
+    {% if kind %}
+    	{{ request.path }}
+    {% endif %}
 {% endblock %}
 
 {% block table %}
