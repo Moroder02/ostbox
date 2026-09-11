@@ -6,12 +6,12 @@
 {% endblock %}
 
 {% block content_title %}
-    Диски (<span id="disk-total">{{ total }}</span>)
+    Модели дисков (<span id="disk-total">Всего {{ total }}</span>)
 {% endblock %}
 
 
 {% block side %}
-    <form hx-get="{% url 'devices:disk-list' %}"
+    <form hx-get="{% url 'devices:disk-model-list' %}"
           hx-target="#disk-table-body"
           hx-swap="innerHTML"
           hx-trigger="change from:.js-select2"
@@ -27,34 +27,36 @@
 
 {% block table %}
     <table class="table">
-        <thead class="sticky-xl-top" style="top: 3.8rem;">
+        <thead>
         <tr>
             <th></th>
+            <th>Вендор</th>
             <th>Диск</th>
-            <th>Модель</th>
             <th>Тип</th>
-            <th>Объем (Gb)</th>
-{#            <th>Интерфейс</th>#}
+            <th>Объем</th>
+            <th>Интерфейс</th>
             <th>Форм-фактор</th>
             <th>Класс</th>
         </tr>
         </thead>
         <tbody id="disk-table-body">
         {% partialdef filtering inline %}
-            {% for disk in disks %}
+            {% for disk_model in disk_models %}
                 <tr>
-                    <td><span class="text-muted small">{{ forloop.counter }}</span></td>
-                    <td><span class="small">{{ disk.disk_model.vendor }}</span></td>
-                    <td><span class="small">{{ disk.disk_model.model_name }}</span></td>
-                    <td>{{ disk.disk_model.get_media_type_display }}</td>
-                    <td>{{ disk.disk_model.capacity_gb }}</td>
-{#                    <td>{{ disk.disk_model.get_interface_display }}</td>#}
-                    <td><span class="text-muted small">{{ disk.disk_model.get_form_factor_display }}</span></td>
-                    <td><span class="text-muted small">{{ disk.disk_model.device_class }}</span></td>
+                    <td>
+                        {{ forloop.counter }}
+                    </td>
+                    <td>{{ disk_model.vendor.name }}</td>
+                    <td>{{ disk_model }}</td>
+                    <td>{{ disk_model.get_media_type_display }}</td>
+                    <td>{{ disk_model.capacity_gb }} Gb</td>
+                    <td>{{ disk_model.get_interface_display }}</td>
+                    <td>{{ disk_model.get_form_factor_display }}</td>
+                    <td>{{ disk_model.device_class }}</td>
                 </tr>
             {% endfor %}
             {% if request.htmx %}
-                <span id="disk-total" hx-swap-oob="innerHTML">{{ total }}</span>
+                <span id="disk-total" hx-swap-oob="innerHTML">Отфильтровано {{ total }}</span>
             {% endif %}
         {% endpartialdef filtering %}
         </tbody>

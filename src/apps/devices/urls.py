@@ -8,7 +8,7 @@ urlpatterns = [
     path('', views.device_list, name='device-list'),
     path('kinds/<str:kind>/', views.device_list, name='device-list-by-kinds'),
 
+    # Disks
+    path('disk-models/', views.disk_model_list, name='disk-model-list'),
     path('disks/', views.disk_list, name='disk-list'),
-    # path('get_devices/', views.get_devices, name='get-devices'),
-    # path('dev_list/', views.device_objects_list, name='dev-list'),
 ]

@@ -9,16 +9,15 @@ class DiskModel(models.Model):
     """
     Справочник моделей дисков.
     """
-
     class MediaType(models.TextChoices):
-        HDD = 'HDD', 'Hard Disk Drive (Магнитный)'
-        SSD = 'SSD', 'Solid State Drive (SATA/SAS SSD)'
-        NVME = 'NVME', 'NVMe SSD (Высокоскоростной)'
+        HDD = 'HDD', 'HDD'
+        SSD = 'SSD', 'SSD (SATA/SAS)'
+        NVME = 'NVME', 'SSD (NVMe)'
 
     class InterfaceType(models.TextChoices):
         SATA = 'SATA', 'SATA'
         SAS = 'SAS', 'SAS'
-        PCIE = 'PCIE', 'PCIe (NVMe)'
+        PCIE = 'PCIE', 'NVMe'
 
     class FormFactor(models.TextChoices):
         LFF_35 = '3.5_LFF', '3.5" LFF'

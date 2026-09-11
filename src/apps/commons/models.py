@@ -21,15 +21,15 @@ class MemoryType(models.TextChoices):
     DDR5 = "ddr5", _("DDR5")
 
 
-class DiskType(models.TextChoices):
-    SSD = "ssd", _("SSD")
-    HDD = "hdd", _("HDD")
-    NVME = "nvme", _("NVMe")
-    SSD_NVME = "ssd_nvme", _("SSD/NVMe")
-    SSD_HDD = "ssd_hdd", _("SSD/HDD")
-    HDD_SSD = "hdd_ssd", _("HDD/SSD")
-    HDD_NVME = "hdd_nvme", _("HDD/NVMe")
-    NVME_SSD = "nvme_ssd", _("NVMe/SSD")
+# class DiskType(models.TextChoices):
+#     SSD = "ssd", _("SSD")
+#     HDD = "hdd", _("HDD")
+#     NVME = "nvme", _("NVMe")
+#     SSD_NVME = "ssd_nvme", _("SSD/NVMe")
+#     SSD_HDD = "ssd_hdd", _("SSD/HDD")
+#     HDD_SSD = "hdd_ssd", _("HDD/SSD")
+#     HDD_NVME = "hdd_nvme", _("HDD/NVMe")
+#     NVME_SSD = "nvme_ssd", _("NVMe/SSD")
 
 
 class SocketType(models.TextChoices):

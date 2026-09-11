@@ -1,8 +1,8 @@
 import django_filters
 from django import forms
 
-from .models import Device
-from apps.commons.models import DeviceKind, Protocol, OperatingSystem
+from .models import Device, DiskModel, Disk
+from apps.commons.models import DeviceKind, Protocol, OperatingSystem, Vendor
 
 
 class DeviceFilter(django_filters.FilterSet):
@@ -30,6 +30,43 @@ class DeviceFilter(django_filters.FilterSet):
             'class': 'form-check-input',
         })
     )
+
     class Meta:
         model = Device
         fields = ('kind', 'protocol')
+
+
+class DiskModelFilter(django_filters.FilterSet):
+    vendor = django_filters.ModelMultipleChoiceFilter(
+        queryset=Vendor.objects.filter(
+            pk__in=DiskModel.objects.values_list('vendor_id', flat=True)
+        ).order_by('name'),
+        field_name='vendor',
+        label='Вендор',
+        widget=forms.SelectMultiple(attrs={
+            'class': 'js-select2 form-select',
+        })
+    )
+
+    class Meta:
+        model = DiskModel
+        fields = ('vendor',)
+
+
+class DiskFilter(django_filters.FilterSet):
+    vendor = django_filters.ModelMultipleChoiceFilter(
+        queryset=Vendor.objects.filter(
+            pk__in=DiskModel.objects.values_list('vendor_id', flat=True)
+        ).order_by('name'),
+        field_name='disk_model__vendor',
+        label='Вендор',
+        widget=forms.SelectMultiple(attrs={
+            'class': 'js-select2 form-select',
+        })
+    )
+
+
+
+    class Meta:
+        model = Disk
+        fields = ('vendor',)

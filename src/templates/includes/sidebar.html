@@ -223,6 +223,11 @@
                         </li>
                         {% device_kinds_items %}
                         <li class="nav-main-item">
+                            <a class="nav-main-link" href="{% url 'devices:disk-model-list' %}">
+                                <span class="nav-main-link-name">Модели дисков</span>
+                            </a>
+                        </li>
+                        <li class="nav-main-item">
                             <a class="nav-main-link" href="{% url 'devices:disk-list' %}">
                                 <span class="nav-main-link-name">Диски</span>
                             </a>

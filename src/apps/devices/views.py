@@ -2,8 +2,8 @@ from django.shortcuts import render
 from django.core.paginator import Paginator
 from django.conf import settings
 
-from .filters import DeviceFilter
-from .models import Device
+from .filters import DeviceFilter, DiskModelFilter, DiskFilter
+from .models import Device, DiskModel, Disk
 
 
 def device_list(request, kind=None):
@@ -44,5 +44,33 @@ def device_list(request, kind=None):
     return render(request, 'devices/device-list.html', context)
 
 
+def disk_model_list(request):
+    filters = DiskModelFilter(
+        request.GET,
+        queryset=DiskModel.objects.all().select_related('vendor'),
+    )
+    context = {
+        'filter': filters,
+        'disk_models': filters.qs,
+        'total': len(list(filters.qs)),
+        'selected_vendors': request.GET.getlist('vendor'),
+    }
+    if request.htmx:
+        return render(request, 'devices/disk-model-list.html#filtering', context)
+    return render(request, 'devices/disk-model-list.html', context)
+
+
 def disk_list(request, kind=None):
-    return render(request, 'devices/disk-list.html', {})
+    filters = DiskFilter(
+        request.GET,
+        queryset=Disk.objects.all().select_related('disk_model', 'disk_model__vendor'),
+    )
+    context = {
+        'filter': filters,
+        'disks': filters.qs,
+        'total': len(list(filters.qs)),
+        'selected_vendors': request.GET.getlist('vendor'),
+    }
+    if request.htmx:
+        return render(request, 'devices/disk-list.html#filtering', context)
+    return render(request, 'devices/disk-list.html', context)
