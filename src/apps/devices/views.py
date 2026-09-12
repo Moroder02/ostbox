@@ -60,7 +60,7 @@ def disk_model_list(request):
     return render(request, 'devices/disk-model-list.html', context)
 
 
-def disk_list(request, kind=None):
+def disk_list(request):
     filters = DiskFilter(
         request.GET,
         queryset=Disk.objects.all().select_related('disk_model', 'disk_model__vendor'),

@@ -64,8 +64,7 @@ class DiskFilter(django_filters.FilterSet):
             'class': 'js-select2 form-select',
         })
     )
-
-
+    
 
     class Meta:
         model = Disk

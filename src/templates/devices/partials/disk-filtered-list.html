@@ -1,0 +1,44 @@
+<div id="disk-table-body">
+    {#    {% partialdef filtering inline %}#}
+    {% for disk in disks %}
+        <tbody class="js-table-sections-header ">
+        <tr>
+            <td class="text-center"><i class="fa fa-angle-right text-muted"></i></td>
+            <td>{{ disk.disk_model.vendor }}</td>
+            <td>{{ disk.disk_model.get_media_type_display }}</td>
+            <td>{{ disk.disk_model.capacity_gb }}</td>
+            <td>{{ disk.get_status_display }}</td>
+        </tr>
+        </tbody>
+        <tbody class="fs-sm">
+        <tr>
+            <td colspan="2" class="text-end"><em class="fs-sm text-muted">Модель: </em></td>
+            <td colspan="3">{{ disk.disk_model.model_name }}</td>
+        </tr>
+        <tr>
+            <td colspan="2" class="text-end"><em class="fs-sm text-muted">Интерфейс: </em></td>
+            <td colspan="3">{{ disk.disk_model.get_interface_display }}</td>
+        </tr>
+        <tr>
+            <td colspan="2" class="text-end"><em class="fs-sm text-muted">Форм-фактор: </em></td>
+            <td colspan="3">{{ disk.disk_model.get_form_factor_display }}</td>
+        </tr>
+        <tr>
+            <td colspan="2" class="text-end"><em class="fs-sm text-muted">Класс: </em></td>
+            <td colspan="3">{{ disk.disk_model.device_class }}</td>
+        </tr>
+        <tr>
+            <td colspan="2" class="text-end"><em class="fs-sm text-muted">Серийный номер: </em></td>
+            <td colspan="3">{{ disk.serial_number }}</td>
+        </tr>
+        <tr>
+            <td colspan="2" class="text-end"><em class="fs-sm text-muted">Инвентарный номер: </em></td>
+            <td colspan="3">{{ disk.inventory_number }}</td>
+        </tr>
+        </tbody>
+    {% endfor %}
+    {% if request.htmx %}
+        <span id="disk-total" hx-swap-oob="innerHTML">{{ total }}</span>
+    {% endif %}
+    {#    {% endpartialdef filtering %}#}
+</div>
