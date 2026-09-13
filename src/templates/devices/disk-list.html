@@ -20,7 +20,8 @@
           style="top: 5rem;"
           id="filter-form"
     >
-        {{ filter.form|crispy }}
+        {{ filter.form|crispy  }}
+{#        {{ filter.form.status|as_crispy_field  }}#}
     </form>
 {% endblock %}
 

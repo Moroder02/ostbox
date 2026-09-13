@@ -28,7 +28,6 @@ class DeviceFilter(django_filters.FilterSet):
         label='Операционные системы',
         widget=forms.CheckboxSelectMultiple(attrs={
             'class': 'form-check-input',
-            
         })
     )
 
