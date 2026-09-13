@@ -1,5 +1,6 @@
 {% extends 'layouts/list_filter_layout.html' %}
 {% load static %}
+{% load crispy_forms_tags %}
 
 {% block css %}
     <link rel="stylesheet" href="{% static 'assets/js/plugins/select2/css/select2.min.css' %}">
@@ -14,13 +15,12 @@
     <form hx-get="{% url 'devices:disk-list' %}"
           hx-target="#disk-table-body"
           hx-swap="innerHTML"
-          hx-trigger="change from:.js-select2"
+          hx-trigger="change from:.js-select2, change from:input[type=checkbox]"
           class="p-2 mb-4 sticky-xl-top"
           style="top: 5rem;"
           id="filter-form"
     >
-        <span class="form-label small mb-2 d-block">Вендоры</span>
-        {{ filter.form.vendor }}
+        {{ filter.form|crispy }}
     </form>
 {% endblock %}
 

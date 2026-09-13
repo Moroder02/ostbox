@@ -8,8 +8,10 @@ authors = [
 ]
 requires-python = ">=3.12"
 dependencies = [
+    "crispy-bootstrap5>=2026.9",
     "dj-database-url>=3.1.2",
     "django==6.1.*",
+    "django-crispy-forms>=2.7",
     "django-filter>=26.1",
     "django-htmx>=1.29.0",
     "pydantic-settings>=2.15.0",

@@ -28,6 +28,7 @@ class DeviceFilter(django_filters.FilterSet):
         label='Операционные системы',
         widget=forms.CheckboxSelectMultiple(attrs={
             'class': 'form-check-input',
+            
         })
     )
 
@@ -64,8 +65,25 @@ class DiskFilter(django_filters.FilterSet):
             'class': 'js-select2 form-select',
         })
     )
-    
+    status = django_filters.MultipleChoiceFilter(
+        choices=Disk.DiskStatus.choices,
+        field_name='status',
+        label='Статус',
+        widget=forms.CheckboxSelectMultiple(attrs={
+            'class': 'form-check-input',
+        })
+    )
 
+    # # Для единичного выбора (радиокнопка)
+    # status = django_filters.ChoiceFilter(
+    #     choices=Disk.DiskStatus.choices,
+    #     field_name='status',
+    #     label='Статус',
+    #     widget=forms.RadioSelect(attrs={
+    #         'class': 'form-check-input',
+    #         'type': 'radio',
+    #     })
+    # )
     class Meta:
         model = Disk
-        fields = ('vendor',)
+        fields = ('vendor', 'status')

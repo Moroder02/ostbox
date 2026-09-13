@@ -69,7 +69,6 @@ def disk_list(request):
         'filter': filters,
         'disks': filters.qs,
         'total': len(list(filters.qs)),
-        'selected_vendors': request.GET.getlist('vendor'),
     }
     if request.htmx:
         return render(request, 'devices/disk-list.html#filtering', context)
