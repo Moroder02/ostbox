@@ -2,7 +2,7 @@
 {% load crispy_forms_tags %}
 
 {% block side %}
-    <form hx-get="{% url 'devices:device-list' %}"
+    <form hx-get="{{ request.path }}"
           hx-target="#device-table"
           hx-swap="innerHTML"
           hx-trigger="change from:input[type=checkbox]"

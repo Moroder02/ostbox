@@ -7,37 +7,23 @@ from .models import Device, DiskModel, Disk
 
 
 def device_list(request, kind=None):
+    queryset = Device.objects.select_related(
+        'device_model__vendor',
+        'operating_system',
+    ).prefetch_related(
+        'management_protocols',
+    ).order_by('id')
     if kind:
-        filters = DeviceFilter(
-            request.GET,
-            queryset=Device.objects.select_related(
-                'device_model__vendor',
-                'operating_system',
-            ).prefetch_related(
-                'management_protocols',
-            ).filter(
-                device_model__kind=kind
-            )
-        )
-    else:
-        filters = DeviceFilter(
-            request.GET,
-            queryset=Device.objects.select_related(
-                'device_model__vendor',
-                'operating_system',
-            ).prefetch_related(
-                'management_protocols'
-            ).all()
-        )
+        queryset = queryset.filter(device_model__kind=kind)
+    filters = DeviceFilter(request.GET, queryset=queryset)
+    if kind:
+        filters.form.fields.pop('kind', None)
     paginator = Paginator(filters.qs, settings.PAGE_SIZE)
     page = request.GET.get('page', 1)
     context = {
         'kind': kind,
         'objects': paginator.page(page),
         'filter': filters,
-        'select_kinds': request.GET.getlist('kind'),
-        'selected_protocols': request.GET.getlist('protocol'),
-        'selected_os': request.GET.getlist('operating_system'),
     }
     if request.htmx:
         return render(request, 'devices/device-list.html#filtering', context)
