@@ -5,11 +5,12 @@
     <form hx-get="{{ request.path }}"
           hx-target="#device-table"
           hx-swap="innerHTML"
-          hx-trigger="change from:input[type=checkbox]"
+          hx-trigger="keyup changed delay:300ms from:input[type=text], change from:input[type=checkbox]"
           class="p-2 mb-4 sticky-xl-top"
           style="top: 5rem;"
           id="filter-form"
     >
+        {{ filter.form.search|as_crispy_field }}
         {% if not kind %}
             {{ filter.form.kind|as_crispy_field }}
         {% endif %}
