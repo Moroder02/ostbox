@@ -67,6 +67,14 @@ class DeviceModel(models.Model):
 
 
 class Device(models.Model):
+
+    class Status(models.TextChoices):
+        ON = "on", _("Включен")
+        OFF = "off", _("Выключен")
+        BROKEN = "broken", _("Не исправен")
+        UNREACHABLE = "unreachable", _("Не доступен")
+        UNKNOWN = "unknown", _("Неизвестно")
+
     device_model = models.ForeignKey(
         DeviceModel,
         on_delete=models.CASCADE,
@@ -105,10 +113,6 @@ class Device(models.Model):
         help_text=_("Год приобретения устройства"),
     )
 
-    """
-    далее должно ссылаться на модель ip адреса с помощью Many to many
-    или будет модель интерфейс
-    """
     management_ip = models.GenericIPAddressField(
         blank=True,
         null=True,
@@ -119,6 +123,13 @@ class Device(models.Model):
         blank=True,
         related_name="devices",
         verbose_name=_("Протоколы управления"),
+    )
+
+    status = models.CharField(
+        max_length=20,
+        choices=Status,
+        default=Status.UNKNOWN,
+        verbose_name=_("Статус"),
     )
 
     class Meta:
@@ -158,12 +169,12 @@ class Device(models.Model):
         ]
 
     def __str__(self):
-        identifier = (
-                self.serial_number
-                or self.inventory_number
-                or f"id={self.pk}"
-        )
-        return f"{self.device_model} {identifier}"
+        # identifier = (
+        #         self.serial_number
+        #         or self.inventory_number
+        #         or f"id={self.pk}"
+        # )
+        return f"{self.device_model.vendor} {self.device_model.part_number}"
 
 
 class NetworkPortGroup(models.Model):

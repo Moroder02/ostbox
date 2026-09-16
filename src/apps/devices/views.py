@@ -1,9 +1,11 @@
 from django.shortcuts import render
 from django.core.paginator import Paginator
 from django.conf import settings
+from django.template.defaultfilters import title
 
 from .filters import DeviceFilter, DiskModelFilter, DiskFilter
 from .models import Device, DiskModel, Disk
+from apps.commons.models import DeviceKind
 
 
 def device_list(request, kind=None):
@@ -14,15 +16,18 @@ def device_list(request, kind=None):
     ).prefetch_related(
         'management_protocols',
     ).order_by('id')
+    kind_display = None
     if kind:
         queryset = queryset.filter(device_model__kind=kind)
-    filters = DeviceFilter(request.GET, queryset=queryset,  kind=kind)
+        kind_display = dict(DeviceKind.choices)[kind]
+    filters = DeviceFilter(request.GET, queryset=queryset, kind=kind)
     paginator = Paginator(filters.qs, settings.PAGE_SIZE)
     page = request.GET.get('page', 1)
     context = {
         'kind': kind,
         'objects': paginator.page(page),
         'filter': filters,
+        'title': kind_display,
     }
     if request.htmx:
         return render(request, 'devices/device-list.html#filtering', context)

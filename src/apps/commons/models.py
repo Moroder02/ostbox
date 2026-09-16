@@ -7,12 +7,12 @@ MIN_YEAR = 1900
 
 
 class DeviceKind(models.TextChoices):
-    SERVER = "server", _("Сервер")
-    SWITCH = "switch", _("Коммутатор")
-    ROUTER = "router", _("Маршрутизатор")
+    SERVER = "server", _("Серверы")
+    SWITCH = "switch", _("Коммутаторы")
+    ROUTER = "router", _("Маршрутизаторы")
     STORAGE_SYSTEM = "storage_system", _("СХД")
     FIREWALL = "firewall", _("МСЭ")
-    CRYPTO_GATE = "crypto_gate", _("Крипто-шлюз")
+    CRYPTO_GATE = "crypto_gate", _("Крипто-шлюзы")
 
 
 class MemoryType(models.TextChoices):

@@ -6,21 +6,26 @@
           hx-target="#device-table"
           hx-swap="innerHTML"
           hx-trigger="keyup changed delay:300ms from:input[type=text], change from:input[type=checkbox]"
-          class="p-2 mb-4 sticky-xl-top"
-          style="top: 5rem;"
+          class="p-2 mb-4"
+          style="max-height: calc(100vh - 6rem); overflow-y: auto; overflow-x: hidden;"
           id="filter-form"
     >
         {{ filter.form.search|as_crispy_field }}
         {% if not kind %}
             {{ filter.form.kind|as_crispy_field }}
         {% endif %}
+        {{ filter.form.status|as_crispy_field }}
         {{ filter.form.protocol|as_crispy_field }}
         {{ filter.form.operating_system|as_crispy_field }}
     </form>
 {% endblock %}
 
 {% block content_title %}
-
+    {% if kind %}
+        {{ title }}
+    {% else %}
+        Устройства
+    {% endif %}
 {% endblock %}
 
 {% block table %}
@@ -28,12 +33,14 @@
         <thead>
         <tr>
             <th>№</th>
-            <th>Устройство</th>
-            <th>Тип устройства</th>
+            <th>Наименование</th>
+            {% if not kind %}
+                <th>Тип устройства</th>
+            {% endif %}
             <th>IP</th>
             <th>Подключение</th>
-            <th>Год покупки</th>
-            <th>ОС</th>
+            <th>Состояние</th>
+            <th></th>
         </tr>
         </thead>
         <tbody id="device-table">
@@ -59,16 +66,40 @@
                     {{ start_index|add:forloop.counter0 }}
                 {% endwith %}
             </td>
-            <td><a href="#">{{ device.device_model }}</a></td>
-            <td>{{ device.device_model.get_kind_display }}</td>
+            <td><a href="#">{{ device }}</a></td>
+            {% if not kind %}
+                <td>{{ device.device_model.get_kind_display }}</td>
+            {% endif %}
             <td>{{ device.management_ip }}</td>
             <td>
                 {% for protocol in device.management_protocols.all %}
-                    <div>{{ protocol }}</div>
+                    {{ protocol }}<br>
                 {% endfor %}
             </td>
-            <td>{{ device.purchase_year }}</td>
-            <td>{{ device.operating_system }}</td>
+            <td>{{ device.get_status_display }}</td>
+            <!-- Actions with item -->
+            <td class="text-center">
+                <div class="btn-group">
+                    {#<a href="{% url 'commons:vendor-update' vendor.pk %}"#}
+                    <a href="#"
+                       class="btn btn-sm btn-alt-secondary"
+                       data-bs-toggle="tooltip"
+                       title="Редактировать">
+                        <i class="fa fa-fw fa-pencil-alt"></i>
+                    </a>
+                    <button class="btn btn-sm btn-alt-secondary"
+                            {# hx-post="{% url 'commons:vendor-delete' vendor.pk %}"#}
+                            hx-post="#"
+                            hx-headers='{"X-CSRFToken": "{{ csrf_token }}"}'
+                            hx-target="#vendor-{{ device.pk }}"
+                            hx-swap="outerHTML"
+                            hx-confirm="Вы уверены, что хотите удалить вендора {{ device }}?"
+                            data-bs-toggle="tooltip"
+                            title="Удалить">
+                        <i class="fa fa-fw fa-times"></i>
+                    </button>
+                </div>
+            </td>
             </tr>
             {% endfor %}
         {% endpartialdef filtering %}
