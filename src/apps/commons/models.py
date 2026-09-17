@@ -15,10 +15,10 @@ class DeviceKind(models.TextChoices):
     CRYPTO_GATE = "crypto_gate", _("Крипто-шлюзы")
 
 
-class MemoryType(models.TextChoices):
-    DDR3 = "ddr3", _("DDR3")
-    DDR4 = "ddr4", _("DDR4")
-    DDR5 = "ddr5", _("DDR5")
+# class MemoryType(models.TextChoices):
+#     DDR3 = "ddr3", _("DDR3")
+#     DDR4 = "ddr4", _("DDR4")
+#     DDR5 = "ddr5", _("DDR5")
 
 
 # class DiskType(models.TextChoices):
@@ -92,6 +92,15 @@ class Countries(models.TextChoices):
     JAPAN = "JP", _("Япония")
 
 
+class MemoryType(models.TextChoices):
+    DDR3 = 'DDR3', 'DDR3'
+    DDR4 = 'DDR4', 'DDR4'
+    DDR5 = 'DDR5', 'DDR5'
+    LPDDR4 = 'LPDDR4', 'LPDDR4/4X'
+    LPDDR5 = 'LPDDR5', 'LPDDR5/5X'
+    OTHER = 'OTHER', 'Другой'
+
+
 class Vendor(models.Model):
     name = models.CharField(
         max_length=100,
@@ -160,6 +169,63 @@ class Protocol(models.Model):
                 name="protocol_name_unique",
             ),
         ]
+
+    def __str__(self):
+        return self.name
+
+
+class Socket(models.Model):
+    """Справочник сокетов процессоров"""
+
+    class SocketType(models.TextChoices):
+        PGA = 'PGA', 'PGA (Pin Grid Array)'
+        LGA = 'LGA', 'LGA (Land Grid Array)'
+        BGA = 'BGA', 'BGA (Ball Grid Array)'
+        OTHER = 'OTHER', 'Другой'
+
+    name = models.CharField(
+        max_length=30,
+        unique=True,
+        verbose_name="Название сокета",
+        help_text="Например: LGA1700, AM5, SP5",
+    )
+    full_name = models.CharField(
+        max_length=100,
+        blank=True,
+        verbose_name="Полное название",
+        help_text="Например: Intel LGA 1700, AMD Socket AM5",
+    )
+    socket_type = models.CharField(
+        max_length=10,
+        choices=SocketType,
+        blank=True,
+        verbose_name="Тип сокета",
+    )
+    vendor = models.CharField(
+        max_length=20,
+        choices=[
+            ('INTEL', 'Intel'),
+            ('AMD', 'AMD'),
+            ('ARM', 'ARM'),
+            ('OTHER', 'Другой'),
+        ],
+        blank=True,
+        verbose_name="Производитель",
+    )
+    release_year = models.PositiveIntegerField(
+        null=True,
+        blank=True,
+        verbose_name="Год выпуска",
+    )
+    description = models.TextField(
+        blank=True,
+        verbose_name="Описание",
+    )
+
+    class Meta:
+        verbose_name = "Сокет"
+        verbose_name_plural = "Сокеты"
+        ordering = ['vendor', 'name']
 
     def __str__(self):
         return self.name

@@ -1,0 +1,1300 @@
+[
+  {
+    "model": "devices.networkportgroup",
+    "pk": 1,
+    "fields": {
+      "device_model": 101,
+      "physical_type": "rj45_ge"
+    }
+  },
+  {
+    "model": "devices.networkportgroup",
+    "pk": 2,
+    "fields": {
+      "device_model": 101,
+      "physical_type": "sfp_plus"
+    }
+  },
+  {
+    "model": "devices.networkportgroup",
+    "pk": 3,
+    "fields": {
+      "device_model": 101,
+      "physical_type": "console"
+    }
+  },
+  {
+    "model": "devices.networkportgroup",
+    "pk": 4,
+    "fields": {
+      "device_model": 102,
+      "physical_type": "rj45_ge"
+    }
+  },
+  {
+    "model": "devices.networkportgroup",
+    "pk": 5,
+    "fields": {
+      "device_model": 102,
+      "physical_type": "sfp_plus"
+    }
+  },
+  {
+    "model": "devices.networkportgroup",
+    "pk": 6,
+    "fields": {
+      "device_model": 102,
+      "physical_type": "console"
+    }
+  },
+  {
+    "model": "devices.networkportgroup",
+    "pk": 7,
+    "fields": {
+      "device_model": 103,
+      "physical_type": "rj45_ge"
+    }
+  },
+  {
+    "model": "devices.networkportgroup",
+    "pk": 8,
+    "fields": {
+      "device_model": 103,
+      "physical_type": "console"
+    }
+  },
+  {
+    "model": "devices.networkportgroup",
+    "pk": 9,
+    "fields": {
+      "device_model": 104,
+      "physical_type": "rj45_ge"
+    }
+  },
+  {
+    "model": "devices.networkportgroup",
+    "pk": 10,
+    "fields": {
+      "device_model": 104,
+      "physical_type": "rj45_10g"
+    }
+  },
+  {
+    "model": "devices.networkportgroup",
+    "pk": 11,
+    "fields": {
+      "device_model": 104,
+      "physical_type": "console"
+    }
+  },
+  {
+    "model": "devices.networkportgroup",
+    "pk": 12,
+    "fields": {
+      "device_model": 105,
+      "physical_type": "rj45_ge"
+    }
+  },
+  {
+    "model": "devices.networkportgroup",
+    "pk": 13,
+    "fields": {
+      "device_model": 105,
+      "physical_type": "rj45_10g"
+    }
+  },
+  {
+    "model": "devices.networkportgroup",
+    "pk": 14,
+    "fields": {
+      "device_model": 105,
+      "physical_type": "sfp_plus"
+    }
+  },
+  {
+    "model": "devices.networkportgroup",
+    "pk": 15,
+    "fields": {
+      "device_model": 105,
+      "physical_type": "console"
+    }
+  },
+  {
+    "model": "devices.networkportgroup",
+    "pk": 16,
+    "fields": {
+      "device_model": 106,
+      "physical_type": "rj45_ge"
+    }
+  },
+  {
+    "model": "devices.networkportgroup",
+    "pk": 17,
+    "fields": {
+      "device_model": 106,
+      "physical_type": "console"
+    }
+  },
+  {
+    "model": "devices.networkportgroup",
+    "pk": 18,
+    "fields": {
+      "device_model": 107,
+      "physical_type": "rj45_ge"
+    }
+  },
+  {
+    "model": "devices.networkportgroup",
+    "pk": 19,
+    "fields": {
+      "device_model": 107,
+      "physical_type": "console"
+    }
+  },
+  {
+    "model": "devices.networkportgroup",
+    "pk": 20,
+    "fields": {
+      "device_model": 108,
+      "physical_type": "rj45_ge"
+    }
+  },
+  {
+    "model": "devices.networkportgroup",
+    "pk": 21,
+    "fields": {
+      "device_model": 108,
+      "physical_type": "console"
+    }
+  },
+  {
+    "model": "devices.physicalnetworkport",
+    "pk": 1,
+    "fields": { "device": 101, "network_port_group": 1, "name": "eth0", "status": "active" }
+  },
+  {
+    "model": "devices.physicalnetworkport",
+    "pk": 2,
+    "fields": { "device": 101, "network_port_group": 1, "name": "eth1", "status": "active" }
+  },
+  {
+    "model": "devices.physicalnetworkport",
+    "pk": 3,
+    "fields": { "device": 101, "network_port_group": 1, "name": "eth2", "status": "active" }
+  },
+  {
+    "model": "devices.physicalnetworkport",
+    "pk": 4,
+    "fields": { "device": 101, "network_port_group": 1, "name": "eth3", "status": "active" }
+  },
+  {
+    "model": "devices.physicalnetworkport",
+    "pk": 5,
+    "fields": { "device": 101, "network_port_group": 1, "name": "mgmt", "status": "active" }
+  },
+  {
+    "model": "devices.physicalnetworkport",
+    "pk": 6,
+    "fields": { "device": 101, "network_port_group": 2, "name": "sfp0", "status": "active" }
+  },
+  {
+    "model": "devices.physicalnetworkport",
+    "pk": 7,
+    "fields": { "device": 101, "network_port_group": 2, "name": "sfp1", "status": "inactive" }
+  },
+  {
+    "model": "devices.physicalnetworkport",
+    "pk": 8,
+    "fields": { "device": 101, "network_port_group": 3, "name": "console", "status": "inactive" }
+  },
+  {
+    "model": "devices.physicalnetworkport",
+    "pk": 9,
+    "fields": { "device": 102, "network_port_group": 4, "name": "GigabitEthernet1/0/1", "status": "active" }
+  },
+  {
+    "model": "devices.physicalnetworkport",
+    "pk": 10,
+    "fields": { "device": 102, "network_port_group": 4, "name": "GigabitEthernet1/0/2", "status": "active" }
+  },
+  {
+    "model": "devices.physicalnetworkport",
+    "pk": 11,
+    "fields": { "device": 102, "network_port_group": 4, "name": "GigabitEthernet1/0/3", "status": "active" }
+  },
+  {
+    "model": "devices.physicalnetworkport",
+    "pk": 12,
+    "fields": { "device": 102, "network_port_group": 4, "name": "GigabitEthernet1/0/4", "status": "inactive" }
+  },
+  {
+    "model": "devices.physicalnetworkport",
+    "pk": 13,
+    "fields": { "device": 102, "network_port_group": 5, "name": "TenGigabitEthernet1/0/49", "status": "active" }
+  },
+  {
+    "model": "devices.physicalnetworkport",
+    "pk": 14,
+    "fields": { "device": 102, "network_port_group": 5, "name": "TenGigabitEthernet1/0/50", "status": "active" }
+  },
+  {
+    "model": "devices.physicalnetworkport",
+    "pk": 15,
+    "fields": { "device": 102, "network_port_group": 6, "name": "console", "status": "inactive" }
+  },
+  {
+    "model": "devices.physicalnetworkport",
+    "pk": 16,
+    "fields": { "device": 103, "network_port_group": 7, "name": "GigabitEthernet0/0/0", "status": "active" }
+  },
+  {
+    "model": "devices.physicalnetworkport",
+    "pk": 17,
+    "fields": { "device": 103, "network_port_group": 7, "name": "GigabitEthernet0/0/1", "status": "active" }
+  },
+  {
+    "model": "devices.physicalnetworkport",
+    "pk": 18,
+    "fields": { "device": 103, "network_port_group": 7, "name": "GigabitEthernet0/0/2", "status": "inactive" }
+  },
+  {
+    "model": "devices.physicalnetworkport",
+    "pk": 19,
+    "fields": { "device": 103, "network_port_group": 8, "name": "console", "status": "inactive" }
+  },
+  {
+    "model": "devices.physicalnetworkport",
+    "pk": 20,
+    "fields": { "device": 104, "network_port_group": 9, "name": "eth0", "status": "active" }
+  },
+  {
+    "model": "devices.physicalnetworkport",
+    "pk": 21,
+    "fields": { "device": 104, "network_port_group": 9, "name": "eth1", "status": "active" }
+  },
+  {
+    "model": "devices.physicalnetworkport",
+    "pk": 22,
+    "fields": { "device": 104, "network_port_group": 10, "name": "eth2", "status": "active" }
+  },
+  {
+    "model": "devices.physicalnetworkport",
+    "pk": 23,
+    "fields": { "device": 104, "network_port_group": 10, "name": "eth3", "status": "active" }
+  },
+  {
+    "model": "devices.physicalnetworkport",
+    "pk": 24,
+    "fields": { "device": 104, "network_port_group": 11, "name": "console", "status": "inactive" }
+  },
+  {
+    "model": "devices.physicalnetworkport",
+    "pk": 25,
+    "fields": { "device": 105, "network_port_group": 12, "name": "LAN1", "status": "active" }
+  },
+  {
+    "model": "devices.physicalnetworkport",
+    "pk": 26,
+    "fields": { "device": 105, "network_port_group": 12, "name": "LAN2", "status": "active" }
+  },
+  {
+    "model": "devices.physicalnetworkport",
+    "pk": 27,
+    "fields": { "device": 105, "network_port_group": 12, "name": "LAN3", "status": "active" }
+  },
+  {
+    "model": "devices.physicalnetworkport",
+    "pk": 28,
+    "fields": { "device": 105, "network_port_group": 13, "name": "WAN1", "status": "active" }
+  },
+  {
+    "model": "devices.physicalnetworkport",
+    "pk": 29,
+    "fields": { "device": 105, "network_port_group": 13, "name": "WAN2", "status": "active" }
+  },
+  {
+    "model": "devices.physicalnetworkport",
+    "pk": 30,
+    "fields": { "device": 105, "network_port_group": 14, "name": "HA1", "status": "active" }
+  },
+  {
+    "model": "devices.physicalnetworkport",
+    "pk": 31,
+    "fields": { "device": 105, "network_port_group": 14, "name": "HA2", "status": "reserved" }
+  },
+  {
+    "model": "devices.physicalnetworkport",
+    "pk": 32,
+    "fields": { "device": 105, "network_port_group": 15, "name": "console", "status": "inactive" }
+  },
+  {
+    "model": "devices.physicalnetworkport",
+    "pk": 33,
+    "fields": { "device": 106, "network_port_group": 16, "name": "eth0", "status": "active" }
+  },
+  {
+    "model": "devices.physicalnetworkport",
+    "pk": 34,
+    "fields": { "device": 106, "network_port_group": 16, "name": "eth1", "status": "active" }
+  },
+  {
+    "model": "devices.physicalnetworkport",
+    "pk": 35,
+    "fields": { "device": 106, "network_port_group": 16, "name": "eth2", "status": "disabled" }
+  },
+  {
+    "model": "devices.physicalnetworkport",
+    "pk": 36,
+    "fields": { "device": 106, "network_port_group": 17, "name": "console", "status": "inactive" }
+  },
+  {
+    "model": "devices.physicalnetworkport",
+    "pk": 37,
+    "fields": { "device": 107, "network_port_group": 18, "name": "eth0", "status": "active" }
+  },
+  {
+    "model": "devices.physicalnetworkport",
+    "pk": 38,
+    "fields": { "device": 107, "network_port_group": 18, "name": "eth1", "status": "active" }
+  },
+  {
+    "model": "devices.physicalnetworkport",
+    "pk": 39,
+    "fields": { "device": 107, "network_port_group": 18, "name": "mgmt", "status": "active" }
+  },
+  {
+    "model": "devices.physicalnetworkport",
+    "pk": 40,
+    "fields": { "device": 107, "network_port_group": 19, "name": "console", "status": "inactive" }
+  },
+  {
+    "model": "devices.physicalnetworkport",
+    "pk": 41,
+    "fields": { "device": 108, "network_port_group": 20, "name": "FastEthernet0/1", "status": "active" }
+  },
+  {
+    "model": "devices.physicalnetworkport",
+    "pk": 42,
+    "fields": { "device": 108, "network_port_group": 20, "name": "FastEthernet0/2", "status": "active" }
+  },
+  {
+    "model": "devices.physicalnetworkport",
+    "pk": 43,
+    "fields": { "device": 108, "network_port_group": 20, "name": "FastEthernet0/3", "status": "active" }
+  },
+  {
+    "model": "devices.physicalnetworkport",
+    "pk": 44,
+    "fields": { "device": 108, "network_port_group": 20, "name": "FastEthernet0/4", "status": "faulty" }
+  },
+  {
+    "model": "devices.physicalnetworkport",
+    "pk": 45,
+    "fields": { "device": 108, "network_port_group": 21, "name": "console", "status": "inactive" }
+  },
+  {
+    "model": "devices.physicalnetworkport",
+    "pk": 46,
+    "fields": { "device": 109, "network_port_group": 18, "name": "eth0", "status": "active" }
+  },
+  {
+    "model": "devices.physicalnetworkport",
+    "pk": 47,
+    "fields": { "device": 109, "network_port_group": 18, "name": "eth1", "status": "active" }
+  },
+  {
+    "model": "devices.physicalnetworkport",
+    "pk": 48,
+    "fields": { "device": 109, "network_port_group": 18, "name": "mgmt", "status": "active" }
+  },
+  {
+    "model": "devices.physicalnetworkport",
+    "pk": 49,
+    "fields": { "device": 109, "network_port_group": 19, "name": "console", "status": "inactive" }
+  },
+  {
+    "model": "devices.physicalnetworkport",
+    "pk": 50,
+    "fields": { "device": 110, "network_port_group": 20, "name": "FastEthernet0/1", "status": "active" }
+  },
+  {
+    "model": "devices.physicalnetworkport",
+    "pk": 51,
+    "fields": { "device": 110, "network_port_group": 20, "name": "FastEthernet0/2", "status": "active" }
+  },
+  {
+    "model": "devices.physicalnetworkport",
+    "pk": 52,
+    "fields": { "device": 110, "network_port_group": 20, "name": "FastEthernet0/3", "status": "disabled" }
+  },
+  {
+    "model": "devices.physicalnetworkport",
+    "pk": 53,
+    "fields": { "device": 110, "network_port_group": 21, "name": "console", "status": "inactive" }
+  },
+  {
+    "model": "devices.physicalnetworkport",
+    "pk": 54,
+    "fields": { "device": 111, "network_port_group": 20, "name": "FastEthernet0/1", "status": "active" }
+  },
+  {
+    "model": "devices.physicalnetworkport",
+    "pk": 55,
+    "fields": { "device": 111, "network_port_group": 20, "name": "FastEthernet0/2", "status": "active" }
+  },
+  {
+    "model": "devices.physicalnetworkport",
+    "pk": 56,
+    "fields": { "device": 111, "network_port_group": 21, "name": "console", "status": "inactive" }
+  },
+  {
+    "model": "devices.physicalnetworkport",
+    "pk": 57,
+    "fields": { "device": 112, "network_port_group": 1, "name": "eth0", "status": "active" }
+  },
+  {
+    "model": "devices.physicalnetworkport",
+    "pk": 58,
+    "fields": { "device": 112, "network_port_group": 1, "name": "eth1", "status": "active" }
+  },
+  {
+    "model": "devices.physicalnetworkport",
+    "pk": 59,
+    "fields": { "device": 112, "network_port_group": 1, "name": "eth2", "status": "active" }
+  },
+  {
+    "model": "devices.physicalnetworkport",
+    "pk": 60,
+    "fields": { "device": 112, "network_port_group": 1, "name": "eth3", "status": "inactive" }
+  },
+  {
+    "model": "devices.physicalnetworkport",
+    "pk": 61,
+    "fields": { "device": 112, "network_port_group": 1, "name": "mgmt", "status": "active" }
+  },
+  {
+    "model": "devices.physicalnetworkport",
+    "pk": 62,
+    "fields": { "device": 112, "network_port_group": 2, "name": "sfp0", "status": "active" }
+  },
+  {
+    "model": "devices.physicalnetworkport",
+    "pk": 63,
+    "fields": { "device": 112, "network_port_group": 2, "name": "sfp1", "status": "reserved" }
+  },
+  {
+    "model": "devices.physicalnetworkport",
+    "pk": 64,
+    "fields": { "device": 112, "network_port_group": 3, "name": "console", "status": "inactive" }
+  },
+  {
+    "model": "devices.physicalnetworkport",
+    "pk": 65,
+    "fields": { "device": 113, "network_port_group": 4, "name": "GigabitEthernet1/0/1", "status": "active" }
+  },
+  {
+    "model": "devices.physicalnetworkport",
+    "pk": 66,
+    "fields": { "device": 113, "network_port_group": 4, "name": "GigabitEthernet1/0/2", "status": "active" }
+  },
+  {
+    "model": "devices.physicalnetworkport",
+    "pk": 67,
+    "fields": { "device": 113, "network_port_group": 4, "name": "GigabitEthernet1/0/3", "status": "faulty" }
+  },
+  {
+    "model": "devices.physicalnetworkport",
+    "pk": 68,
+    "fields": { "device": 113, "network_port_group": 5, "name": "TenGigabitEthernet1/0/49", "status": "active" }
+  },
+  {
+    "model": "devices.physicalnetworkport",
+    "pk": 69,
+    "fields": { "device": 113, "network_port_group": 5, "name": "TenGigabitEthernet1/0/50", "status": "active" }
+  },
+  {
+    "model": "devices.physicalnetworkport",
+    "pk": 70,
+    "fields": { "device": 113, "network_port_group": 6, "name": "console", "status": "inactive" }
+  },
+  {
+    "model": "devices.physicalnetworkport",
+    "pk": 71,
+    "fields": { "device": 114, "network_port_group": 9, "name": "eth0", "status": "active" }
+  },
+  {
+    "model": "devices.physicalnetworkport",
+    "pk": 72,
+    "fields": { "device": 114, "network_port_group": 9, "name": "eth1", "status": "active" }
+  },
+  {
+    "model": "devices.physicalnetworkport",
+    "pk": 73,
+    "fields": { "device": 114, "network_port_group": 10, "name": "eth2", "status": "active" }
+  },
+  {
+    "model": "devices.physicalnetworkport",
+    "pk": 74,
+    "fields": { "device": 114, "network_port_group": 11, "name": "console", "status": "inactive" }
+  },
+  {
+    "model": "devices.physicalnetworkport",
+    "pk": 75,
+    "fields": { "device": 115, "network_port_group": 18, "name": "eth0", "status": "active" }
+  },
+  {
+    "model": "devices.physicalnetworkport",
+    "pk": 76,
+    "fields": { "device": 115, "network_port_group": 18, "name": "eth1", "status": "active" }
+  },
+  {
+    "model": "devices.physicalnetworkport",
+    "pk": 77,
+    "fields": { "device": 115, "network_port_group": 18, "name": "mgmt", "status": "active" }
+  },
+  {
+    "model": "devices.physicalnetworkport",
+    "pk": 78,
+    "fields": { "device": 115, "network_port_group": 19, "name": "console", "status": "inactive" }
+  },
+  {
+    "model": "devices.physicalnetworkport",
+    "pk": 79,
+    "fields": { "device": 116, "network_port_group": 1, "name": "eth0", "status": "active" }
+  },
+  {
+    "model": "devices.physicalnetworkport",
+    "pk": 80,
+    "fields": { "device": 116, "network_port_group": 1, "name": "eth1", "status": "active" }
+  },
+  {
+    "model": "devices.physicalnetworkport",
+    "pk": 81,
+    "fields": { "device": 116, "network_port_group": 1, "name": "mgmt", "status": "active" }
+  },
+  {
+    "model": "devices.physicalnetworkport",
+    "pk": 82,
+    "fields": { "device": 116, "network_port_group": 2, "name": "sfp0", "status": "active" }
+  },
+  {
+    "model": "devices.physicalnetworkport",
+    "pk": 83,
+    "fields": { "device": 116, "network_port_group": 3, "name": "console", "status": "inactive" }
+  },
+  {
+    "model": "devices.physicalnetworkport",
+    "pk": 84,
+    "fields": { "device": 117, "network_port_group": 1, "name": "eth0", "status": "active" }
+  },
+  {
+    "model": "devices.physicalnetworkport",
+    "pk": 85,
+    "fields": { "device": 117, "network_port_group": 1, "name": "eth1", "status": "inactive" }
+  },
+  {
+    "model": "devices.physicalnetworkport",
+    "pk": 86,
+    "fields": { "device": 117, "network_port_group": 1, "name": "mgmt", "status": "active" }
+  },
+  {
+    "model": "devices.physicalnetworkport",
+    "pk": 87,
+    "fields": { "device": 117, "network_port_group": 2, "name": "sfp0", "status": "active" }
+  },
+  {
+    "model": "devices.physicalnetworkport",
+    "pk": 88,
+    "fields": { "device": 117, "network_port_group": 3, "name": "console", "status": "inactive" }
+  },
+  {
+    "model": "devices.physicalnetworkport",
+    "pk": 89,
+    "fields": { "device": 118, "network_port_group": 4, "name": "GigabitEthernet1/0/1", "status": "active" }
+  },
+  {
+    "model": "devices.physicalnetworkport",
+    "pk": 90,
+    "fields": { "device": 118, "network_port_group": 4, "name": "GigabitEthernet1/0/2", "status": "active" }
+  },
+  {
+    "model": "devices.physicalnetworkport",
+    "pk": 91,
+    "fields": { "device": 118, "network_port_group": 4, "name": "GigabitEthernet1/0/3", "status": "active" }
+  },
+  {
+    "model": "devices.physicalnetworkport",
+    "pk": 92,
+    "fields": { "device": 118, "network_port_group": 5, "name": "TenGigabitEthernet1/0/49", "status": "active" }
+  },
+  {
+    "model": "devices.physicalnetworkport",
+    "pk": 93,
+    "fields": { "device": 118, "network_port_group": 5, "name": "TenGigabitEthernet1/0/50", "status": "disabled" }
+  },
+  {
+    "model": "devices.physicalnetworkport",
+    "pk": 94,
+    "fields": { "device": 118, "network_port_group": 6, "name": "console", "status": "inactive" }
+  },
+  {
+    "model": "devices.physicalnetworkport",
+    "pk": 95,
+    "fields": { "device": 119, "network_port_group": 4, "name": "GigabitEthernet1/0/1", "status": "active" }
+  },
+  {
+    "model": "devices.physicalnetworkport",
+    "pk": 96,
+    "fields": { "device": 119, "network_port_group": 4, "name": "GigabitEthernet1/0/2", "status": "active" }
+  },
+  {
+    "model": "devices.physicalnetworkport",
+    "pk": 97,
+    "fields": { "device": 119, "network_port_group": 5, "name": "TenGigabitEthernet1/0/49", "status": "active" }
+  },
+  {
+    "model": "devices.physicalnetworkport",
+    "pk": 98,
+    "fields": { "device": 119, "network_port_group": 6, "name": "console", "status": "inactive" }
+  },
+  {
+    "model": "devices.physicalnetworkport",
+    "pk": 99,
+    "fields": { "device": 120, "network_port_group": 7, "name": "GigabitEthernet0/0/0", "status": "active" }
+  },
+  {
+    "model": "devices.physicalnetworkport",
+    "pk": 100,
+    "fields": { "device": 120, "network_port_group": 7, "name": "GigabitEthernet0/0/1", "status": "active" }
+  },
+  {
+    "model": "devices.physicalnetworkport",
+    "pk": 101,
+    "fields": { "device": 120, "network_port_group": 8, "name": "console", "status": "inactive" }
+  },
+  {
+    "model": "devices.physicalnetworkport",
+    "pk": 102,
+    "fields": { "device": 121, "network_port_group": 9, "name": "eth0", "status": "active" }
+  },
+  {
+    "model": "devices.physicalnetworkport",
+    "pk": 103,
+    "fields": { "device": 121, "network_port_group": 9, "name": "eth1", "status": "active" }
+  },
+  {
+    "model": "devices.physicalnetworkport",
+    "pk": 104,
+    "fields": { "device": 121, "network_port_group": 10, "name": "eth2", "status": "active" }
+  },
+  {
+    "model": "devices.physicalnetworkport",
+    "pk": 105,
+    "fields": { "device": 121, "network_port_group": 10, "name": "eth3", "status": "faulty" }
+  },
+  {
+    "model": "devices.physicalnetworkport",
+    "pk": 106,
+    "fields": { "device": 121, "network_port_group": 11, "name": "console", "status": "inactive" }
+  },
+  {
+    "model": "devices.physicalnetworkport",
+    "pk": 107,
+    "fields": { "device": 122, "network_port_group": 12, "name": "LAN1", "status": "active" }
+  },
+  {
+    "model": "devices.physicalnetworkport",
+    "pk": 108,
+    "fields": { "device": 122, "network_port_group": 12, "name": "LAN2", "status": "active" }
+  },
+  {
+    "model": "devices.physicalnetworkport",
+    "pk": 109,
+    "fields": { "device": 122, "network_port_group": 13, "name": "WAN1", "status": "active" }
+  },
+  {
+    "model": "devices.physicalnetworkport",
+    "pk": 110,
+    "fields": { "device": 122, "network_port_group": 14, "name": "HA1", "status": "active" }
+  },
+  {
+    "model": "devices.physicalnetworkport",
+    "pk": 111,
+    "fields": { "device": 122, "network_port_group": 14, "name": "HA2", "status": "active" }
+  },
+  {
+    "model": "devices.physicalnetworkport",
+    "pk": 112,
+    "fields": { "device": 122, "network_port_group": 15, "name": "console", "status": "inactive" }
+  },
+  {
+    "model": "devices.physicalnetworkport",
+    "pk": 113,
+    "fields": { "device": 123, "network_port_group": 16, "name": "eth0", "status": "active" }
+  },
+  {
+    "model": "devices.physicalnetworkport",
+    "pk": 114,
+    "fields": { "device": 123, "network_port_group": 16, "name": "eth1", "status": "active" }
+  },
+  {
+    "model": "devices.physicalnetworkport",
+    "pk": 115,
+    "fields": { "device": 123, "network_port_group": 16, "name": "eth2", "status": "active" }
+  },
+  {
+    "model": "devices.physicalnetworkport",
+    "pk": 116,
+    "fields": { "device": 123, "network_port_group": 17, "name": "console", "status": "inactive" }
+  },
+  {
+    "model": "devices.physicalnetworkport",
+    "pk": 117,
+    "fields": { "device": 124, "network_port_group": 18, "name": "eth0", "status": "active" }
+  },
+  {
+    "model": "devices.physicalnetworkport",
+    "pk": 118,
+    "fields": { "device": 124, "network_port_group": 18, "name": "eth1", "status": "active" }
+  },
+  {
+    "model": "devices.physicalnetworkport",
+    "pk": 119,
+    "fields": { "device": 124, "network_port_group": 18, "name": "mgmt", "status": "active" }
+  },
+  {
+    "model": "devices.physicalnetworkport",
+    "pk": 120,
+    "fields": { "device": 124, "network_port_group": 19, "name": "console", "status": "inactive" }
+  },
+  {
+    "model": "devices.physicalnetworkport",
+    "pk": 121,
+    "fields": { "device": 125, "network_port_group": 20, "name": "FastEthernet0/1", "status": "active" }
+  },
+  {
+    "model": "devices.physicalnetworkport",
+    "pk": 122,
+    "fields": { "device": 125, "network_port_group": 20, "name": "FastEthernet0/2", "status": "active" }
+  },
+  {
+    "model": "devices.physicalnetworkport",
+    "pk": 123,
+    "fields": { "device": 125, "network_port_group": 20, "name": "FastEthernet0/3", "status": "active" }
+  },
+  {
+    "model": "devices.physicalnetworkport",
+    "pk": 124,
+    "fields": { "device": 125, "network_port_group": 21, "name": "console", "status": "inactive" }
+  },
+  {
+    "model": "devices.physicalnetworkport",
+    "pk": 125,
+    "fields": { "device": 126, "network_port_group": 20, "name": "FastEthernet0/1", "status": "active" }
+  },
+  {
+    "model": "devices.physicalnetworkport",
+    "pk": 126,
+    "fields": { "device": 126, "network_port_group": 20, "name": "FastEthernet0/2", "status": "disabled" }
+  },
+  {
+    "model": "devices.physicalnetworkport",
+    "pk": 127,
+    "fields": { "device": 126, "network_port_group": 21, "name": "console", "status": "inactive" }
+  },
+  {
+    "model": "devices.physicalnetworkport",
+    "pk": 128,
+    "fields": { "device": 127, "network_port_group": 1, "name": "eth0", "status": "active" }
+  },
+  {
+    "model": "devices.physicalnetworkport",
+    "pk": 129,
+    "fields": { "device": 127, "network_port_group": 1, "name": "eth1", "status": "active" }
+  },
+  {
+    "model": "devices.physicalnetworkport",
+    "pk": 130,
+    "fields": { "device": 127, "network_port_group": 1, "name": "eth2", "status": "active" }
+  },
+  {
+    "model": "devices.physicalnetworkport",
+    "pk": 131,
+    "fields": { "device": 127, "network_port_group": 1, "name": "eth3", "status": "active" }
+  },
+  {
+    "model": "devices.physicalnetworkport",
+    "pk": 132,
+    "fields": { "device": 127, "network_port_group": 1, "name": "mgmt", "status": "active" }
+  },
+  {
+    "model": "devices.physicalnetworkport",
+    "pk": 133,
+    "fields": { "device": 127, "network_port_group": 2, "name": "sfp0", "status": "active" }
+  },
+  {
+    "model": "devices.physicalnetworkport",
+    "pk": 134,
+    "fields": { "device": 127, "network_port_group": 2, "name": "sfp1", "status": "active" }
+  },
+  {
+    "model": "devices.physicalnetworkport",
+    "pk": 135,
+    "fields": { "device": 127, "network_port_group": 3, "name": "console", "status": "inactive" }
+  },
+  {
+    "model": "devices.physicalnetworkport",
+    "pk": 136,
+    "fields": { "device": 128, "network_port_group": 4, "name": "GigabitEthernet1/0/1", "status": "active" }
+  },
+  {
+    "model": "devices.physicalnetworkport",
+    "pk": 137,
+    "fields": { "device": 128, "network_port_group": 4, "name": "GigabitEthernet1/0/2", "status": "active" }
+  },
+  {
+    "model": "devices.physicalnetworkport",
+    "pk": 138,
+    "fields": { "device": 128, "network_port_group": 4, "name": "GigabitEthernet1/0/3", "status": "active" }
+  },
+  {
+    "model": "devices.physicalnetworkport",
+    "pk": 139,
+    "fields": { "device": 128, "network_port_group": 5, "name": "TenGigabitEthernet1/0/49", "status": "active" }
+  },
+  {
+    "model": "devices.physicalnetworkport",
+    "pk": 140,
+    "fields": { "device": 128, "network_port_group": 5, "name": "TenGigabitEthernet1/0/50", "status": "active" }
+  },
+  {
+    "model": "devices.physicalnetworkport",
+    "pk": 141,
+    "fields": { "device": 128, "network_port_group": 6, "name": "console", "status": "inactive" }
+  },
+  {
+    "model": "devices.physicalnetworkport",
+    "pk": 142,
+    "fields": { "device": 129, "network_port_group": 9, "name": "eth0", "status": "active" }
+  },
+  {
+    "model": "devices.physicalnetworkport",
+    "pk": 143,
+    "fields": { "device": 129, "network_port_group": 9, "name": "eth1", "status": "active" }
+  },
+  {
+    "model": "devices.physicalnetworkport",
+    "pk": 144,
+    "fields": { "device": 129, "network_port_group": 10, "name": "eth2", "status": "active" }
+  },
+  {
+    "model": "devices.physicalnetworkport",
+    "pk": 145,
+    "fields": { "device": 129, "network_port_group": 11, "name": "console", "status": "inactive" }
+  },
+  {
+    "model": "devices.physicalnetworkport",
+    "pk": 146,
+    "fields": { "device": 130, "network_port_group": 18, "name": "eth0", "status": "active" }
+  },
+  {
+    "model": "devices.physicalnetworkport",
+    "pk": 147,
+    "fields": { "device": 130, "network_port_group": 18, "name": "eth1", "status": "active" }
+  },
+  {
+    "model": "devices.physicalnetworkport",
+    "pk": 148,
+    "fields": { "device": 130, "network_port_group": 18, "name": "mgmt", "status": "active" }
+  },
+  {
+    "model": "devices.physicalnetworkport",
+    "pk": 149,
+    "fields": { "device": 130, "network_port_group": 19, "name": "console", "status": "inactive" }
+  },
+  {
+    "model": "devices.physicalnetworkport",
+    "pk": 150,
+    "fields": { "device": 131, "network_port_group": 1, "name": "eth0", "status": "active" }
+  },
+  {
+    "model": "devices.physicalnetworkport",
+    "pk": 151,
+    "fields": { "device": 131, "network_port_group": 1, "name": "eth1", "status": "active" }
+  },
+  {
+    "model": "devices.physicalnetworkport",
+    "pk": 152,
+    "fields": { "device": 131, "network_port_group": 1, "name": "mgmt", "status": "active" }
+  },
+  {
+    "model": "devices.physicalnetworkport",
+    "pk": 153,
+    "fields": { "device": 131, "network_port_group": 2, "name": "sfp0", "status": "active" }
+  },
+  {
+    "model": "devices.physicalnetworkport",
+    "pk": 154,
+    "fields": { "device": 131, "network_port_group": 3, "name": "console", "status": "inactive" }
+  },
+  {
+    "model": "devices.physicalnetworkport",
+    "pk": 155,
+    "fields": { "device": 132, "network_port_group": 1, "name": "eth0", "status": "active" }
+  },
+  {
+    "model": "devices.physicalnetworkport",
+    "pk": 156,
+    "fields": { "device": 132, "network_port_group": 1, "name": "eth1", "status": "active" }
+  },
+  {
+    "model": "devices.physicalnetworkport",
+    "pk": 157,
+    "fields": { "device": 132, "network_port_group": 1, "name": "eth2", "status": "inactive" }
+  },
+  {
+    "model": "devices.physicalnetworkport",
+    "pk": 158,
+    "fields": { "device": 132, "network_port_group": 1, "name": "mgmt", "status": "active" }
+  },
+  {
+    "model": "devices.physicalnetworkport",
+    "pk": 159,
+    "fields": { "device": 132, "network_port_group": 2, "name": "sfp0", "status": "active" }
+  },
+  {
+    "model": "devices.physicalnetworkport",
+    "pk": 160,
+    "fields": { "device": 132, "network_port_group": 3, "name": "console", "status": "inactive" }
+  },
+  {
+    "model": "devices.physicalnetworkport",
+    "pk": 161,
+    "fields": { "device": 133, "network_port_group": 4, "name": "GigabitEthernet1/0/1", "status": "active" }
+  },
+  {
+    "model": "devices.physicalnetworkport",
+    "pk": 162,
+    "fields": { "device": 133, "network_port_group": 4, "name": "GigabitEthernet1/0/2", "status": "active" }
+  },
+  {
+    "model": "devices.physicalnetworkport",
+    "pk": 163,
+    "fields": { "device": 133, "network_port_group": 4, "name": "GigabitEthernet1/0/3", "status": "active" }
+  },
+  {
+    "model": "devices.physicalnetworkport",
+    "pk": 164,
+    "fields": { "device": 133, "network_port_group": 5, "name": "TenGigabitEthernet1/0/49", "status": "active" }
+  },
+  {
+    "model": "devices.physicalnetworkport",
+    "pk": 165,
+    "fields": { "device": 133, "network_port_group": 5, "name": "TenGigabitEthernet1/0/50", "status": "active" }
+  },
+  {
+    "model": "devices.physicalnetworkport",
+    "pk": 166,
+    "fields": { "device": 133, "network_port_group": 6, "name": "console", "status": "inactive" }
+  },
+  {
+    "model": "devices.physicalnetworkport",
+    "pk": 167,
+    "fields": { "device": 134, "network_port_group": 4, "name": "GigabitEthernet1/0/1", "status": "active" }
+  },
+  {
+    "model": "devices.physicalnetworkport",
+    "pk": 168,
+    "fields": { "device": 134, "network_port_group": 4, "name": "GigabitEthernet1/0/2", "status": "active" }
+  },
+  {
+    "model": "devices.physicalnetworkport",
+    "pk": 169,
+    "fields": { "device": 134, "network_port_group": 5, "name": "TenGigabitEthernet1/0/49", "status": "active" }
+  },
+  {
+    "model": "devices.physicalnetworkport",
+    "pk": 170,
+    "fields": { "device": 134, "network_port_group": 6, "name": "console", "status": "inactive" }
+  },
+  {
+    "model": "devices.physicalnetworkport",
+    "pk": 171,
+    "fields": { "device": 135, "network_port_group": 7, "name": "GigabitEthernet0/0/0", "status": "active" }
+  },
+  {
+    "model": "devices.physicalnetworkport",
+    "pk": 172,
+    "fields": { "device": 135, "network_port_group": 7, "name": "GigabitEthernet0/0/1", "status": "active" }
+  },
+  {
+    "model": "devices.physicalnetworkport",
+    "pk": 173,
+    "fields": { "device": 135, "network_port_group": 7, "name": "GigabitEthernet0/0/2", "status": "reserved" }
+  },
+  {
+    "model": "devices.physicalnetworkport",
+    "pk": 174,
+    "fields": { "device": 135, "network_port_group": 8, "name": "console", "status": "inactive" }
+  },
+  {
+    "model": "devices.physicalnetworkport",
+    "pk": 175,
+    "fields": { "device": 136, "network_port_group": 9, "name": "eth0", "status": "active" }
+  },
+  {
+    "model": "devices.physicalnetworkport",
+    "pk": 176,
+    "fields": { "device": 136, "network_port_group": 9, "name": "eth1", "status": "active" }
+  },
+  {
+    "model": "devices.physicalnetworkport",
+    "pk": 177,
+    "fields": { "device": 136, "network_port_group": 10, "name": "eth2", "status": "active" }
+  },
+  {
+    "model": "devices.physicalnetworkport",
+    "pk": 178,
+    "fields": { "device": 136, "network_port_group": 10, "name": "eth3", "status": "active" }
+  },
+  {
+    "model": "devices.physicalnetworkport",
+    "pk": 179,
+    "fields": { "device": 136, "network_port_group": 11, "name": "console", "status": "inactive" }
+  },
+  {
+    "model": "devices.physicalnetworkport",
+    "pk": 180,
+    "fields": { "device": 137, "network_port_group": 12, "name": "LAN1", "status": "active" }
+  },
+  {
+    "model": "devices.physicalnetworkport",
+    "pk": 181,
+    "fields": { "device": 137, "network_port_group": 12, "name": "LAN2", "status": "active" }
+  },
+  {
+    "model": "devices.physicalnetworkport",
+    "pk": 182,
+    "fields": { "device": 137, "network_port_group": 12, "name": "LAN3", "status": "active" }
+  },
+  {
+    "model": "devices.physicalnetworkport",
+    "pk": 183,
+    "fields": { "device": 137, "network_port_group": 13, "name": "WAN1", "status": "active" }
+  },
+  {
+    "model": "devices.physicalnetworkport",
+    "pk": 184,
+    "fields": { "device": 137, "network_port_group": 13, "name": "WAN2", "status": "active" }
+  },
+  {
+    "model": "devices.physicalnetworkport",
+    "pk": 185,
+    "fields": { "device": 137, "network_port_group": 14, "name": "HA1", "status": "active" }
+  },
+  {
+    "model": "devices.physicalnetworkport",
+    "pk": 186,
+    "fields": { "device": 137, "network_port_group": 14, "name": "HA2", "status": "active" }
+  },
+  {
+    "model": "devices.physicalnetworkport",
+    "pk": 187,
+    "fields": { "device": 137, "network_port_group": 15, "name": "console", "status": "inactive" }
+  },
+  {
+    "model": "devices.physicalnetworkport",
+    "pk": 188,
+    "fields": { "device": 138, "network_port_group": 16, "name": "eth0", "status": "active" }
+  },
+  {
+    "model": "devices.physicalnetworkport",
+    "pk": 189,
+    "fields": { "device": 138, "network_port_group": 16, "name": "eth1", "status": "active" }
+  },
+  {
+    "model": "devices.physicalnetworkport",
+    "pk": 190,
+    "fields": { "device": 138, "network_port_group": 16, "name": "eth2", "status": "active" }
+  },
+  {
+    "model": "devices.physicalnetworkport",
+    "pk": 191,
+    "fields": { "device": 138, "network_port_group": 17, "name": "console", "status": "inactive" }
+  },
+  {
+    "model": "devices.physicalnetworkport",
+    "pk": 192,
+    "fields": { "device": 139, "network_port_group": 18, "name": "eth0", "status": "active" }
+  },
+  {
+    "model": "devices.physicalnetworkport",
+    "pk": 193,
+    "fields": { "device": 139, "network_port_group": 18, "name": "eth1", "status": "active" }
+  },
+  {
+    "model": "devices.physicalnetworkport",
+    "pk": 194,
+    "fields": { "device": 139, "network_port_group": 18, "name": "mgmt", "status": "active" }
+  },
+  {
+    "model": "devices.physicalnetworkport",
+    "pk": 195,
+    "fields": { "device": 139, "network_port_group": 19, "name": "console", "status": "inactive" }
+  },
+  {
+    "model": "devices.physicalnetworkport",
+    "pk": 196,
+    "fields": { "device": 140, "network_port_group": 20, "name": "FastEthernet0/1", "status": "active" }
+  },
+  {
+    "model": "devices.physicalnetworkport",
+    "pk": 197,
+    "fields": { "device": 140, "network_port_group": 20, "name": "FastEthernet0/2", "status": "active" }
+  },
+  {
+    "model": "devices.physicalnetworkport",
+    "pk": 198,
+    "fields": { "device": 140, "network_port_group": 20, "name": "FastEthernet0/3", "status": "active" }
+  },
+  {
+    "model": "devices.physicalnetworkport",
+    "pk": 199,
+    "fields": { "device": 140, "network_port_group": 20, "name": "FastEthernet0/4", "status": "active" }
+  },
+  {
+    "model": "devices.physicalnetworkport",
+    "pk": 200,
+    "fields": { "device": 140, "network_port_group": 21, "name": "console", "status": "inactive" }
+  },
+  {
+    "model": "devices.physicalnetworkport",
+    "pk": 201,
+    "fields": { "device": 141, "network_port_group": 20, "name": "FastEthernet0/1", "status": "active" }
+  },
+  {
+    "model": "devices.physicalnetworkport",
+    "pk": 202,
+    "fields": { "device": 141, "network_port_group": 20, "name": "FastEthernet0/2", "status": "active" }
+  },
+  {
+    "model": "devices.physicalnetworkport",
+    "pk": 203,
+    "fields": { "device": 141, "network_port_group": 21, "name": "console", "status": "inactive" }
+  },
+  {
+    "model": "devices.physicalnetworkport",
+    "pk": 204,
+    "fields": { "device": 142, "network_port_group": 1, "name": "eth0", "status": "active" }
+  },
+  {
+    "model": "devices.physicalnetworkport",
+    "pk": 205,
+    "fields": { "device": 142, "network_port_group": 1, "name": "eth1", "status": "active" }
+  },
+  {
+    "model": "devices.physicalnetworkport",
+    "pk": 206,
+    "fields": { "device": 142, "network_port_group": 1, "name": "eth2", "status": "active" }
+  },
+  {
+    "model": "devices.physicalnetworkport",
+    "pk": 207,
+    "fields": { "device": 142, "network_port_group": 1, "name": "eth3", "status": "active" }
+  },
+  {
+    "model": "devices.physicalnetworkport",
+    "pk": 208,
+    "fields": { "device": 142, "network_port_group": 1, "name": "mgmt", "status": "active" }
+  },
+  {
+    "model": "devices.physicalnetworkport",
+    "pk": 209,
+    "fields": { "device": 142, "network_port_group": 2, "name": "sfp0", "status": "active" }
+  },
+  {
+    "model": "devices.physicalnetworkport",
+    "pk": 210,
+    "fields": { "device": 142, "network_port_group": 2, "name": "sfp1", "status": "active" }
+  },
+  {
+    "model": "devices.physicalnetworkport",
+    "pk": 211,
+    "fields": { "device": 142, "network_port_group": 3, "name": "console", "status": "inactive" }
+  },
+  {
+    "model": "devices.physicalnetworkport",
+    "pk": 212,
+    "fields": { "device": 143, "network_port_group": 4, "name": "GigabitEthernet1/0/1", "status": "active" }
+  },
+  {
+    "model": "devices.physicalnetworkport",
+    "pk": 213,
+    "fields": { "device": 143, "network_port_group": 4, "name": "GigabitEthernet1/0/2", "status": "active" }
+  },
+  {
+    "model": "devices.physicalnetworkport",
+    "pk": 214,
+    "fields": { "device": 143, "network_port_group": 4, "name": "GigabitEthernet1/0/3", "status": "active" }
+  },
+  {
+    "model": "devices.physicalnetworkport",
+    "pk": 215,
+    "fields": { "device": 143, "network_port_group": 5, "name": "TenGigabitEthernet1/0/49", "status": "active" }
+  },
+  {
+    "model": "devices.physicalnetworkport",
+    "pk": 216,
+    "fields": { "device": 143, "network_port_group": 5, "name": "TenGigabitEthernet1/0/50", "status": "active" }
+  },
+  {
+    "model": "devices.physicalnetworkport",
+    "pk": 217,
+    "fields": { "device": 143, "network_port_group": 6, "name": "console", "status": "inactive" }
+  },
+  {
+    "model": "devices.physicalnetworkport",
+    "pk": 218,
+    "fields": { "device": 144, "network_port_group": 9, "name": "eth0", "status": "active" }
+  },
+  {
+    "model": "devices.physicalnetworkport",
+    "pk": 219,
+    "fields": { "device": 144, "network_port_group": 9, "name": "eth1", "status": "active" }
+  },
+  {
+    "model": "devices.physicalnetworkport",
+    "pk": 220,
+    "fields": { "device": 144, "network_port_group": 10, "name": "eth2", "status": "active" }
+  },
+  {
+    "model": "devices.physicalnetworkport",
+    "pk": 221,
+    "fields": { "device": 144, "network_port_group": 10, "name": "eth3", "status": "inactive" }
+  },
+  {
+    "model": "devices.physicalnetworkport",
+    "pk": 222,
+    "fields": { "device": 144, "network_port_group": 11, "name": "console", "status": "inactive" }
+  },
+  {
+    "model": "devices.physicalnetworkport",
+    "pk": 223,
+    "fields": { "device": 145, "network_port_group": 18, "name": "eth0", "status": "active" }
+  },
+  {
+    "model": "devices.physicalnetworkport",
+    "pk": 224,
+    "fields": { "device": 145, "network_port_group": 18, "name": "eth1", "status": "active" }
+  },
+  {
+    "model": "devices.physicalnetworkport",
+    "pk": 225,
+    "fields": { "device": 145, "network_port_group": 18, "name": "mgmt", "status": "active" }
+  },
+  {
+    "model": "devices.physicalnetworkport",
+    "pk": 226,
+    "fields": { "device": 145, "network_port_group": 19, "name": "console", "status": "inactive" }
+  }
+]

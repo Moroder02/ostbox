@@ -1,36 +1,29 @@
 from django.db import models
 from django.core.exceptions import ValidationError
-import uuid
 
-from apps.commons.models import Vendor
+from apps.commons.models import Vendor, Socket, MemoryType
+from apps.devices.models import Device
 
 
 class ProcessorModel(models.Model):
-    class MemoryType(models.TextChoices):
-        DDR3 = 'DDR3', 'DDR3'
-        DDR4 = 'DDR4', 'DDR4'
-        DDR5 = 'DDR5', 'DDR5'
-        LPDDR4 = 'LPDDR4', 'LPDDR4/4X'
-        LPDDR5 = 'LPDDR5', 'LPDDR5/5X'
-        OTHER = 'OTHER', 'Другой'
 
     vendor = models.ForeignKey(
         Vendor,
         on_delete=models.PROTECT,
         verbose_name="Производитель",
     )
-    series = models.CharField(
-        max_length=50,
-        blank=True,
-        db_index=True,
-        verbose_name="Серия",
-        help_text=(
-            "Линейка процессора. Примеры: "
-            "Xeon Scalable, Xeon D, Xeon E, EPYC, Ryzen 9, "
-            "Ryzen 7, Core i9, Core i7, Pentium, Celeron, "
-            "Graviton, Ampere Altra"
-        ),
-    )
+    # series = models.CharField(
+    #     max_length=50,
+    #     blank=True,
+    #     db_index=True,
+    #     verbose_name="Серия",
+    #     help_text=(
+    #         "Линейка процессора. Примеры: "
+    #         "Xeon Scalable, Xeon D, Xeon E, EPYC, Ryzen 9, "
+    #         "Ryzen 7, Core i9, Core i7, Pentium, Celeron, "
+    #         "Graviton, Ampere Altra"
+    #     ),
+    # )
     model_name = models.CharField(
         max_length=100,
         verbose_name="Модель",
@@ -41,8 +34,10 @@ class ProcessorModel(models.Model):
         blank=True,
         verbose_name="Part Number (P/N)",
     )
-    socket = models.CharField(
-        max_length=20,
+    socket = models.ForeignKey(
+        Socket,
+        on_delete=models.PROTECT,
+        related_name='processor_models',
         verbose_name="Сокет",
     )
     cores = models.PositiveIntegerField(verbose_name="Ядра")
@@ -54,20 +49,27 @@ class ProcessorModel(models.Model):
     l3_cache_mb = models.PositiveIntegerField(
         null=True, blank=True, verbose_name="Кэш L3 (МБ)"
     )
-    tdp_watts = models.PositiveIntegerField(verbose_name="TDP (Вт)")
-    pcie_lanes = models.PositiveIntegerField(
-        null=True, blank=True, verbose_name="Линии PCIe"
-    )
-    pcie_version = models.CharField(
-        max_length=10, blank=True, verbose_name="Версия PCIe"
-    )
+    # tdp_watts = models.PositiveIntegerField(verbose_name="TDP (Вт)")
+    # pcie_lanes = models.PositiveIntegerField(
+    #     null=True, blank=True, verbose_name="Линии PCIe"
+    # )
+    # pcie_version = models.CharField(
+    #     max_length=10, blank=True, verbose_name="Версия PCIe"
+    # )
     memory_type = models.CharField(
-        max_length=50, blank=True, verbose_name="Тип памяти",
-        help_text="Например: DDR5-4800, DDR4-3200"
+        max_length=10,
+        choices=MemoryType,
+        verbose_name="Тип памяти",
     )
-    max_memory_gb = models.PositiveIntegerField(
-        null=True, blank=True, verbose_name="Макс. объем памяти (ГБ)"
+    memory_speed_mts = models.PositiveIntegerField(
+        null=True,
+        blank=True,
+        verbose_name="Скорость памяти (MT/s)",
+        help_text="Например: 4800, 5600, 3200",
     )
+    # max_memory_gb = models.PositiveIntegerField(
+    #     null=True, blank=True, verbose_name="Макс. объем памяти (ГБ)"
+    # )
     segment = models.CharField(
         max_length=20,
         choices=[
@@ -81,10 +83,6 @@ class ProcessorModel(models.Model):
         verbose_name="Сегмент",
         help_text="К какой категории относится процессор",
     )
-    description = models.TextField(blank=True, verbose_name="Описание")
-
-    created_at = models.DateTimeField(auto_now_add=True)
-    updated_at = models.DateTimeField(auto_now=True)
 
     class Meta:
         verbose_name = "Модель процессора"
@@ -111,10 +109,10 @@ class ProcessorModel(models.Model):
                 ),
                 name='proc_turbo_gte_base',
             ),
-            models.CheckConstraint(
-                condition=models.Q(tdp_watts__gt=0),
-                name='proc_tdp_positive',
-            ),
+            # models.CheckConstraint(
+            #     condition=models.Q(tdp_watts__gt=0),
+            #     name='proc_tdp_positive',
+            # ),
             models.CheckConstraint(
                 condition=models.Q(cores__gt=0),
                 name='proc_cores_positive',
@@ -129,12 +127,12 @@ class ProcessorModel(models.Model):
         super().clean()
 
         # Нормализация текстовых полей
-        if self.series:
-            self.series = self.series.strip()
+        # if self.series:
+        #     self.series = self.series.strip()
         if self.memory_type:
             self.memory_type = self.memory_type.strip()
-        if self.generation:
-            self.generation = self.generation.strip()
+        # if self.generation:
+        #     self.generation = self.generation.strip()
 
         # Валидация числовых полей (дублирует CheckConstraint для красивых ошибок)
         if self.cores is not None and self.cores <= 0:
@@ -151,13 +149,162 @@ class ProcessorModel(models.Model):
             raise ValidationError({
                 'max_frequency_mhz': "Максимальная частота не может быть ниже базовой."
             })
-        if self.tdp_watts is not None and self.tdp_watts <= 0:
-            raise ValidationError({'tdp_watts': "TDP должен быть больше нуля."})
+        # if self.tdp_watts is not None and self.tdp_watts <= 0:
+        #     raise ValidationError({'tdp_watts': "TDP должен быть больше нуля."})
 
     def __str__(self):
         parts = [self.vendor, self.model_name]
-        if self.series:
-            parts.insert(1, f"[{self.series}]")
+        # if self.series:
+        #     parts.insert(1, f"[{self.series}]")
         if self.cores:
             parts.append(f"{self.cores}C/{self.threads}T")
         return " ".join(parts)
+
+
+class Processor(models.Model):
+    """
+    Физический экземпляр процессора
+    """
+    class ProcessorStatus(models.TextChoices):
+        ACTIVE = 'ACTIVE', 'В эксплуатации'
+        SPARE = 'SPARE', 'В резерве (ЗИП)'
+        FAULTY = 'FAULTY', 'Неисправен'
+        RETIRED = 'RETIRED', 'Списан'
+
+    processor_model = models.ForeignKey(
+        ProcessorModel,
+        on_delete=models.PROTECT,
+        related_name='physical_processors',
+        verbose_name="Модель процессора",
+    )
+
+    serial_number = models.CharField(
+        max_length=100,
+        blank=True,
+        verbose_name="Серийный номер",
+        help_text="FPO / S/N на крышке процессора",
+    )
+
+    inventory_number = models.CharField(
+        max_length=64,
+        null=True,
+        blank=True,
+        verbose_name="Инвентарный номер",
+    )
+
+    status = models.CharField(
+        max_length=16,
+        choices=ProcessorStatus,
+        default=ProcessorStatus.SPARE,
+        verbose_name="Статус",
+    )
+
+    device = models.ForeignKey(
+        Device,
+        on_delete=models.SET_NULL,
+        null=True,
+        blank=True,
+        related_name='processors',
+        verbose_name="Устройство",
+    )
+
+    # # Физический сокет на материнской плате (CPU1, CPU2, ...)
+    # socket_position = models.CharField(
+    #     max_length=20,
+    #     blank=True,
+    #     verbose_name="Позиция сокета",
+    #     help_text="Например: CPU1, CPU2 (если в сервере несколько процессоров)",
+    # )
+
+    stepping = models.CharField(
+        max_length=20,
+        blank=True,
+        verbose_name="Степпинг / ревизия",
+        help_text="Ревизия кристалла (например: M1, B1)",
+    )
+
+    # microcode = models.CharField(
+    #     max_length=50,
+    #     blank=True,
+    #     verbose_name="Версия микрокода",
+    #     help_text="Актуальная версия микрокода BIOS/UEFI",
+    # )
+
+    class Meta:
+        verbose_name = "Физический процессор"
+        verbose_name_plural = "Физические процессоры"
+        ordering = ['processor_model__vendor', 'processor_model__model_name', 'serial_number']
+        indexes = [
+            models.Index(fields=['status', 'processor_model']),
+            models.Index(fields=['serial_number']),
+        ]
+        constraints = [
+            # Инвентарный номер уникален, если задан
+            models.UniqueConstraint(
+                fields=['inventory_number'],
+                condition=~models.Q(inventory_number__isnull=True),
+                name='uniq_proc_inventory_number',
+            ),
+            # # Уникальность позиции сокета в рамках одного сервера
+            # models.UniqueConstraint(
+            #     fields=['server', 'socket_position'],
+            #     condition=(
+            #         ~models.Q(server__isnull=True)
+            #         & ~models.Q(socket_position='')
+            #     ),
+            #     name='uniq_proc_socket_per_server',
+            # ),
+        ]
+
+    def clean(self):
+        super().clean()
+
+        if self.serial_number:
+            self.serial_number = self.serial_number.upper().strip()
+
+        if self.inventory_number:
+            self.inventory_number = self.inventory_number.upper().strip()
+
+        # Бизнес-правило: списанный процессор не может быть в сервере
+        if self.status == self.ProcessorStatus.RETIRED and self.device:
+            raise ValidationError({
+                'device': "Списанный процессор не может быть привязан к устройству."
+            })
+
+        # Активный процессор должен стоять в сервере (опционально, зависит от процессов)
+        # if self.status == self.ProcessorStatus.ACTIVE and not self.server:
+        #     raise ValidationError({
+        #         'server': "Процессор в статусе 'В эксплуатации' должен быть привязан к серверу."
+        #     })
+
+    def save(self, *args, **kwargs):
+        if self.serial_number:
+            self.serial_number = self.serial_number.upper().strip()
+        if self.inventory_number:
+            self.inventory_number = self.inventory_number.upper().strip()
+
+        self.full_clean()
+        super().save(*args, **kwargs)
+
+    # Прокси-свойства для удобства отображения
+    @property
+    def vendor(self):
+        return self.processor_model.vendor
+
+    @property
+    def model_name(self):
+        return self.processor_model.model_name
+
+    @property
+    def cores(self):
+        return self.processor_model.cores
+
+    @property
+    def threads(self):
+        return self.processor_model.threads
+
+    def __str__(self):
+        return (
+            f"{self.processor_model.vendor} {self.processor_model.model_name} "
+            f"({self.processor_model.cores}C/{self.processor_model.threads}T) - "
+        )
