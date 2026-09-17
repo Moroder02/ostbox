@@ -3,9 +3,10 @@ from django.core.paginator import Paginator
 from django.conf import settings
 from django.db.models import Sum, Q
 from collections import Counter, defaultdict
+from django.db.models import Prefetch
 
 from .filters import DeviceFilter, DiskModelFilter, DiskFilter
-from .models import Device, DiskModel, Disk
+from .models import Device, DiskModel, Disk, Processor, RAM, PhysicalNetworkPort
 from apps.commons.models import DeviceKind
 
 
@@ -36,32 +37,61 @@ def device_list(request, kind=None):
 
 
 def device_detail(request, pk):
+    # Оптимизированные prefetch с явными запросами
+    disk_prefetch = Prefetch(
+        'disks',
+        queryset=Disk.objects.select_related('disk_model', 'disk_model__vendor')
+    )
+
+    processor_prefetch = Prefetch(
+        'processors',
+        queryset=Processor.objects.select_related(
+            'processor_model',
+            'processor_model__socket',
+            'processor_model__vendor'
+        )
+    )
+
+    ram_prefetch = Prefetch(
+        'ram_modules',
+        queryset=RAM.objects.select_related('ram_model')
+    )
+
+    port_prefetch = Prefetch(
+        'physical_ports',
+        queryset=PhysicalNetworkPort.objects.select_related('network_port_group')
+    )
+
     device = get_object_or_404(
         Device.objects.select_related(
             'device_model',
             'device_model__vendor',
             'operating_system',
         ).prefetch_related(
-            'disks__disk_model',
-            'disks__disk_model__vendor',
-            'physical_ports__network_port_group',
+            disk_prefetch,
+            processor_prefetch,
+            ram_prefetch,
+            port_prefetch,
             'management_protocols',
-            'processors__processor_model__socket',
-            'processors__processor_model',
-            'ram_modules__ram_model',
         ),
         pk=pk,
     )
-    disk_stats = device.disks.aggregate(
-        total_nvme=Sum('disk_model__capacity_gb', filter=Q(disk_model__media_type='NVME')),
-        total_ssd=Sum('disk_model__capacity_gb', filter=Q(disk_model__media_type='SSD')),
-        total_hdd=Sum('disk_model__capacity_gb', filter=Q(disk_model__media_type='HDD')),
-        total_all=Sum('disk_model__capacity_gb'),
-    )
-    cpu_stats = device.processors.aggregate(
-        total_cores=Sum('processor_model__cores'),
-        total_threads=Sum('processor_model__threads'),
-    )
+
+    # Агрегации на уровне Python, а не SQL
+    disks = list(device.disks.all())
+    disk_stats = {
+        'total_nvme': sum(d.disk_model.capacity_gb for d in disks if d.disk_model.media_type == 'NVME'),
+        'total_ssd': sum(d.disk_model.capacity_gb for d in disks if d.disk_model.media_type == 'SSD'),
+        'total_hdd': sum(d.disk_model.capacity_gb for d in disks if d.disk_model.media_type == 'HDD'),
+        'total_all': sum(d.disk_model.capacity_gb for d in disks),
+    }
+
+    processors = list(device.processors.all())
+    cpu_stats = {
+        'total_cores': sum(p.processor_model.cores for p in processors),
+        'total_threads': sum(p.processor_model.threads for p in processors),
+    }
+
     ports = list(device.physical_ports.all())  # один запрос, результат в кэше
     status_counter = Counter(p.status for p in ports)
     port_stats = {
