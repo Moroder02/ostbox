@@ -37,12 +37,16 @@ def device_list(request, kind=None):
 def device_detail(request, pk):
     device = get_object_or_404(
         Device.objects.select_related(
-            'device_model__vendor'
+            'device_model__vendor',
+
         ).prefetch_related(
             'disks__disk_model',
             'disks__disk_model__vendor',
             'physical_ports__network_port_group',
             'management_protocols',
+            'processors',
+            'processors__processor_model__socket',
+            'processors__processor_model__vendor',
         ),
         pk=pk
     )

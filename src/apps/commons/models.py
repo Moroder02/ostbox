@@ -15,23 +15,6 @@ class DeviceKind(models.TextChoices):
     CRYPTO_GATE = "crypto_gate", _("Крипто-шлюзы")
 
 
-# class MemoryType(models.TextChoices):
-#     DDR3 = "ddr3", _("DDR3")
-#     DDR4 = "ddr4", _("DDR4")
-#     DDR5 = "ddr5", _("DDR5")
-
-
-# class DiskType(models.TextChoices):
-#     SSD = "ssd", _("SSD")
-#     HDD = "hdd", _("HDD")
-#     NVME = "nvme", _("NVMe")
-#     SSD_NVME = "ssd_nvme", _("SSD/NVMe")
-#     SSD_HDD = "ssd_hdd", _("SSD/HDD")
-#     HDD_SSD = "hdd_ssd", _("HDD/SSD")
-#     HDD_NVME = "hdd_nvme", _("HDD/NVMe")
-#     NVME_SSD = "nvme_ssd", _("NVMe/SSD")
-
-
 class SocketType(models.TextChoices):
     AM4 = "am4", _("AM4")
     AM5 = "am5", _("AM5")

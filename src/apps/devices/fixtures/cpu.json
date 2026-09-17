@@ -1,0 +1,316 @@
+[
+  {
+    "model": "commons.socket",
+    "pk": 1,
+    "fields": {
+      "name": "LGA4677",
+      "full_name": "Intel LGA 4677 (Socket E)",
+      "socket_type": "LGA",
+      "vendor": "INTEL",
+      "release_year": 2023,
+      "description": "Серверный сокет для Intel Xeon Scalable 4-го поколения (Sapphire Rapids)"
+    }
+  },
+  {
+    "model": "commons.socket",
+    "pk": 2,
+    "fields": {
+      "name": "SP5",
+      "full_name": "AMD Socket SP5 (LGA 6096)",
+      "socket_type": "LGA",
+      "vendor": "AMD",
+      "release_year": 2022,
+      "description": "Серверный сокет для AMD EPYC 9004 (Genoa)"
+    }
+  },
+  {
+    "model": "commons.socket",
+    "pk": 3,
+    "fields": {
+      "name": "LGA1700",
+      "full_name": "Intel LGA 1700 (Socket V)",
+      "socket_type": "LGA",
+      "vendor": "INTEL",
+      "release_year": 2021,
+      "description": "Настольный сокет для Intel Core 12/13/14-го поколения"
+    }
+  },
+  {
+    "model": "commons.socket",
+    "pk": 4,
+    "fields": {
+      "name": "AM5",
+      "full_name": "AMD Socket AM5 (LGA 1718)",
+      "socket_type": "LGA",
+      "vendor": "AMD",
+      "release_year": 2022,
+      "description": "Настольный сокет для AMD Ryzen 7000/9000 (Zen 4/5)"
+    }
+  },
+  {
+    "model": "commons.socket",
+    "pk": 5,
+    "fields": {
+      "name": "BGA1510",
+      "full_name": "BGA 1510 (Elbrus)",
+      "socket_type": "BGA",
+      "vendor": "OTHER",
+      "release_year": 2020,
+      "description": "Паяный сокет для процессоров Эльбрус-8С/8СВ"
+    }
+  },
+
+  {
+    "model": "devices.processormodel",
+    "pk": 1,
+    "fields": {
+      "vendor": 1001,
+      "model_name": "Xeon Gold 6438Y+",
+      "part_number": "PK8072205559200",
+      "socket": 1,
+      "cores": 32,
+      "threads": 64,
+      "base_frequency_mhz": 2000,
+      "max_frequency_mhz": 4000,
+      "l3_cache_mb": 60,
+      "memory_type": "DDR5",
+      "memory_speed_mts": 4800,
+      "segment": "SERVER"
+    }
+  },
+  {
+    "model": "devices.processormodel",
+    "pk": 2,
+    "fields": {
+      "vendor": 1002,
+      "model_name": "EPYC 9554",
+      "part_number": "100-100000576WOF",
+      "socket": 2,
+      "cores": 64,
+      "threads": 128,
+      "base_frequency_mhz": 3100,
+      "max_frequency_mhz": 3750,
+      "l3_cache_mb": 256,
+      "memory_type": "DDR5",
+      "memory_speed_mts": 4800,
+      "segment": "SERVER"
+    }
+  },
+  {
+    "model": "devices.processormodel",
+    "pk": 3,
+    "fields": {
+      "vendor": 1001,
+      "model_name": "Core i9-14900K",
+      "part_number": "BX8071514900K",
+      "socket": 3,
+      "cores": 24,
+      "threads": 32,
+      "base_frequency_mhz": 3200,
+      "max_frequency_mhz": 6000,
+      "l3_cache_mb": 36,
+      "memory_type": "DDR5",
+      "memory_speed_mts": 5600,
+      "segment": "DESKTOP"
+    }
+  },
+  {
+    "model": "devices.processormodel",
+    "pk": 4,
+    "fields": {
+      "vendor": 1002,
+      "model_name": "Ryzen 9 7950X",
+      "part_number": "100-100000514WOF",
+      "socket": 4,
+      "cores": 16,
+      "threads": 32,
+      "base_frequency_mhz": 4500,
+      "max_frequency_mhz": 5700,
+      "l3_cache_mb": 64,
+      "memory_type": "DDR5",
+      "memory_speed_mts": 5200,
+      "segment": "DESKTOP"
+    }
+  },
+  {
+    "model": "devices.processormodel",
+    "pk": 5,
+    "fields": {
+      "vendor": 1001,
+      "model_name": "Xeon W9-3495X",
+      "part_number": "PK8072205558600",
+      "socket": 1,
+      "cores": 56,
+      "threads": 112,
+      "base_frequency_mhz": 1900,
+      "max_frequency_mhz": 4800,
+      "l3_cache_mb": 105,
+      "memory_type": "DDR5",
+      "memory_speed_mts": 4800,
+      "segment": "WORKSTATION"
+    }
+  },
+  {
+    "model": "devices.processormodel",
+    "pk": 6,
+    "fields": {
+      "vendor": 1003,
+      "model_name": "Elbrus-8CB",
+      "part_number": "EL-8CB-01",
+      "socket": 5,
+      "cores": 8,
+      "threads": 8,
+      "base_frequency_mhz": 1500,
+      "max_frequency_mhz": null,
+      "l3_cache_mb": 16,
+      "memory_type": "DDR4",
+      "memory_speed_mts": 2400,
+      "segment": "EMBEDDED"
+    }
+  },
+
+  {
+    "model": "devices.processor",
+    "pk": 1,
+    "fields": {
+      "processor_model": 1,
+      "serial_number": "FPO12345678901",
+      "inventory_number": "CPU-INV-001",
+      "status": "ACTIVE",
+      "device": 101,
+      "stepping": "M1"
+    }
+  },
+  {
+    "model": "devices.processor",
+    "pk": 2,
+    "fields": {
+      "processor_model": 1,
+      "serial_number": "FPO12345678902",
+      "inventory_number": "CPU-INV-002",
+      "status": "ACTIVE",
+      "device": 101,
+      "stepping": "M1"
+    }
+  },
+  {
+    "model": "devices.processor",
+    "pk": 3,
+    "fields": {
+      "processor_model": 2,
+      "serial_number": "SN-EPYC-001",
+      "inventory_number": "CPU-INV-003",
+      "status": "ACTIVE",
+      "device": 102,
+      "stepping": "B1"
+    }
+  },
+  {
+    "model": "devices.processor",
+    "pk": 4,
+    "fields": {
+      "processor_model": 2,
+      "serial_number": "SN-EPYC-002",
+      "inventory_number": "CPU-INV-004",
+      "status": "SPARE",
+      "device": null,
+      "stepping": "B1"
+    }
+  },
+  {
+    "model": "devices.processor",
+    "pk": 5,
+    "fields": {
+      "processor_model": 3,
+      "serial_number": "SN-I9-14900K-001",
+      "inventory_number": "CPU-INV-005",
+      "status": "SPARE",
+      "device": null,
+      "stepping": "B0"
+    }
+  },
+  {
+    "model": "devices.processor",
+    "pk": 6,
+    "fields": {
+      "processor_model": 4,
+      "serial_number": "SN-R9-7950X-001",
+      "inventory_number": "CPU-INV-006",
+      "status": "FAULTY",
+      "device": null,
+      "stepping": "B2"
+    }
+  },
+  {
+    "model": "devices.processor",
+    "pk": 7,
+    "fields": {
+      "processor_model": 5,
+      "serial_number": "SN-W9-3495X-001",
+      "inventory_number": "CPU-INV-007",
+      "status": "ACTIVE",
+      "device": 109,
+      "stepping": "M2"
+    }
+  },
+  {
+    "model": "devices.processor",
+    "pk": 8,
+    "fields": {
+      "processor_model": 6,
+      "serial_number": "SN-EL-8CB-001",
+      "inventory_number": "CPU-INV-008",
+      "status": "ACTIVE",
+      "device": 115,
+      "stepping": "R1"
+    }
+  },
+  {
+    "model": "devices.processor",
+    "pk": 9,
+    "fields": {
+      "processor_model": 1,
+      "serial_number": "FPO12345678903",
+      "inventory_number": "CPU-INV-009",
+      "status": "RETIRED",
+      "device": null,
+      "stepping": "M0"
+    }
+  },
+  {
+    "model": "devices.processor",
+    "pk": 10,
+    "fields": {
+      "processor_model": 2,
+      "serial_number": "SN-EPYC-003",
+      "inventory_number": "CPU-INV-010",
+      "status": "ACTIVE",
+      "device": 112,
+      "stepping": "B1"
+    }
+  },
+  {
+    "model": "devices.processor",
+    "pk": 11,
+    "fields": {
+      "processor_model": 3,
+      "serial_number": "SN-I9-14900K-002",
+      "inventory_number": null,
+      "status": "SPARE",
+      "device": null,
+      "stepping": "B0"
+    }
+  },
+  {
+    "model": "devices.processor",
+    "pk": 12,
+    "fields": {
+      "processor_model": 6,
+      "serial_number": "SN-EL-8CB-002",
+      "inventory_number": "CPU-INV-012",
+      "status": "SPARE",
+      "device": null,
+      "stepping": "R1"
+    }
+  }
+]
