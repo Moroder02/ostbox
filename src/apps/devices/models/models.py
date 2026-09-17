@@ -68,12 +68,14 @@ class DeviceModel(models.Model):
 
 
 class Device(models.Model):
+
     class Status(models.TextChoices):
         ON = "on", _("Включен")
         OFF = "off", _("Выключен")
         BROKEN = "broken", _("Не исправен")
         UNREACHABLE = "unreachable", _("Не доступен")
         UNKNOWN = "unknown", _("Неизвестно")
+
     device_model = models.ForeignKey(
         DeviceModel,
         on_delete=models.CASCADE,

@@ -168,7 +168,7 @@
     {% endif %}
 
     <!-- Сетевые порты -->
-    {% if device.physical_ports.all %}
+    {% if port_stats.total %}
         <div class="block block-rounded">
             <div class="block-header block-header-default d-flex justify-content-between align-items-center">
                 <h3 class="block-title">
@@ -176,47 +176,36 @@
                     Сетевые порты
                 </h3>
                 <span class="badge bg-dark fs-sm py-2 px-3">
-                Всего: <span class="fw-bold">{{ device.physical_ports.count }}</span>
+                Всего: <span class="fw-bold">{{ port_stats.total }}</span>
             </span>
             </div>
 
             <div class="block-content">
                 {# Сводка по статусам #}
-                {% regroup device.physical_ports.all by status as status_groups %}
                 <div class="row items-push text-center">
-                    {% for sg in status_groups %}
-                        <div class="col {% if not forloop.last %}border-end{% endif %}">
-                            <div class="fs-sm fw-semibold text-muted text-uppercase mb-1">
-                                {% if sg.grouper == 'active' %}
-                                    Активных
-                                {% elif sg.grouper == 'inactive' %}
-                                    Неактивных
-                                {% elif sg.grouper == 'disabled' %}
-                                    Отключённых
-                                {% elif sg.grouper == 'reserved' %}
-                                    Зарезервировано
-                                {% elif sg.grouper == 'faulty' %}
-                                    Неисправных
-                                {% else %}
-                                    Прочих
-                                {% endif %}
-                            </div>
-                            <div class="fs-2 fw-bold
-                            {% if sg.grouper == 'active' %}text-success
-                            {% elif sg.grouper == 'inactive' %}text-muted
-                            {% elif sg.grouper == 'disabled' %}text-warning
-                            {% elif sg.grouper == 'reserved' %}text-info
-                            {% elif sg.grouper == 'faulty' %}text-danger
-                            {% else %}text-dark{% endif %}">
-                                {{ sg.list|length }}
-                            </div>
-                        </div>
-                    {% endfor %}
+                    <div class="col border-end">
+                        <div class="fs-sm fw-semibold text-muted text-uppercase mb-1">Активных</div>
+                        <div class="fs-2 fw-bold text-success">{{ port_stats.active }}</div>
+                    </div>
+                    <div class="col border-end">
+                        <div class="fs-sm fw-semibold text-muted text-uppercase mb-1">Неактивных</div>
+                        <div class="fs-2 fw-bold text-muted">{{ port_stats.inactive }}</div>
+                    </div>
+                    <div class="col border-end">
+                        <div class="fs-sm fw-semibold text-muted text-uppercase mb-1">Отключённых</div>
+                        <div class="fs-2 fw-bold text-warning">{{ port_stats.disabled }}</div>
+                    </div>
+                    <div class="col border-end">
+                        <div class="fs-sm fw-semibold text-muted text-uppercase mb-1">Зарезервировано</div>
+                        <div class="fs-2 fw-bold text-info">{{ port_stats.reserved }}</div>
+                    </div>
+                    <div class="col">
+                        <div class="fs-sm fw-semibold text-muted text-uppercase mb-1">Неисправных</div>
+                        <div class="fs-2 fw-bold text-danger">{{ port_stats.faulty }}</div>
+                    </div>
                 </div>
 
-                {# Группировка портов по типу (NetworkPortGroup) #}
-                {% regroup device.physical_ports.all by network_port_group as port_groups %}
-
+                {# Таблица с группировкой по типам портов #}
                 <div class="table-responsive mt-3">
                     <table class="table table-hover table-vcenter fs-sm">
                         <thead>
@@ -227,13 +216,13 @@
                         </tr>
                         </thead>
                         <tbody>
-                        {% for group in port_groups %}
-                            {% for port in group.list %}
+                        {% for group_key, group_data in port_groups %}
+                            {% for port in group_data.ports %}
                                 <tr>
                                     {% if forloop.first %}
-                                        <td rowspan="{{ group.list|length }}" class="align-middle border-end">
+                                        <td rowspan="{{ group_data.count }}" class="align-middle border-end">
                                             {# Бейдж типа порта #}
-                                            {% with pt=group.grouper.physical_type %}
+                                            {% with pt=group_data.group.physical_type %}
                                                 {% if pt == 'rj45_fe' %}
                                                     <span class="badge bg-info-light text-info fw-bold">
                                                     <i class="fa fa-ethernet me-1"></i>RJ-45 FE
@@ -248,7 +237,7 @@
                                                 </span>
                                                 {% elif pt == 'gg45' or pt == 'tera' %}
                                                     <span class="badge bg-info-light text-info fw-bold">
-                                                    <i class="fa fa-ethernet me-1"></i>{{ group.grouper.get_physical_type_display }}
+                                                    <i class="fa fa-ethernet me-1"></i>{{ group_data.group.get_physical_type_display }}
                                                 </span>
                                                 {% elif pt == 'sfp' %}
                                                     <span class="badge bg-amethyst-light text-amethyst fw-bold">
@@ -280,12 +269,12 @@
                                                 </span>
                                                 {% else %}
                                                     <span class="badge bg-secondary-light text-secondary fw-bold">
-                                                    {{ group.grouper.get_physical_type_display }}
+                                                    {{ group_data.group.get_physical_type_display }}
                                                 </span>
                                                 {% endif %}
                                             {% endwith %}
                                             <div class="fs-xs text-muted mt-1">
-                                                {{ group.list|length }} порт{{ group.list|length|pluralize:",а,ов" }}
+                                                {{ group_data.count }} порт{{ group_data.count|pluralize:",а,ов" }}
                                             </div>
                                         </td>
                                     {% endif %}
@@ -335,7 +324,7 @@
         </div>
     {% endif %}
 
-        <!-- Процессоры -->
+    <!-- Процессоры -->
     {% if device.processors.all %}
         <div class="block block-rounded">
             <div class="block-header block-header-default d-flex justify-content-between align-items-center">
@@ -349,88 +338,21 @@
             </div>
 
             <div class="block-content">
-                {# Сводка по статусам процессоров #}
-                {% regroup device.processors.all by status as cpu_status_groups %}
-                <div class="row items-push text-center">
-                    {% for sg in cpu_status_groups %}
-                        <div class="col {% if not forloop.last %}border-end{% endif %}">
-                            <div class="fs-sm fw-semibold text-muted text-uppercase mb-1">
-                                {% if sg.grouper == 'ACTIVE' %}
-                                    В эксплуатации
-                                {% elif sg.grouper == 'SPARE' %}
-                                    В резерве (ЗИП)
-                                {% elif sg.grouper == 'FAULTY' %}
-                                    Неисправных
-                                {% elif sg.grouper == 'RETIRED' %}
-                                    Списанных
-                                {% else %}
-                                    Прочих
-                                {% endif %}
-                            </div>
-                            <div class="fs-2 fw-bold
-                                {% if sg.grouper == 'ACTIVE' %}text-success
-                                {% elif sg.grouper == 'SPARE' %}text-info
-                                {% elif sg.grouper == 'FAULTY' %}text-danger
-                                {% elif sg.grouper == 'RETIRED' %}text-muted
-                                {% else %}text-dark{% endif %}">
-                                {{ sg.list|length }}
-                            </div>
-                        </div>
-                    {% endfor %}
-                </div>
-
                 {# Сводка по суммарным характеристикам #}
-                {% with cpus=device.processors.all %}
-                    <div class="row items-push text-center mt-3 pt-3 border-top">
-                        <div class="col-3 border-end">
-                            <div class="fs-sm fw-semibold text-muted text-uppercase mb-1">Всего ядер</div>
-                            <div class="fs-2 fw-bold text-dark">
-                                {% widthratio 0 1 0 as total_cores %}
-                                {% for cpu in cpus %}{% widthratio cpu.cores 1 1 as dummy %}{% endfor %}
-                                {{ cpus|length }} × ∑
-                            </div>
-                            <div class="fs-4 fw-bold text-primary">
-                                {% for cpu in cpus %}
-                                    {% if forloop.first %}{{ cpu.cores }}{% else %}+{{ cpu.cores }}{% endif %}
-                                {% endfor %}
-                            </div>
-                        </div>
-                        <div class="col-3 border-end">
-                            <div class="fs-sm fw-semibold text-muted text-uppercase mb-1">Всего потоков</div>
-                            <div class="fs-4 fw-bold text-primary">
-                                {% for cpu in cpus %}
-                                    {% if forloop.first %}{{ cpu.threads }}{% else %}+{{ cpu.threads }}{% endif %}
-                                {% endfor %}
-                            </div>
-                        </div>
-                        <div class="col-3 border-end">
-                            <div class="fs-sm fw-semibold text-muted text-uppercase mb-1">Уникальных моделей</div>
-                            <div class="fs-2 fw-bold text-amethyst">
-                                {% regroup cpus by processor_model as model_groups %}
-                                {{ model_groups|length }}
-                            </div>
-                        </div>
-                        <div class="col-3">
-                            <div class="fs-sm fw-semibold text-muted text-uppercase mb-1">Сегменты</div>
-                            <div class="d-flex flex-wrap justify-content-center gap-1 mt-2">
-                                {% regroup cpus by processor_model.segment as segment_groups %}
-                                {% for seg in segment_groups %}
-                                    {% if seg.grouper == 'SERVER' %}
-                                        <span class="badge bg-primary-light text-primary">Серверный ×{{ seg.list|length }}</span>
-                                    {% elif seg.grouper == 'DESKTOP' %}
-                                        <span class="badge bg-info-light text-info">Настольный ×{{ seg.list|length }}</span>
-                                    {% elif seg.grouper == 'WORKSTATION' %}
-                                        <span class="badge bg-amethyst-light text-amethyst">Рабочая станция ×{{ seg.list|length }}</span>
-                                    {% elif seg.grouper == 'EMBEDDED' %}
-                                        <span class="badge bg-warning-light text-warning">Встраиваемый ×{{ seg.list|length }}</span>
-                                    {% else %}
-                                        <span class="badge bg-secondary-light text-secondary">{{ seg.grouper }} ×{{ seg.list|length }}</span>
-                                    {% endif %}
-                                {% endfor %}
-                            </div>
+                <div class="row items-push text-center">
+                    <div class="col-6 border-end">
+                        <div class="fs-sm fw-semibold text-muted text-uppercase mb-1">Всего ядер</div>
+                        <div class="fs-2 fw-bold text-dark">
+                            {{ cpu_stats.total_cores|default:0 }}
                         </div>
                     </div>
-                {% endwith %}
+                    <div class="col-6">
+                        <div class="fs-sm fw-semibold text-muted text-uppercase mb-1">Всего потоков</div>
+                        <div class="fs-2 fw-bold text-primary">
+                            {{ cpu_stats.total_threads|default:0 }}
+                        </div>
+                    </div>
+                </div>
 
                 {# Детализированный список процессоров #}
                 <div class="table-responsive mt-3">
@@ -543,5 +465,4 @@
             </div>
         </div>
     {% endif %}
-
 {% endblock %}

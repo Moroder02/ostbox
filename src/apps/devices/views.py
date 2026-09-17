@@ -2,6 +2,7 @@ from django.shortcuts import render, get_object_or_404
 from django.core.paginator import Paginator
 from django.conf import settings
 from django.db.models import Sum, Q
+from collections import Counter, defaultdict
 
 from .filters import DeviceFilter, DiskModelFilter, DiskFilter
 from .models import Device, DiskModel, Disk
@@ -37,28 +38,61 @@ def device_list(request, kind=None):
 def device_detail(request, pk):
     device = get_object_or_404(
         Device.objects.select_related(
+            'device_model',
             'device_model__vendor',
-
+            'operating_system',
         ).prefetch_related(
             'disks__disk_model',
             'disks__disk_model__vendor',
             'physical_ports__network_port_group',
             'management_protocols',
-            'processors',
             'processors__processor_model__socket',
-            'processors__processor_model__vendor',
+            'processors__processor_model',
         ),
-        pk=pk
+        pk=pk,
     )
     disk_stats = device.disks.aggregate(
         total_nvme=Sum('disk_model__capacity_gb', filter=Q(disk_model__media_type='NVME')),
         total_ssd=Sum('disk_model__capacity_gb', filter=Q(disk_model__media_type='SSD')),
         total_hdd=Sum('disk_model__capacity_gb', filter=Q(disk_model__media_type='HDD')),
-        total_all=Sum('disk_model__capacity_gb')
+        total_all=Sum('disk_model__capacity_gb'),
     )
+    cpu_stats = device.processors.aggregate(
+        total_cores=Sum('processor_model__cores'),
+        total_threads=Sum('processor_model__threads'),
+    )
+    ports = list(device.physical_ports.all())  # один запрос, результат в кэше
+    status_counter = Counter(p.status for p in ports)
+    port_stats = {
+        'total': len(ports),
+        'active': status_counter.get('active', 0),
+        'inactive': status_counter.get('inactive', 0),
+        'disabled': status_counter.get('disabled', 0),
+        'reserved': status_counter.get('reserved', 0),
+        'faulty': status_counter.get('faulty', 0),
+    }
+    # Группировка по NetworkPortGroup
+    port_groups_dict = {}
+    for port in ports:
+        group = port.network_port_group
+        if group not in port_groups_dict:
+            port_groups_dict[group] = {
+                'group': group,
+                'ports': [],
+                'count': 0,
+            }
+        port_groups_dict[group]['ports'].append(port)
+        port_groups_dict[group]['count'] += 1
+
+    # Преобразуем в список кортежей для шаблона
+    port_groups = list(port_groups_dict.items())
+
     context = {
         'device': device,
         'disk_stats': disk_stats,
+        'cpu_stats': cpu_stats,
+        'port_stats': port_stats,
+        'port_groups': port_groups,
     }
     return render(request, 'devices/device/device_detail.html', context)
 
