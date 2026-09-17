@@ -48,6 +48,7 @@ def device_detail(request, pk):
             'management_protocols',
             'processors__processor_model__socket',
             'processors__processor_model',
+            'ram_modules__ram_model',
         ),
         pk=pk,
     )
@@ -87,12 +88,50 @@ def device_detail(request, pk):
     # Преобразуем в список кортежей для шаблона
     port_groups = list(port_groups_dict.items())
 
+    ram_modules = list(device.ram_modules.all())
+
+    ram_stats = {
+        'total_count': len(ram_modules),
+        'total_gb': sum(m.capacity_gb for m in ram_modules),
+        # по типам памяти
+        'ddr3_gb': sum(m.capacity_gb for m in ram_modules if m.memory_type == 'DDR3'),
+        'ddr4_gb': sum(m.capacity_gb for m in ram_modules if m.memory_type == 'DDR4'),
+        'ddr5_gb': sum(m.capacity_gb for m in ram_modules if m.memory_type == 'DDR5'),
+        'other_gb': sum(m.capacity_gb for m in ram_modules
+                        if m.memory_type not in ('DDR3', 'DDR4', 'DDR5')),
+        # по статусам
+        'active': sum(1 for m in ram_modules if m.status == 'ACTIVE'),
+        'spare': sum(1 for m in ram_modules if m.status == 'SPARE'),
+        'faulty': sum(1 for m in ram_modules if m.status == 'FAULTY'),
+        'retired': sum(1 for m in ram_modules if m.status == 'RETIRED'),
+    }
+
+    # Группировка по модели RAMModel (для rowspan в таблице)
+    ram_groups_dict = {}
+    for ram in ram_modules:
+        model = ram.ram_model
+        if model not in ram_groups_dict:
+            ram_groups_dict[model] = {
+                'model': model,
+                'modules': [],
+                'count': 0,
+                'total_gb': 0,
+            }
+        ram_groups_dict[model]['modules'].append(ram)
+        ram_groups_dict[model]['count'] += 1
+        ram_groups_dict[model]['total_gb'] += ram.capacity_gb
+
+    ram_groups = list(ram_groups_dict.items())
+    # ================================================
+
     context = {
         'device': device,
         'disk_stats': disk_stats,
         'cpu_stats': cpu_stats,
         'port_stats': port_stats,
         'port_groups': port_groups,
+        'ram_stats': ram_stats,  # <-- добавлено
+        'ram_groups': ram_groups,  # <-- добавлено
     }
     return render(request, 'devices/device/device_detail.html', context)
 

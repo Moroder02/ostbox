@@ -1,0 +1,711 @@
+[
+  {
+    "model": "devices.rammodel",
+    "pk": 1,
+    "fields": {
+      "vendor": "Samsung Semiconductor",
+      "model_name": "M393A4K40DB3-CWE",
+      "part_number": "M393A4K40DB3-CWE",
+      "memory_type": "DDR4",
+      "memory_speed_mts": 3200,
+      "capacity_gb": 32,
+      "form_factor": "RDIMM",
+      "latency_cl": 22
+    }
+  },
+  {
+    "model": "devices.rammodel",
+    "pk": 2,
+    "fields": {
+      "vendor": "SK Hynix",
+      "model_name": "HMA84GR7CJR4N-WM",
+      "part_number": "HMA84GR7CJR4N-WM",
+      "memory_type": "DDR4",
+      "memory_speed_mts": 3200,
+      "capacity_gb": 32,
+      "form_factor": "RDIMM",
+      "latency_cl": 22
+    }
+  },
+  {
+    "model": "devices.rammodel",
+    "pk": 3,
+    "fields": {
+      "vendor": "Micron Technology",
+      "model_name": "MTA36ASF4G72PZ-3G2E2",
+      "part_number": "MTA36ASF4G72PZ-3G2E2",
+      "memory_type": "DDR4",
+      "memory_speed_mts": 3200,
+      "capacity_gb": 32,
+      "form_factor": "RDIMM",
+      "latency_cl": 22
+    }
+  },
+  {
+    "model": "devices.rammodel",
+    "pk": 4,
+    "fields": {
+      "vendor": "Samsung Semiconductor",
+      "model_name": "M393A8G40AB3-TDE",
+      "part_number": "M393A8G40AB3-TDE",
+      "memory_type": "DDR5",
+      "memory_speed_mts": 4800,
+      "capacity_gb": 64,
+      "form_factor": "RDIMM",
+      "latency_cl": 40
+    }
+  },
+  {
+    "model": "devices.rammodel",
+    "pk": 5,
+    "fields": {
+      "vendor": "SK Hynix",
+      "model_name": "HMCG94AEBRA103N",
+      "part_number": "HMCG94AEBRA103N",
+      "memory_type": "DDR5",
+      "memory_speed_mts": 5600,
+      "capacity_gb": 64,
+      "form_factor": "RDIMM",
+      "latency_cl": 46
+    }
+  },
+  {
+    "model": "devices.rammodel",
+    "pk": 6,
+    "fields": {
+      "vendor": "Samsung Semiconductor",
+      "model_name": "MCR88GB48R8MC24AM0",
+      "part_number": "MCR88GB48R8MC24AM0",
+      "memory_type": "DDR5",
+      "memory_speed_mts": 5600,
+      "capacity_gb": 128,
+      "form_factor": "MCRDIMM",
+      "latency_cl": 46
+    }
+  },
+  {
+    "model": "devices.rammodel",
+    "pk": 7,
+    "fields": {
+      "vendor": "Micron Technology",
+      "model_name": "MTC40ASF4G72AZ2-3G2B1",
+      "part_number": "MTC40ASF4G72AZ2-3G2B1",
+      "memory_type": "DDR5",
+      "memory_speed_mts": 6400,
+      "capacity_gb": 32,
+      "form_factor": "MCRDIMM",
+      "latency_cl": 52
+    }
+  },
+  {
+    "model": "devices.rammodel",
+    "pk": 8,
+    "fields": {
+      "vendor": "Samsung Semiconductor",
+      "model_name": "M393A2K43DB3-CWE",
+      "part_number": "M393A2K43DB3-CWE",
+      "memory_type": "DDR4",
+      "memory_speed_mts": 3200,
+      "capacity_gb": 16,
+      "form_factor": "RDIMM",
+      "latency_cl": 22
+    }
+  },
+  {
+    "model": "devices.rammodel",
+    "pk": 9,
+    "fields": {
+      "vendor": "Micron Technology",
+      "model_name": "MTA18ASF16G72PDZ-3G2E2",
+      "part_number": "MTA18ASF16G72PDZ-3G2E2",
+      "memory_type": "DDR4",
+      "memory_speed_mts": 3200,
+      "capacity_gb": 128,
+      "form_factor": "LRDIMM",
+      "latency_cl": 22
+    }
+  },
+  {
+    "model": "devices.rammodel",
+    "pk": 10,
+    "fields": {
+      "vendor": "Kingston Technology",
+      "model_name": "KVR32N22D8/16",
+      "part_number": "KVR32N22D8/16",
+      "memory_type": "DDR4",
+      "memory_speed_mts": 3200,
+      "capacity_gb": 16,
+      "form_factor": "DIMM",
+      "latency_cl": 22
+    }
+  },
+  {
+    "model": "devices.rammodel",
+    "pk": 11,
+    "fields": {
+      "vendor": "Corsair",
+      "model_name": "CMK32GX4M2E3600C18",
+      "part_number": "CMK32GX4M2E3600C18",
+      "memory_type": "DDR4",
+      "memory_speed_mts": 3600,
+      "capacity_gb": 32,
+      "form_factor": "DIMM",
+      "latency_cl": 18
+    }
+  },
+  {
+    "model": "devices.rammodel",
+    "pk": 12,
+    "fields": {
+      "vendor": "Crucial",
+      "model_name": "CT16G48C40U5",
+      "part_number": "CT16G48C40U5",
+      "memory_type": "DDR5",
+      "memory_speed_mts": 4800,
+      "capacity_gb": 16,
+      "form_factor": "DIMM",
+      "latency_cl": 40
+    }
+  },
+  {
+    "model": "devices.rammodel",
+    "pk": 13,
+    "fields": {
+      "vendor": "Kingston Technology",
+      "model_name": "KVR48S40BS8-16",
+      "part_number": "KVR48S40BS8-16",
+      "memory_type": "DDR5",
+      "memory_speed_mts": 4800,
+      "capacity_gb": 16,
+      "form_factor": "SO-DIMM",
+      "latency_cl": 40
+    }
+  },
+  {
+    "model": "devices.rammodel",
+    "pk": 14,
+    "fields": {
+      "vendor": "Crucial",
+      "model_name": "CT16G52C42S5",
+      "part_number": "CT16G52C42S5",
+      "memory_type": "DDR5",
+      "memory_speed_mts": 5200,
+      "capacity_gb": 16,
+      "form_factor": "SO-DIMM",
+      "latency_cl": 42
+    }
+  },
+  {
+    "model": "devices.rammodel",
+    "pk": 15,
+    "fields": {
+      "vendor": "Kingston Technology",
+      "model_name": "KVR26N19S8/8",
+      "part_number": "KVR26N19S8/8",
+      "memory_type": "DDR4",
+      "memory_speed_mts": 2666,
+      "capacity_gb": 8,
+      "form_factor": "SO-DIMM",
+      "latency_cl": 19
+    }
+  },
+
+  {
+    "model": "devices.ram",
+    "pk": 1,
+    "fields": {
+      "ram_model": 1,
+      "serial_number": "SN-SAM-393A4K40-00001",
+      "inventory_number": "INV-RAM-00001",
+      "status": "ACTIVE",
+      "device": 101
+    }
+  },
+  {
+    "model": "devices.ram",
+    "pk": 2,
+    "fields": {
+      "ram_model": 1,
+      "serial_number": "SN-SAM-393A4K40-00002",
+      "inventory_number": "INV-RAM-00002",
+      "status": "ACTIVE",
+      "device": 101
+    }
+  },
+  {
+    "model": "devices.ram",
+    "pk": 3,
+    "fields": {
+      "ram_model": 1,
+      "serial_number": "SN-SAM-393A4K40-00003",
+      "inventory_number": "INV-RAM-00003",
+      "status": "ACTIVE",
+      "device": 101
+    }
+  },
+  {
+    "model": "devices.ram",
+    "pk": 4,
+    "fields": {
+      "ram_model": 1,
+      "serial_number": "SN-SAM-393A4K40-00004",
+      "inventory_number": "INV-RAM-00004",
+      "status": "ACTIVE",
+      "device": 101
+    }
+  },
+  {
+    "model": "devices.ram",
+    "pk": 5,
+    "fields": {
+      "ram_model": 2,
+      "serial_number": "SN-HYN-84GR7CJR-00001",
+      "inventory_number": "INV-RAM-00005",
+      "status": "ACTIVE",
+      "device": 102
+    }
+  },
+  {
+    "model": "devices.ram",
+    "pk": 6,
+    "fields": {
+      "ram_model": 2,
+      "serial_number": "SN-HYN-84GR7CJR-00002",
+      "inventory_number": "INV-RAM-00006",
+      "status": "ACTIVE",
+      "device": 102
+    }
+  },
+  {
+    "model": "devices.ram",
+    "pk": 7,
+    "fields": {
+      "ram_model": 2,
+      "serial_number": "SN-HYN-84GR7CJR-00003",
+      "inventory_number": "INV-RAM-00007",
+      "status": "ACTIVE",
+      "device": 102
+    }
+  },
+  {
+    "model": "devices.ram",
+    "pk": 8,
+    "fields": {
+      "ram_model": 2,
+      "serial_number": "SN-HYN-84GR7CJR-00004",
+      "inventory_number": "INV-RAM-00008",
+      "status": "ACTIVE",
+      "device": 102
+    }
+  },
+  {
+    "model": "devices.ram",
+    "pk": 9,
+    "fields": {
+      "ram_model": 3,
+      "serial_number": "SN-MIC-36ASF4G-00001",
+      "inventory_number": "INV-RAM-00009",
+      "status": "ACTIVE",
+      "device": 112
+    }
+  },
+  {
+    "model": "devices.ram",
+    "pk": 10,
+    "fields": {
+      "ram_model": 3,
+      "serial_number": "SN-MIC-36ASF4G-00002",
+      "inventory_number": "INV-RAM-00010",
+      "status": "ACTIVE",
+      "device": 112
+    }
+  },
+  {
+    "model": "devices.ram",
+    "pk": 11,
+    "fields": {
+      "ram_model": 3,
+      "serial_number": "SN-MIC-36ASF4G-00003",
+      "inventory_number": "INV-RAM-00011",
+      "status": "ACTIVE",
+      "device": 112
+    }
+  },
+  {
+    "model": "devices.ram",
+    "pk": 12,
+    "fields": {
+      "ram_model": 3,
+      "serial_number": "SN-MIC-36ASF4G-00004",
+      "inventory_number": "INV-RAM-00012",
+      "status": "ACTIVE",
+      "device": 112
+    }
+  },
+  {
+    "model": "devices.ram",
+    "pk": 13,
+    "fields": {
+      "ram_model": 4,
+      "serial_number": "SN-SAM-8G40AB3-DDR5-001",
+      "inventory_number": "INV-RAM-00013",
+      "status": "ACTIVE",
+      "device": 109
+    }
+  },
+  {
+    "model": "devices.ram",
+    "pk": 14,
+    "fields": {
+      "ram_model": 4,
+      "serial_number": "SN-SAM-8G40AB3-DDR5-002",
+      "inventory_number": "INV-RAM-00014",
+      "status": "ACTIVE",
+      "device": 109
+    }
+  },
+  {
+    "model": "devices.ram",
+    "pk": 15,
+    "fields": {
+      "ram_model": 4,
+      "serial_number": "SN-SAM-8G40AB3-DDR5-003",
+      "inventory_number": "INV-RAM-00015",
+      "status": "ACTIVE",
+      "device": 109
+    }
+  },
+  {
+    "model": "devices.ram",
+    "pk": 16,
+    "fields": {
+      "ram_model": 4,
+      "serial_number": "SN-SAM-8G40AB3-DDR5-004",
+      "inventory_number": "INV-RAM-00016",
+      "status": "ACTIVE",
+      "device": 109
+    }
+  },
+  {
+    "model": "devices.ram",
+    "pk": 17,
+    "fields": {
+      "ram_model": 5,
+      "serial_number": "SN-HYN-94AEBRA-DDR5-001",
+      "inventory_number": "INV-RAM-00017",
+      "status": "ACTIVE",
+      "device": 131
+    }
+  },
+  {
+    "model": "devices.ram",
+    "pk": 18,
+    "fields": {
+      "ram_model": 5,
+      "serial_number": "SN-HYN-94AEBRA-DDR5-002",
+      "inventory_number": "INV-RAM-00018",
+      "status": "ACTIVE",
+      "device": 131
+    }
+  },
+  {
+    "model": "devices.ram",
+    "pk": 19,
+    "fields": {
+      "ram_model": 6,
+      "serial_number": "SN-SAM-MCR88-001",
+      "inventory_number": "INV-RAM-00019",
+      "status": "ACTIVE",
+      "device": 124
+    }
+  },
+  {
+    "model": "devices.ram",
+    "pk": 20,
+    "fields": {
+      "ram_model": 6,
+      "serial_number": "SN-SAM-MCR88-002",
+      "inventory_number": "INV-RAM-00020",
+      "status": "ACTIVE",
+      "device": 124
+    }
+  },
+  {
+    "model": "devices.ram",
+    "pk": 21,
+    "fields": {
+      "ram_model": 7,
+      "serial_number": "SN-MIC-MCR32-001",
+      "inventory_number": "INV-RAM-00021",
+      "status": "ACTIVE",
+      "device": 139
+    }
+  },
+  {
+    "model": "devices.ram",
+    "pk": 22,
+    "fields": {
+      "ram_model": 7,
+      "serial_number": "SN-MIC-MCR32-002",
+      "inventory_number": "INV-RAM-00022",
+      "status": "ACTIVE",
+      "device": 139
+    }
+  },
+  {
+    "model": "devices.ram",
+    "pk": 23,
+    "fields": {
+      "ram_model": 8,
+      "serial_number": "SN-SAM-2K43DB3-001",
+      "inventory_number": "INV-RAM-00023",
+      "status": "ACTIVE",
+      "device": 116
+    }
+  },
+  {
+    "model": "devices.ram",
+    "pk": 24,
+    "fields": {
+      "ram_model": 8,
+      "serial_number": "SN-SAM-2K43DB3-002",
+      "inventory_number": "INV-RAM-00024",
+      "status": "ACTIVE",
+      "device": 116
+    }
+  },
+  {
+    "model": "devices.ram",
+    "pk": 25,
+    "fields": {
+      "ram_model": 9,
+      "serial_number": "SN-MIC-18ASF16-001",
+      "inventory_number": "INV-RAM-00025",
+      "status": "ACTIVE",
+      "device": 142
+    }
+  },
+  {
+    "model": "devices.ram",
+    "pk": 26,
+    "fields": {
+      "ram_model": 9,
+      "serial_number": "SN-MIC-18ASF16-002",
+      "inventory_number": "INV-RAM-00026",
+      "status": "ACTIVE",
+      "device": 142
+    }
+  },
+  {
+    "model": "devices.ram",
+    "pk": 27,
+    "fields": {
+      "ram_model": 10,
+      "serial_number": "SN-KNG-KVR32-001",
+      "inventory_number": "INV-RAM-00027",
+      "status": "ACTIVE",
+      "device": 106
+    }
+  },
+  {
+    "model": "devices.ram",
+    "pk": 28,
+    "fields": {
+      "ram_model": 10,
+      "serial_number": "SN-KNG-KVR32-002",
+      "inventory_number": "INV-RAM-00028",
+      "status": "ACTIVE",
+      "device": 106
+    }
+  },
+  {
+    "model": "devices.ram",
+    "pk": 29,
+    "fields": {
+      "ram_model": 11,
+      "serial_number": "SN-CRS-CMK32G-001",
+      "inventory_number": "INV-RAM-00029",
+      "status": "ACTIVE",
+      "device": 121
+    }
+  },
+  {
+    "model": "devices.ram",
+    "pk": 30,
+    "fields": {
+      "ram_model": 11,
+      "serial_number": "SN-CRS-CMK32G-002",
+      "inventory_number": "INV-RAM-00030",
+      "status": "ACTIVE",
+      "device": 121
+    }
+  },
+  {
+    "model": "devices.ram",
+    "pk": 31,
+    "fields": {
+      "ram_model": 12,
+      "serial_number": "SN-CRU-CT16G48-001",
+      "inventory_number": "INV-RAM-00031",
+      "status": "ACTIVE",
+      "device": 136
+    }
+  },
+  {
+    "model": "devices.ram",
+    "pk": 32,
+    "fields": {
+      "ram_model": 12,
+      "serial_number": "SN-CRU-CT16G48-002",
+      "inventory_number": "INV-RAM-00032",
+      "status": "ACTIVE",
+      "device": 136
+    }
+  },
+  {
+    "model": "devices.ram",
+    "pk": 33,
+    "fields": {
+      "ram_model": 13,
+      "serial_number": "SN-KNG-SODIMM-DDR5-001",
+      "inventory_number": "INV-RAM-00033",
+      "status": "ACTIVE",
+      "device": null
+    }
+  },
+  {
+    "model": "devices.ram",
+    "pk": 34,
+    "fields": {
+      "ram_model": 14,
+      "serial_number": "SN-CRU-SODIMM-DDR5-001",
+      "inventory_number": "INV-RAM-00034",
+      "status": "ACTIVE",
+      "device": null
+    }
+  },
+  {
+    "model": "devices.ram",
+    "pk": 35,
+    "fields": {
+      "ram_model": 15,
+      "serial_number": "SN-KNG-SODIMM-DDR4-001",
+      "inventory_number": "INV-RAM-00035",
+      "status": "ACTIVE",
+      "device": null
+    }
+  },
+
+  {
+    "model": "devices.ram",
+    "pk": 36,
+    "fields": {
+      "ram_model": 1,
+      "serial_number": "SN-SAM-393A4K40-SPARE-001",
+      "inventory_number": "INV-RAM-00036",
+      "status": "SPARE",
+      "device": null
+    }
+  },
+  {
+    "model": "devices.ram",
+    "pk": 37,
+    "fields": {
+      "ram_model": 1,
+      "serial_number": "SN-SAM-393A4K40-SPARE-002",
+      "inventory_number": "INV-RAM-00037",
+      "status": "SPARE",
+      "device": null
+    }
+  },
+  {
+    "model": "devices.ram",
+    "pk": 38,
+    "fields": {
+      "ram_model": 2,
+      "serial_number": "SN-HYN-84GR7CJR-SPARE-001",
+      "inventory_number": "INV-RAM-00038",
+      "status": "SPARE",
+      "device": null
+    }
+  },
+  {
+    "model": "devices.ram",
+    "pk": 39,
+    "fields": {
+      "ram_model": 4,
+      "serial_number": "SN-SAM-8G40AB3-DDR5-SPARE",
+      "inventory_number": "INV-RAM-00039",
+      "status": "SPARE",
+      "device": null
+    }
+  },
+  {
+    "model": "devices.ram",
+    "pk": 40,
+    "fields": {
+      "ram_model": 10,
+      "serial_number": "SN-KNG-KVR32-SPARE-001",
+      "inventory_number": "INV-RAM-00040",
+      "status": "SPARE",
+      "device": null
+    }
+  },
+
+  {
+    "model": "devices.ram",
+    "pk": 41,
+    "fields": {
+      "ram_model": 8,
+      "serial_number": "SN-SAM-2K43DB3-FAULTY-001",
+      "inventory_number": "INV-RAM-00041",
+      "status": "FAULTY",
+      "device": null
+    }
+  },
+  {
+    "model": "devices.ram",
+    "pk": 42,
+    "fields": {
+      "ram_model": 10,
+      "serial_number": "SN-KNG-KVR32-FAULTY-001",
+      "inventory_number": "INV-RAM-00042",
+      "status": "FAULTY",
+      "device": null
+    }
+  },
+  {
+    "model": "devices.ram",
+    "pk": 43,
+    "fields": {
+      "ram_model": 15,
+      "serial_number": "SN-KNG-SODIMM-DDR4-FAULTY",
+      "inventory_number": "INV-RAM-00043",
+      "status": "FAULTY",
+      "device": null
+    }
+  },
+
+  {
+    "model": "devices.ram",
+    "pk": 44,
+    "fields": {
+      "ram_model": 8,
+      "serial_number": "SN-SAM-2K43DB3-RETIRED-001",
+      "inventory_number": "INV-RAM-00044",
+      "status": "RETIRED",
+      "device": null
+    }
+  },
+  {
+    "model": "devices.ram",
+    "pk": 45,
+    "fields": {
+      "ram_model": 15,
+      "serial_number": "SN-KNG-SODIMM-DDR4-RETIRED",
+      "inventory_number": "INV-RAM-00045",
+      "status": "RETIRED",
+      "device": null
+    }
+  }
+]

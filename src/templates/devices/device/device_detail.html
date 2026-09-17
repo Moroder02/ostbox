@@ -465,4 +465,209 @@
             </div>
         </div>
     {% endif %}
+
+    <!-- Оперативная память -->
+    {% if ram_stats.total_count %}
+        <div class="block block-rounded">
+            <div class="block-header block-header-default d-flex justify-content-between align-items-center">
+                <h3 class="block-title">
+                    <i class="fa fa-memory me-1 text-primary"></i>
+                    Оперативная память
+                </h3>
+                <span class="badge bg-dark fs-sm py-2 px-3">
+                Всего: <span class="fw-bold">{{ ram_stats.total_gb }} GB</span>
+                <span class="opacity-50 mx-1">·</span>
+                <span class="fw-bold">{{ ram_stats.total_count }}</span> мод.
+            </span>
+            </div>
+
+            <div class="block-content">
+                {# Сводка по типам памяти #}
+                <div class="row items-push text-center">
+                    <div class="col border-end">
+                        <div class="fs-sm fw-semibold text-muted text-uppercase mb-1">DDR3</div>
+                        <div class="fs-2 fw-bold text-muted">
+                            {{ ram_stats.ddr3_gb|default:0 }}
+                            <span class="fs-xs fw-normal">GB</span>
+                        </div>
+                    </div>
+                    <div class="col border-end">
+                        <div class="fs-sm fw-semibold text-muted text-uppercase mb-1">DDR4</div>
+                        <div class="fs-2 fw-bold text-primary">
+                            {{ ram_stats.ddr4_gb|default:0 }}
+                            <span class="fs-xs fw-normal">GB</span>
+                        </div>
+                    </div>
+                    <div class="col border-end">
+                        <div class="fs-sm fw-semibold text-muted text-uppercase mb-1">DDR5</div>
+                        <div class="fs-2 fw-bold text-amethyst">
+                            {{ ram_stats.ddr5_gb|default:0 }}
+                            <span class="fs-xs fw-normal">GB</span>
+                        </div>
+                    </div>
+                    {% if ram_stats.other_gb %}
+                        <div class="col border-end">
+                            <div class="fs-sm fw-semibold text-muted text-uppercase mb-1">Другое</div>
+                            <div class="fs-2 fw-bold text-secondary">
+                                {{ ram_stats.other_gb }}
+                                <span class="fs-xs fw-normal">GB</span>
+                            </div>
+                        </div>
+                    {% endif %}
+                    <div class="col">
+                        <div class="fs-sm fw-semibold text-muted text-uppercase mb-1">Всего</div>
+                        <div class="fs-2 fw-bold text-dark">
+                            {{ ram_stats.total_gb }}
+                            <span class="fs-xs fw-normal">GB</span>
+                        </div>
+                    </div>
+                </div>
+
+                {# Сводка по статусам #}
+                <div class="row items-push text-center mt-2">
+                    <div class="col border-end">
+                        <div class="fs-sm fw-semibold text-muted text-uppercase mb-1">В работе</div>
+                        <div class="fs-4 fw-bold text-success">{{ ram_stats.active }}</div>
+                    </div>
+                    <div class="col border-end">
+                        <div class="fs-sm fw-semibold text-muted text-uppercase mb-1">ЗИП</div>
+                        <div class="fs-4 fw-bold text-info">{{ ram_stats.spare }}</div>
+                    </div>
+                    <div class="col border-end">
+                        <div class="fs-sm fw-semibold text-muted text-uppercase mb-1">Неисправных</div>
+                        <div class="fs-4 fw-bold text-danger">{{ ram_stats.faulty }}</div>
+                    </div>
+                    <div class="col">
+                        <div class="fs-sm fw-semibold text-muted text-uppercase mb-1">Списанных</div>
+                        <div class="fs-4 fw-bold text-muted">{{ ram_stats.retired }}</div>
+                    </div>
+                </div>
+
+                {# Детализированная таблица, сгруппированная по модели #}
+                <div class="table-responsive mt-3">
+                    <table class="table table-hover table-vcenter fs-sm">
+                        <thead>
+                        <tr class="table-light">
+                            <th style="width: 22%;">Модель</th>
+                            <th style="width: 10%;" class="text-center">Тип</th>
+                            <th style="width: 10%;" class="text-center">Форм-фактор</th>
+                            <th style="width: 8%;" class="text-center">Объём</th>
+                            <th style="width: 10%;" class="text-center">Скорость</th>
+                            <th>Серийный номер</th>
+                            <th style="width: 12%;" class="text-center">Статус</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {% for model, group in ram_groups %}
+                            {% for ram in group.modules %}
+                                <tr>
+                                    {% if forloop.first %}
+                                        <td rowspan="{{ group.count }}" class="align-middle border-end">
+                                            <div class="fw-medium">
+                                                <i class="fa fa-memory text-primary me-1"></i>
+                                                {{ model.vendor }} {{ model.model_name }}
+                                            </div>
+                                            {% if model.part_number %}
+                                                <div class="fs-xs text-muted mt-1">
+                                                    <i class="fa fa-barcode me-1"></i>{{ model.part_number }}
+                                                </div>
+                                            {% endif %}
+                                            <div class="fs-xs text-muted mt-1">
+                                                {{ group.count }} мод. · {{ group.total_gb }} GB
+                                            </div>
+                                        </td>
+                                    {% endif %}
+                                    <td class="text-center">
+                                        {% with mt=ram.memory_type %}
+                                            {% if mt == 'DDR3' %}
+                                                <span class="badge bg-muted text-dark fw-bold">DDR3</span>
+                                            {% elif mt == 'DDR4' %}
+                                                <span class="badge bg-primary-light text-primary fw-bold">DDR4</span>
+                                            {% elif mt == 'DDR5' %}
+                                                <span class="badge bg-amethyst-light text-amethyst fw-bold">DDR5</span>
+                                            {% elif mt == 'LPDDR4' or mt == 'LPDDR5' %}
+                                                <span class="badge bg-info-light text-info fw-bold">{{ mt }}</span>
+                                            {% else %}
+                                                <span class="badge bg-secondary-light text-secondary fw-bold">{{ mt }}</span>
+                                            {% endif %}
+                                        {% endwith %}
+                                    </td>
+                                    <td class="text-center">
+                                        {% with ff=ram.ram_model.form_factor %}
+                                            {% if ff == 'DIMM' %}
+                                                <span class="badge bg-success-light text-success fw-bold">DIMM</span>
+                                            {% elif ff == 'SO-DIMM' %}
+                                                <span class="badge bg-info-light text-info fw-bold">SO-DIMM</span>
+                                            {% elif ff == 'RDIMM' %}
+                                                <span class="badge bg-warning-light text-warning fw-bold">RDIMM</span>
+                                            {% elif ff == 'LRDIMM' %}
+                                                <span class="badge bg-flat-light text-flat fw-bold">LRDIMM</span>
+                                            {% elif ff == 'MCRDIMM' %}
+                                                <span class="badge bg-amethyst-light text-amethyst fw-bold">MCRDIMM</span>
+                                            {% else %}
+                                                <span class="badge bg-secondary-light text-secondary fw-bold">{{ ff }}</span>
+                                            {% endif %}
+                                        {% endwith %}
+                                    </td>
+                                    <td class="text-center fw-bold text-dark">
+                                        {{ ram.capacity_gb }} GB
+                                    </td>
+                                    <td class="text-center font-monospace fs-xs">
+                                        {{ ram.ram_model.memory_speed_mts }}
+                                        <span class="text-muted">MT/s</span>
+                                        {% if ram.ram_model.latency_cl %}
+                                            <div class="text-muted">CL{{ ram.ram_model.latency_cl }}</div>
+                                        {% endif %}
+                                    </td>
+                                    <td>
+                                        {% if ram.serial_number %}
+                                            <code class="text-primary fw-medium">{{ ram.serial_number }}</code>
+                                        {% else %}
+                                            <span class="text-muted fst-italic">Не указан</span>
+                                        {% endif %}
+                                        {% if ram.inventory_number %}
+                                            <div class="fs-xs text-muted mt-1">
+                                                <i class="fa fa-barcode me-1"></i>{{ ram.inventory_number }}
+                                            </div>
+                                        {% endif %}
+                                    </td>
+                                    <td class="text-center">
+                                        {% if ram.status == 'ACTIVE' %}
+                                            <span class="badge bg-success-light text-success px-2 py-1 fs-xs fw-bold text-uppercase">
+                                            <i class="fa fa-circle me-1 fs-2xs"></i>В работе
+                                        </span>
+                                        {% elif ram.status == 'SPARE' %}
+                                            <span class="badge bg-info-light text-info px-2 py-1 fs-xs fw-bold text-uppercase">
+                                            <i class="fa fa-box me-1 fs-2xs"></i>ЗИП
+                                        </span>
+                                        {% elif ram.status == 'FAULTY' %}
+                                            <span class="badge bg-danger-light text-danger px-2 py-1 fs-xs fw-bold text-uppercase">
+                                            <i class="fa fa-exclamation-triangle me-1 fs-2xs"></i>Неисправен
+                                        </span>
+                                        {% elif ram.status == 'RETIRED' %}
+                                            <span class="badge bg-muted text-dark px-2 py-1 fs-xs fw-bold text-uppercase">
+                                            <i class="fa fa-archive me-1 fs-2xs"></i>Списан
+                                        </span>
+                                        {% else %}
+                                            <span class="badge bg-secondary-light text-secondary px-2 py-1 fs-xs fw-bold text-uppercase">
+                                            {{ ram.get_status_display }}
+                                        </span>
+                                        {% endif %}
+                                    </td>
+                                </tr>
+                            {% endfor %}
+                        {% empty %}
+                            <tr>
+                                <td colspan="7" class="text-center text-muted py-4">
+                                    Модули памяти не обнаружены или не привязаны к устройству.
+                                </td>
+                            </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    {% endif %}
+
 {% endblock %}
