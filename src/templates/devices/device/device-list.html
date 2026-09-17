@@ -66,7 +66,7 @@
                     {{ start_index|add:forloop.counter0 }}
                 {% endwith %}
             </td>
-            <td><a href="#">{{ device }}</a></td>
+            <td><a href="{{ device.get_absolute_url }}">{{ device }}</a></td>
             {% if not kind %}
                 <td>{{ device.device_model.get_kind_display }}</td>
             {% endif %}

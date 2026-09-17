@@ -1,7 +1,7 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from django.core.paginator import Paginator
 from django.conf import settings
-from django.template.defaultfilters import title
+from django.db.models import Sum, Q
 
 from .filters import DeviceFilter, DiskModelFilter, DiskFilter
 from .models import Device, DiskModel, Disk
@@ -30,8 +30,26 @@ def device_list(request, kind=None):
         'title': kind_display,
     }
     if request.htmx:
-        return render(request, 'devices/device-list.html#filtering', context)
-    return render(request, 'devices/device-list.html', context)
+        return render(request, 'devices/device/device-list.html#filtering', context)
+    return render(request, 'devices/device/device-list.html', context)
+
+
+def device_detail(request, pk):
+    device = get_object_or_404(
+        Device.objects.select_related('device_model__vendor').prefetch_related('disks__disk_model', 'disks__disk_model__vendor'),
+        pk=pk
+    )
+    disk_stats = device.disks.aggregate(
+        total_nvme=Sum('disk_model__capacity_gb', filter=Q(disk_model__media_type='NVME')),
+        total_ssd=Sum('disk_model__capacity_gb', filter=Q(disk_model__media_type='SSD')),
+        total_hdd=Sum('disk_model__capacity_gb', filter=Q(disk_model__media_type='HDD')),
+        total_all=Sum('disk_model__capacity_gb')
+    )
+    context = {
+        'device': device,
+        'disk_stats': disk_stats,
+    }
+    return render(request, 'devices/device/device_detail.html', context)
 
 
 def disk_list(request):
@@ -45,8 +63,8 @@ def disk_list(request):
         # 'total': len(list(filters.qs)),
     }
     if request.htmx:
-        return render(request, 'devices/disk-list.html#filtering', context)
-    return render(request, 'devices/disk-list.html', context)
+        return render(request, 'devices/disk/disk-list.html#filtering', context)
+    return render(request, 'devices/disk/disk-list.html', context)
 
 
 def disk_model_list(request):
@@ -61,5 +79,5 @@ def disk_model_list(request):
         'selected_vendors': request.GET.getlist('vendor'),
     }
     if request.htmx:
-        return render(request, 'devices/disk-model-list.html#filtering', context)
-    return render(request, 'devices/disk-model-list.html', context)
+        return render(request, 'devices/disk/disk-model-list.html#filtering', context)
+    return render(request, 'devices/disk/disk-model-list.html', context)

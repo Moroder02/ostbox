@@ -3,6 +3,7 @@ from django.db.models import Q
 from django.core.exceptions import ValidationError
 from django.core.validators import MinValueValidator, MaxValueValidator
 from django.utils.translation import gettext_lazy as _
+from django.urls import reverse
 
 from apps.commons.models import (
     OperatingSystem,
@@ -67,14 +68,12 @@ class DeviceModel(models.Model):
 
 
 class Device(models.Model):
-
     class Status(models.TextChoices):
         ON = "on", _("Включен")
         OFF = "off", _("Выключен")
         BROKEN = "broken", _("Не исправен")
         UNREACHABLE = "unreachable", _("Не доступен")
         UNKNOWN = "unknown", _("Неизвестно")
-
     device_model = models.ForeignKey(
         DeviceModel,
         on_delete=models.CASCADE,
@@ -112,12 +111,10 @@ class Device(models.Model):
         verbose_name=_("Год приобретения"),
         help_text=_("Год приобретения устройства"),
     )
-
     management_ip = models.GenericIPAddressField(
         blank=True,
         null=True,
     )
-
     management_protocols = models.ManyToManyField(
         Protocol,
         blank=True,
@@ -168,6 +165,9 @@ class Device(models.Model):
             ),
         ]
 
+    def get_absolute_url(self):
+        return reverse('devices:device-detail', kwargs={'pk': self.pk})
+
     def __str__(self):
         # identifier = (
         #         self.serial_number
@@ -178,7 +178,7 @@ class Device(models.Model):
 
 
 class NetworkPortGroup(models.Model):
-    device_model = models.ForeignKey(  # Связь с моделью устройства
+    device_model = models.ForeignKey(
         DeviceModel,
         on_delete=models.CASCADE,
         related_name="port_groups",

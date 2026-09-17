@@ -198,12 +198,6 @@ class Disk(models.Model):
         verbose_name="Устройство",
     )
 
-    # firmware = models.CharField(
-    #     max_length=64,
-    #     blank=True,
-    #     verbose_name="Версия прошивки",
-    # )
-
     class Meta:
         verbose_name = "Физический диск"
         verbose_name_plural = "Физические диски"

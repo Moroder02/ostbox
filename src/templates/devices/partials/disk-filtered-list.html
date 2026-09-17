@@ -1,5 +1,4 @@
 <div id="disk-table-body">
-    {#    {% partialdef filtering inline %}#}
     {% for disk in disks %}
         <tbody class="js-table-sections-header ">
         <tr>
@@ -40,5 +39,4 @@
     {% if request.htmx %}
         <span id="disk-total" hx-swap-oob="innerHTML">{{ total }}</span>
     {% endif %}
-    {#    {% endpartialdef filtering %}#}
 </div>
