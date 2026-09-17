@@ -269,6 +269,20 @@ class RAM(models.Model):
     def memory_type(self):
         return self.ram_model.memory_type
 
+    # ДОБАВИТЬ эти свойства:
+    @property
+    def memory_speed_mts(self):
+        return self.ram_model.memory_speed_mts
+
+    @property
+    def latency_cl(self):
+        return self.ram_model.latency_cl
+
+    @property
+    def form_factor(self):
+        return self.ram_model.form_factor
+
+
     def __str__(self):
         return (
             f"{self.ram_model.vendor} {self.ram_model.model_name} "

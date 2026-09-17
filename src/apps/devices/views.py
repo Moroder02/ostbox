@@ -88,12 +88,17 @@ def device_detail(request, pk):
     # Преобразуем в список кортежей для шаблона
     port_groups = list(port_groups_dict.items())
 
+    # ====== Блок ОЗУ: статистика и группировка ======
     ram_modules = list(device.ram_modules.all())
+
+    speeds = [m.memory_speed_mts for m in ram_modules if m.memory_speed_mts]
+    latencies = [m.ram_model.latency_cl for m in ram_modules if m.ram_model.latency_cl]
+    unique_models = len({m.ram_model_id for m in ram_modules})
 
     ram_stats = {
         'total_count': len(ram_modules),
         'total_gb': sum(m.capacity_gb for m in ram_modules),
-        # по типам памяти
+        # по типам памяти (оставляем — может пригодиться в будущем)
         'ddr3_gb': sum(m.capacity_gb for m in ram_modules if m.memory_type == 'DDR3'),
         'ddr4_gb': sum(m.capacity_gb for m in ram_modules if m.memory_type == 'DDR4'),
         'ddr5_gb': sum(m.capacity_gb for m in ram_modules if m.memory_type == 'DDR5'),
@@ -104,6 +109,13 @@ def device_detail(request, pk):
         'spare': sum(1 for m in ram_modules if m.status == 'SPARE'),
         'faulty': sum(1 for m in ram_modules if m.status == 'FAULTY'),
         'retired': sum(1 for m in ram_modules if m.status == 'RETIRED'),
+        # новые полезные метрики
+        'min_speed': min(speeds) if speeds else 0,
+        'max_speed': max(speeds) if speeds else 0,
+        'avg_cl': round(sum(latencies) / len(latencies)) if latencies else None,
+        'min_cl': min(latencies) if latencies else None,
+        'max_cl': max(latencies) if latencies else None,
+        'unique_models': unique_models,
     }
 
     # Группировка по модели RAMModel (для rowspan в таблице)
